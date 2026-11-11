@@ -13,7 +13,8 @@ import {
   ShieldCheck, 
   ChevronRight, 
   PhoneCall, 
-  Filter
+  Filter,
+  Activity
 } from 'lucide-react';
 import { useCountry } from '../context/CountryContext';
 
@@ -99,6 +100,25 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
             >
               <span>Dial {selectedCountry.generalEmergency} ({selectedCountry.countryName})</span>
             </a>
+          </div>
+        )}
+
+        {/* Vital Signs reference callout for Warning Signs category */}
+        {category.id === 'warning-signs' && (
+          <div className="bg-brand-50/80 border border-brand-200 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2 text-brand-800 text-xs font-bold uppercase tracking-wide">
+              <Activity className="w-4 h-4 text-brand-600" />
+              <span>Interactive Clinical Tool</span>
+            </div>
+            <p className="text-xs text-brand-900 leading-relaxed">
+              Check resting baselines for pulse, respirations, blood pressure, and body temperature across all age groups.
+            </p>
+            <Link
+              to="/vital-signs"
+              className="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold py-2 px-3 rounded-xl text-xs transition duration-150 shadow"
+            >
+              <span>Explore Vital Signs Guide &rarr;</span>
+            </Link>
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { CountryProvider } from './context/CountryContext';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/HomePage';
 import { CategoryPage } from './pages/CategoryPage';
@@ -11,6 +12,7 @@ import { DisclaimerPage } from './pages/DisclaimerPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
+import { VitalSignsPage } from './pages/VitalSignsPage';
 import { SearchModal } from './components/search/SearchModal';
 
 export default function App() {
@@ -32,6 +34,7 @@ export default function App() {
 
   return (
     <CountryProvider>
+      <ScrollToTop />
       <Layout onOpenSearch={() => setSearchModalOpen(true)}>
         <Routes>
           <Route path="/" element={<HomePage onOpenSearch={() => setSearchModalOpen(true)} />} />
@@ -50,6 +53,9 @@ export default function App() {
 
           {/* Interactive "What should I do if...?" Search Page */}
           <Route path="/search" element={<SearchPage />} />
+
+          {/* Interactive Vital Signs Reference Guide */}
+          <Route path="/vital-signs" element={<VitalSignsPage />} />
 
           {/* Interactive Educational Quiz */}
           <Route path="/quiz" element={<QuizPage />} />
