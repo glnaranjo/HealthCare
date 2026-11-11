@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getLocalizedCategories } from '../data/categories';
-import { ARTICLES } from '../data/articles';
+import { getArticlesByCategory } from '../utils/search';
 import { ArticleCard } from '../components/ui/ArticleCard';
 import { MainCategory } from '../types';
 import { 
@@ -34,7 +34,7 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
   const currentCategorySlug = forcedCategory || categorySlug || 'emergencies';
   const category = categories.find(c => c.slug === currentCategorySlug) || categories[0];
 
-  const categoryArticles = ARTICLES.filter(a => a.category === category.id);
+  const categoryArticles = getArticlesByCategory(category.id, language);
   
   const filteredArticles = selectedUrgency === 'all' 
     ? categoryArticles 

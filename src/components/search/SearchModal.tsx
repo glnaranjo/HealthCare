@@ -44,7 +44,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         'Someone having an epileptic seizure',
       ];
 
-  const results = searchGuides(query);
+  const results = searchGuides(query, language);
 
   useEffect(() => {
     if (isOpen) {

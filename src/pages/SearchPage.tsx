@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { searchGuides } from '../utils/search';
 import { ArticleCard } from '../components/ui/ArticleCard';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   Search, 
   X, 
@@ -15,19 +16,31 @@ export function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
   const [query, setQuery] = useState(initialQuery);
+  const { language } = useLanguage();
 
-  const suggestedSituations = [
-    { label: 'Someone is choking on food', query: 'What should I do if someone is choking?' },
-    { label: 'Someone suffered a severe burn', query: 'What should I do if someone gets burned?' },
-    { label: 'Recognizing acute stroke (BE-FAST)', query: 'How do I recognize a stroke?' },
-    { label: 'Someone collapsed and is unconscious', query: 'Someone is unconscious and not breathing' },
-    { label: 'Continuous heavy bleeding from a wound', query: 'Severe bleeding won\'t stop' },
-    { label: 'Person having an active seizure', query: 'Someone having an epileptic seizure' },
-    { label: 'Suspected chemical or bleach ingestion', query: 'Child swallowed household cleaning chemical' },
-    { label: 'Recognizing signs of severe dehydration', query: 'Signs of severe dehydration' },
-  ];
+  const suggestedSituations = language === 'es'
+    ? [
+        { label: 'Alguien se está atragantando', query: '¿Qué hacer si alguien se atraganta?' },
+        { label: 'Quemadura grave o con agua hirviendo', query: '¿Qué hacer ante una quemadura?' },
+        { label: 'Reconocimiento de ACV (BE-FAST)', query: '¿Cómo reconocer un ACV?' },
+        { label: 'Persona inconsciente y no respira (RCP)', query: 'Persona inconsciente sin respiracion' },
+        { label: 'Hemorragia severa que no para', query: 'Sangrado continuo o corte profundo' },
+        { label: 'Convulsión activa o ataque epiléptico', query: 'Alguien teniendo una convulsion' },
+        { label: 'Ingesta accidental de lavandina o veneno', query: 'Ingesta de productos de limpieza toxicos' },
+        { label: 'Signos de deshidratación grave', query: 'Señales de deshidratacion severa' },
+      ]
+    : [
+        { label: 'Someone is choking on food', query: 'What should I do if someone is choking?' },
+        { label: 'Someone suffered a severe burn', query: 'What should I do if someone gets burned?' },
+        { label: 'Recognizing acute stroke (BE-FAST)', query: 'How do I recognize a stroke?' },
+        { label: 'Someone collapsed and is unconscious', query: 'Someone is unconscious and not breathing' },
+        { label: 'Continuous heavy bleeding from a wound', query: 'Severe bleeding won\'t stop' },
+        { label: 'Person having an active seizure', query: 'Someone having an epileptic seizure' },
+        { label: 'Suspected chemical or bleach ingestion', query: 'Child swallowed household cleaning chemical' },
+        { label: 'Recognizing signs of severe dehydration', query: 'Signs of severe dehydration' },
+      ];
 
-  const results = searchGuides(query);
+  const results = searchGuides(query, language);
 
   useEffect(() => {
     if (query.trim()) {
@@ -46,22 +59,28 @@ export function SearchPage() {
       
       {/* Breadcrumb Navigation */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Link to="/" className="hover:text-brand-600 transition">Home</Link>
+        <Link to="/" className="hover:text-brand-600 transition">
+          {language === 'es' ? 'Inicio' : 'Home'}
+        </Link>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-        <span className="text-slate-900 font-bold">What should I do if...?</span>
+        <span className="text-slate-900 font-bold">
+          {language === 'es' ? '¿Qué debo hacer si...?' : 'What should I do if...?'}
+        </span>
       </nav>
 
       {/* Main Search Header */}
       <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-6">
         <div className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
-            Natural Language Quick Access
+            {language === 'es' ? 'Búsqueda Clínica en Lenguaje Natural' : 'Natural Language Quick Access'}
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
-            What should I do if...?
+            {language === 'es' ? '¿Qué debo hacer si...?' : 'What should I do if...?'}
           </h1>
           <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-            Describe the symptom or situation in plain words. Our verified local first aid directory will instantly retrieve the appropriate clinical response protocol.
+            {language === 'es'
+              ? 'Describe el síntoma o la situación con tus propias palabras. El motor de búsqueda local encontrará de inmediato el protocolo clínico adecuado.'
+              : 'Describe the symptom or situation in plain words. Our verified local first aid directory will instantly retrieve the appropriate clinical response protocol.'}
           </p>
         </div>
 
@@ -72,7 +91,7 @@ export function SearchPage() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="e.g. What should I do if someone faints or gets burned?"
+            placeholder={language === 'es' ? 'Ej: ¿Qué hago si alguien se desmaya o se quema?' : 'e.g. What should I do if someone faints or gets burned?'}
             className="w-full pl-13 pr-12 py-4 rounded-2xl bg-slate-50 border border-slate-300 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-slate-900 placeholder:text-slate-400 text-base font-medium shadow-xs transition"
           />
           {query && (
@@ -90,7 +109,7 @@ export function SearchPage() {
         <div className="space-y-2 pt-2">
           <p className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
             <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
-            Frequently Searched Situations:
+            {language === 'es' ? 'Situaciones buscadas con frecuencia:' : 'Frequently Searched Situations:'}
           </p>
           <div className="flex flex-wrap gap-2">
             {suggestedSituations.map((sit, idx) => (
@@ -116,11 +135,13 @@ export function SearchPage() {
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-brand-600" />
             <h2 className="text-lg font-bold text-slate-900">
-              {query ? `Search Results for "${query}"` : 'All Available Emergency & Health Protocols'}
+              {query 
+                ? (language === 'es' ? `Resultados para "${query}"` : `Search Results for "${query}"`) 
+                : (language === 'es' ? 'Todos los Protocolos Médicos Disponibles' : 'All Available Emergency & Health Protocols')}
             </h2>
           </div>
           <span className="text-xs font-semibold text-slate-500">
-            {results.length} {results.length === 1 ? 'protocol' : 'protocols'} found
+            {results.length} {results.length === 1 ? (language === 'es' ? 'protocolo' : 'protocol') : (language === 'es' ? 'protocolos' : 'protocols')}
           </span>
         </div>
 
@@ -136,16 +157,18 @@ export function SearchPage() {
               <AlertTriangle className="w-6 h-6" />
             </div>
             <h3 className="text-lg font-bold text-slate-900">
-              No exact guide found for "{query}"
+              {language === 'es' ? `No se encontraron guías para "${query}"` : `No exact guide found for "${query}"`}
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Try searching with general keywords such as <strong>cpr</strong>, <strong>choking</strong>, <strong>burn</strong>, <strong>bleeding</strong>, or <strong>stroke</strong>.
+              {language === 'es' 
+                ? 'Prueba buscando con palabras clave como rcp, atragantamiento, quemadura, hemorragia, o acv.'
+                : 'Try searching with general keywords such as cpr, choking, burn, bleeding, or stroke.'}
             </p>
             <button
               onClick={() => setQuery('')}
               className="text-xs font-bold text-brand-600 hover:underline pt-2"
             >
-              Clear Search & Show All Protocols
+              {language === 'es' ? 'Limpiar búsqueda y ver todo' : 'Clear Search & Show All Protocols'}
             </button>
           </div>
         )}
@@ -154,14 +177,16 @@ export function SearchPage() {
       {/* Accuracy & Safety Assurance Banner */}
       <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
         <div>
-          <strong>Medical Accuracy Safeguard:</strong> This search queries verified local international first aid manuals only. It does not use generative AI to improvise clinical advice.
+          <strong>{language === 'es' ? 'Garantía de Rigor Médico:' : 'Medical Accuracy Safeguard:'}</strong>{' '}
+          {language === 'es'
+            ? 'Esta búsqueda consulta únicamente manuales de primeros auxilios verificados. No utiliza IA generativa para improvisar diagnósticos.'
+            : 'This search queries verified local international first aid manuals only. It does not use generative AI to improvise clinical advice.'}
         </div>
         <Link to="/disclaimer" className="text-brand-600 font-bold hover:underline flex-shrink-0">
-          Review Guidelines &rarr;
+          {language === 'es' ? 'Ver Pautas y Fuentes' : 'Review Guidelines'} &rarr;
         </Link>
       </div>
 
     </div>
   );
 }
-

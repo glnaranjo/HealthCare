@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Article } from '../../types';
 import { useCountry } from '../../context/CountryContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   PhoneCall, 
   X, 
@@ -20,6 +21,7 @@ interface EmergencyStressModeProps {
 
 export function EmergencyStressMode({ article, onClose }: EmergencyStressModeProps) {
   const { selectedCountry } = useCountry();
+  const { language } = useLanguage();
   const [metronomeRunning, setMetronomeRunning] = useState(false);
   const [audioMuted, setAudioMuted] = useState(false);
   const [pulseBeat, setPulseBeat] = useState(false);
@@ -86,14 +88,14 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
         <div className="flex items-center gap-2">
           <ShieldAlert className="w-5 h-5 text-amber-300 animate-pulse" />
           <span className="font-black text-sm uppercase tracking-wider text-white">
-            ACTIVE EMERGENCY MODE • {article.title}
+            {language === 'es' ? 'MODO ACTIVO DE EMERGENCIA' : 'ACTIVE EMERGENCY MODE'} • {article.title}
           </span>
         </div>
         <button
           onClick={onClose}
           className="flex items-center gap-1.5 bg-black/30 hover:bg-black/50 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition border border-white/20"
         >
-          <span>Exit Stress Mode</span>
+          <span>{language === 'es' ? 'Salir del Modo Estrés' : 'Exit Stress Mode'}</span>
           <X className="w-4 h-4" />
         </button>
       </div>
@@ -104,17 +106,19 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
         {/* GIANT CALL EMERGENCY BUTTON */}
         <div className="bg-red-950/80 border-2 border-red-500 rounded-3xl p-6 text-center space-y-3 shadow-2xl">
           <span className="text-xs font-black uppercase tracking-widest text-red-300 block">
-            Step 0: Summon Professional Dispatch Right Now
+            {language === 'es' ? 'Paso 0: Convoca auxilio profesional ahora mismo' : 'Step 0: Summon Professional Dispatch Right Now'}
           </span>
           <a
             href={`tel:${selectedCountry.ambulance || selectedCountry.generalEmergency}`}
             className="w-full inline-flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 text-white font-black py-5 px-6 rounded-2xl text-2xl sm:text-3xl tracking-tight shadow-xl hover:scale-[1.02] active:scale-[0.98] transition"
           >
             <PhoneCall className="w-8 h-8 animate-bounce" />
-            <span>DIAL {selectedCountry.generalEmergency} ({selectedCountry.countryCode})</span>
+            <span>{language === 'es' ? 'LLAMAR AL' : 'DIAL'} {selectedCountry.generalEmergency} ({selectedCountry.countryCode})</span>
           </a>
           <p className="text-xs text-red-200">
-            Put call on speaker phone and continue actions while medics are en route.
+            {language === 'es'
+              ? 'Pon la llamada en altavoz y continúa con las maniobras mientras la ambulancia va en camino.'
+              : 'Put call on speaker phone and continue actions while medics are en route.'}
           </p>
         </div>
 
@@ -124,10 +128,10 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-teal-400">
-                  CPR Rhythm Guide (110 BPM)
+                  {language === 'es' ? 'Guía de Ritmo de RCP (110 LPM)' : 'CPR Rhythm Guide (110 BPM)'}
                 </span>
                 <p className="text-lg font-extrabold text-white">
-                  Push hard and fast to the beat
+                  {language === 'es' ? 'Comprime fuerte y rápido al compás' : 'Push hard and fast to the beat'}
                 </p>
               </div>
 
@@ -135,7 +139,7 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
                 <button
                   onClick={() => setAudioMuted(!audioMuted)}
                   className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300"
-                  title={audioMuted ? "Unmute click sound" : "Mute click sound"}
+                  title={audioMuted ? "Sonido activado" : "Silenciar"}
                   aria-label="Toggle metronome sound"
                 >
                   {audioMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 text-teal-400" />}
@@ -152,12 +156,12 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
                   {metronomeRunning ? (
                     <>
                       <Square className="w-4 h-4 fill-current" />
-                      <span>Stop Beat</span>
+                      <span>{language === 'es' ? 'Detener Ritmo' : 'Stop Beat'}</span>
                     </>
                   ) : (
                     <>
                       <Play className="w-4 h-4 fill-current" />
-                      <span>Start Rhythm Beat</span>
+                      <span>{language === 'es' ? 'Iniciar Ritmo Sonoro' : 'Start Rhythm Beat'}</span>
                     </>
                   )}
                 </button>
@@ -171,7 +175,7 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
                   ? 'bg-red-500 text-white scale-125 shadow-lg shadow-red-500/50' 
                   : 'bg-slate-800 text-slate-400 scale-100'
               }`}>
-                {pulseBeat ? 'PUSH!' : '110 BPM'}
+                {pulseBeat ? (language === 'es' ? '¡EMPUJA!' : 'PUSH!') : '110 BPM'}
               </div>
             </div>
           </div>
@@ -180,7 +184,7 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
         {/* ULTRA-SIMPLIFIED LARGE STEP CARDS */}
         <div className="space-y-4">
           <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">
-            Immediate Action Sequence:
+            {language === 'es' ? 'Secuencia de Acción Inmediata:' : 'Immediate Action Sequence:'}
           </h2>
 
           {article.whatToDo.map((step) => (
@@ -202,7 +206,7 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
               {step.warning && (
                 <div className="ml-12 p-3 rounded-xl bg-amber-950/60 border border-amber-600/80 text-amber-200 text-xs font-bold flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                  <span>DO NOT: {step.warning}</span>
+                  <span>{language === 'es' ? 'NO HACER:' : 'DO NOT:'} {step.warning}</span>
                 </div>
               )}
             </div>
@@ -213,7 +217,7 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
         <div className="bg-red-950/40 border border-red-800 rounded-3xl p-6 space-y-3">
           <h3 className="text-sm font-black uppercase tracking-wider text-red-400 flex items-center gap-2">
             <X className="w-5 h-5 text-red-500" />
-            Strictly Prohibited in this Emergency:
+            {language === 'es' ? 'Estrictamente Prohibido en esta Emergencia:' : 'Strictly Prohibited in this Emergency:'}
           </h3>
           <ul className="space-y-2 text-sm text-red-100 font-semibold pl-2">
             {article.whatNotToDo.slice(0, 3).map((rule, idx) => (
@@ -233,11 +237,10 @@ export function EmergencyStressMode({ article, onClose }: EmergencyStressModePro
           onClick={onClose}
           className="w-full max-w-md mx-auto bg-slate-800 hover:bg-slate-700 text-white font-bold py-3.5 px-6 rounded-2xl text-sm transition flex items-center justify-center gap-2"
         >
-          <span>Return to Standard Educational Guide</span>
+          <span>{language === 'es' ? 'Volver a la Guía Educativa Estándar' : 'Return to Standard Educational Guide'}</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>
   );
 }
-

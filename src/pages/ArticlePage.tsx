@@ -30,7 +30,7 @@ export function ArticlePage() {
   const [stressModeOpen, setStressModeOpen] = useState(false);
   const [showFullGuide, setShowFullGuide] = useState(false);
 
-  const article = getArticleBySlug(slug || '');
+  const article = getArticleBySlug(slug || '', language);
 
   // Scroll to top when article slug changes
   useEffect(() => {
@@ -58,7 +58,7 @@ export function ArticlePage() {
     );
   }
 
-  const related = getRelatedArticles(article.relatedArticles);
+  const related = getRelatedArticles(article.relatedArticles, language);
   const isCritical = article.urgency === 'critical' || article.urgency === 'urgent';
 
   const handleShare = () => {

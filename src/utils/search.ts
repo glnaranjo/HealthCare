@@ -1,5 +1,5 @@
-import { Article } from '../types';
-import { ARTICLES } from '../data/articles';
+import { Article, Language } from '../types';
+import { getLocalizedArticles } from '../data/articles';
 
 export interface SearchResult {
   article: Article;
@@ -8,12 +8,17 @@ export interface SearchResult {
 }
 
 const STOP_WORDS = new Set([
-  'what', 'should', 'i', 'do', 'if', 'someone', 'a', 'an', 'the', 'is', 'has', 'my', 'how', 'to', 'can', 'in', 'on', 'at', 'with', 'for', 'of', 'and', 'or'
+  // English
+  'what', 'should', 'i', 'do', 'if', 'someone', 'a', 'an', 'the', 'is', 'has', 'my', 'how', 'to', 'can', 'in', 'on', 'at', 'with', 'for', 'of', 'and', 'or',
+  // Spanish
+  'que', 'qué', 'debo', 'debe', 'hacer', 'hago', 'si', 'alguien', 'un', 'una', 'el', 'la', 'los', 'las', 'en', 'con', 'por', 'para', 'de', 'y', 'o', 'como', 'cómo', 'mi', 'su'
 ]);
 
-export function searchGuides(query: string): Article[] {
+export function searchGuides(query: string, lang: Language = 'en'): Article[] {
+  const articles = getLocalizedArticles(lang);
+
   if (!query || query.trim().length === 0) {
-    return ARTICLES;
+    return articles;
   }
 
   const cleanQuery = query.toLowerCase().trim();
@@ -23,7 +28,7 @@ export function searchGuides(query: string): Article[] {
 
   const results: SearchResult[] = [];
 
-  for (const article of ARTICLES) {
+  for (const article of articles) {
     let score = 0;
     const matched: string[] = [];
 
@@ -62,7 +67,7 @@ export function searchGuides(query: string): Article[] {
       }
     }
 
-    // Boost critical life-threatening conditions if urgency is relevant
+    // Boost critical life-threatening conditions
     if (article.urgency === 'critical') {
       score += 2;
     }
@@ -78,15 +83,17 @@ export function searchGuides(query: string): Article[] {
   return results.map(r => r.article);
 }
 
-export function getArticleBySlug(slug: string): Article | undefined {
-  return ARTICLES.find(a => a.slug === slug);
+export function getArticleBySlug(slug: string, lang: Language = 'en'): Article | undefined {
+  const articles = getLocalizedArticles(lang);
+  return articles.find(a => a.slug === slug);
 }
 
-export function getArticlesByCategory(category: string): Article[] {
-  return ARTICLES.filter(a => a.category === category);
+export function getArticlesByCategory(category: string, lang: Language = 'en'): Article[] {
+  const articles = getLocalizedArticles(lang);
+  return articles.filter(a => a.category === category);
 }
 
-export function getRelatedArticles(slugs: string[]): Article[] {
-  return ARTICLES.filter(a => slugs.includes(a.slug));
+export function getRelatedArticles(slugs: string[], lang: Language = 'en'): Article[] {
+  const articles = getLocalizedArticles(lang);
+  return articles.filter(a => slugs.includes(a.slug));
 }
-

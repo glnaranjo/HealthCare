@@ -1,6 +1,7 @@
-import { Article } from '../types';
+import { Article, Language } from '../types';
+import { ARTICLES_ES } from './articles.es';
 
-export const ARTICLES: Article[] = [
+export const ARTICLES_EN: Article[] = [
   // 1. CARDIAC ARREST & CPR
   {
     id: 'cpr-cardiac-arrest',
@@ -1152,5 +1153,13 @@ export const ARTICLES: Article[] = [
     searchKeywords: ['food safety', 'food poisoning', 'salmonella', 'handwashing', 'hygiene', 'refrigerator temperature', 'raw chicken']
   }
 ];
+
+export const ARTICLES = ARTICLES_EN;
+export { ARTICLES_ES };
+
+export const getLocalizedArticles = (lang: Language): Article[] => {
+  return lang === 'es' ? ARTICLES_ES : ARTICLES_EN;
+};
+
 
 

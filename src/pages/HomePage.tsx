@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getLocalizedCategories } from '../data/categories';
-import { ARTICLES } from '../data/articles';
+import { getLocalizedArticles } from '../data/articles';
 import { CategoryCard } from '../components/ui/CategoryCard';
 import { ArticleCard } from '../components/ui/ArticleCard';
 import { useLanguage } from '../context/LanguageContext';
@@ -90,7 +90,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
   ];
 
   // Selected featured educational guides
-  const featuredArticles = ARTICLES.slice(0, 6);
+  const featuredArticles = getLocalizedArticles(language).slice(0, 6);
 
   return (
     <div className="space-y-16 sm:space-y-24 py-8 sm:py-12">
@@ -292,7 +292,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat) => {
-            const count = ARTICLES.filter(a => a.category === cat.id).length;
+            const count = getLocalizedArticles(language).filter(a => a.category === cat.id).length;
             return (
               <CategoryCard key={cat.id} category={cat} articleCount={count} />
             );
