@@ -17,7 +17,9 @@ import {
   CheckCircle2,
   Award,
   Clock,
-  Sparkles
+  Sparkles,
+  CheckSquare,
+  ClipboardList
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -294,7 +296,128 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
         </div>
       </section>
 
-      {/* 4. FEATURED GUIDES SECTION */}
+      {/* 4. INTERACTIVE TOOLS SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+            Practical Tools
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+            Interactive Clinical Tools
+          </h2>
+          <p className="text-sm text-slate-600 mt-2">
+            Reference guides and checklists designed for real-life use — at home, travelling, or in an emergency.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Vital Signs Reference */}
+          <Link
+            to="/vital-signs"
+            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+          >
+            <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
+              <Activity className="w-48 h-48 text-brand-600" />
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center shadow-xs group-hover:bg-brand-100 transition">
+              <Activity className="w-7 h-7 text-brand-600 stroke-[1.8]" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-brand-600">
+                Reference Guide
+              </div>
+              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+                Vital Signs Reference
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Normal ranges for pulse, blood pressure, respiratory rate and temperature — across adults, children and infants.
+              </p>
+            </div>
+
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="flex gap-2 flex-wrap">
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Adult</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Child</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Infant</span>
+              </div>
+              <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
+            </div>
+          </Link>
+
+          {/* First Aid Kit Checklist */}
+          <Link
+            to="/kit-checklist"
+            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+          >
+            <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
+              <CheckSquare className="w-48 h-48 text-brand-600" />
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center shadow-xs group-hover:bg-teal-100 transition">
+              <CheckSquare className="w-7 h-7 text-teal-600 stroke-[1.8]" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-teal-600">
+                Persistent Checklist
+              </div>
+              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+                First Aid Kit Audit
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Inventory your home and travel kit against a clinically-recommended supply list. Progress saves automatically.
+              </p>
+            </div>
+
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="flex gap-2 flex-wrap">
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">16 items</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Auto-save</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Print-ready</span>
+              </div>
+              <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
+            </div>
+          </Link>
+
+          {/* Knowledge Quiz */}
+          <Link
+            to="/quiz"
+            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+          >
+            <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
+              <ClipboardList className="w-48 h-48 text-brand-600" />
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-navy-50 border border-navy-100 flex items-center justify-center shadow-xs group-hover:bg-navy-100 transition">
+              <ClipboardList className="w-7 h-7 text-navy-600 stroke-[1.8]" />
+            </div>
+
+            <div className="space-y-2">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-navy-600">
+                Knowledge Check
+              </div>
+              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+                First Aid Quiz
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Scenario-based questions that test real decision-making under pressure. Instant feedback with clinical rationale.
+              </p>
+            </div>
+
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+              <div className="flex gap-2 flex-wrap">
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">6 questions</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">5 min</span>
+              </div>
+              <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      {/* 5. FEATURED GUIDES SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
@@ -325,7 +448,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
         </div>
       </section>
 
-      {/* 5. INTERACTIVE QUIZ & TRAINING TEASER */}
+      {/* 6. INTERACTIVE QUIZ & TRAINING TEASER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-navy-900 to-navy-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-navy-800 relative overflow-hidden">
           <div className="absolute right-0 bottom-0 translate-x-12 translate-y-12 opacity-10 pointer-events-none">
