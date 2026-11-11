@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArticleBySlug, getRelatedArticles } from '../utils/search';
 import { UrgencyBadge } from '../components/ui/UrgencyBadge';
 import { ArticleCard } from '../components/ui/ArticleCard';
+import { EmergencyStressMode } from '../components/tools/EmergencyStressMode';
 import { useCountry } from '../context/CountryContext';
 import { 
   ChevronRight, 
@@ -16,12 +17,14 @@ import {
   Printer, 
   ShieldCheck, 
   Calendar,
-  AlertCircle
+  AlertCircle,
+  Zap
 } from 'lucide-react';
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { selectedCountry } = useCountry();
+  const [stressModeOpen, setStressModeOpen] = useState(false);
 
   const article = getArticleBySlug(slug || '');
 
@@ -103,13 +106,24 @@ export function ArticlePage() {
           </div>
         </div>
 
-        <a
-          href={`tel:${selectedCountry.ambulance || selectedCountry.generalEmergency}`}
-          className="flex-shrink-0 inline-flex items-center gap-2 bg-emergency-600 hover:bg-emergency-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition duration-150 shadow self-stretch sm:self-auto justify-center"
-        >
-          <PhoneCall className="w-3.5 h-3.5" />
-          <span>Call {selectedCountry.generalEmergency} ({selectedCountry.countryName})</span>
-        </a>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 flex-shrink-0 w-full sm:w-auto">
+          <button
+            onClick={() => setStressModeOpen(true)}
+            className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-amber-300 font-extrabold px-4 py-2 rounded-xl text-xs transition duration-150 shadow border border-slate-700 hover:border-amber-400"
+            title="Switch to ultra-high-contrast step sequence for active emergencies"
+          >
+            <Zap className="w-3.5 h-3.5 fill-current" />
+            <span>Emergency Action Mode</span>
+          </button>
+
+          <a
+            href={`tel:${selectedCountry.ambulance || selectedCountry.generalEmergency}`}
+            className="inline-flex items-center justify-center gap-2 bg-emergency-600 hover:bg-emergency-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition duration-150 shadow"
+          >
+            <PhoneCall className="w-3.5 h-3.5" />
+            <span>Call {selectedCountry.generalEmergency} ({selectedCountry.countryName})</span>
+          </a>
+        </div>
       </div>
 
       {/* Article Header & Metadata */}
@@ -309,6 +323,14 @@ export function ArticlePage() {
             ))}
           </div>
         </section>
+      )}
+
+      {/* Fullscreen Active Emergency Stress View */}
+      {stressModeOpen && (
+        <EmergencyStressMode
+          article={article}
+          onClose={() => setStressModeOpen(false)}
+        />
       )}
 
     </article>
