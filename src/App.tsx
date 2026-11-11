@@ -13,6 +13,7 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 import { VitalSignsPage } from './pages/VitalSignsPage';
+import { KitChecklistPage } from './pages/KitChecklistPage';
 import { SearchModal } from './components/search/SearchModal';
 
 export default function App() {
@@ -56,6 +57,9 @@ export default function App() {
 
           {/* Interactive Vital Signs Reference Guide */}
           <Route path="/vital-signs" element={<VitalSignsPage />} />
+
+          {/* Interactive First Aid Kit Checklist */}
+          <Route path="/kit-checklist" element={<KitChecklistPage />} />
 
           {/* Interactive Educational Quiz */}
           <Route path="/quiz" element={<QuizPage />} />
