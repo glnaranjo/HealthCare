@@ -75,8 +75,30 @@ export function ArticlePage() {
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       
+      {/* PRINT-ONLY HEADER FOR FIRST AID KITS */}
+      <div className="print-only border-b-2 border-slate-900 pb-3 mb-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-xl font-black text-slate-950 uppercase tracking-tight block">
+              HealthCare • Emergency Protocol Sheet
+            </span>
+            <p className="text-xs text-slate-700">
+              International First Aid Manual • Attach to your Home / Workplace First Aid Kit
+            </p>
+          </div>
+          <div className="border-2 border-red-600 p-1.5 px-3 text-center rounded-lg">
+            <span className="text-[9px] font-black uppercase tracking-wider block text-red-600">
+              EMERGENCY DISPATCH ({selectedCountry.countryCode})
+            </span>
+            <span className="text-xl font-black text-slate-900">
+              {selectedCountry.generalEmergency}
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+      <nav aria-label="Breadcrumb" className="no-print flex items-center gap-2 text-xs font-semibold text-slate-500">
         <Link to="/" className="hover:text-brand-600 transition">Home</Link>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
         <Link to={`/${article.category}`} className="hover:text-brand-600 transition capitalize">
@@ -136,7 +158,7 @@ export function ArticlePage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="no-print flex items-center gap-3">
             <button
               onClick={handleShare}
               className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition"
@@ -147,11 +169,12 @@ export function ArticlePage() {
             </button>
             <button
               onClick={handlePrint}
-              className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition"
+              className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition flex items-center gap-1.5 text-xs font-semibold"
               title="Print emergency sheet"
               aria-label="Print guide"
             >
               <Printer className="w-4 h-4" />
+              <span className="hidden sm:inline">Print Protocol Sheet</span>
             </button>
           </div>
         </div>
@@ -313,7 +336,7 @@ export function ArticlePage() {
 
       {/* SECTION 7: RELATED ARTICLES */}
       {related.length > 0 && (
-        <section className="space-y-4 pt-4 border-t border-slate-200">
+        <section className="no-print space-y-4 pt-4 border-t border-slate-200">
           <h3 className="text-xl font-bold text-slate-900">
             Related Health & Safety Guides
           </h3>
@@ -324,6 +347,16 @@ export function ArticlePage() {
           </div>
         </section>
       )}
+
+      {/* PRINT-ONLY OFFICIAL FOOTER */}
+      <div className="print-only border-t-2 border-slate-900 pt-3 text-[9pt] text-slate-700 space-y-1">
+        <p className="font-bold text-slate-900">
+          Mandatory Safety Notice: This protocol sheet provides standardized educational first aid guidelines only and does not substitute certified practical training or professional emergency dispatch.
+        </p>
+        <p className="text-slate-600">
+          Printed from HealthCare International Platform • Guidelines curated from WHO, IFRC, and European Resuscitation Council.
+        </p>
+      </div>
 
       {/* Fullscreen Active Emergency Stress View */}
       {stressModeOpen && (
