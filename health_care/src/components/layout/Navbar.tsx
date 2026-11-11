@@ -45,9 +45,9 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all w-full">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
           
           {/* Logo & Brand */}
           <Link 
@@ -156,7 +156,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-200 bg-white shadow-xl animate-in slide-in-from-top-2 duration-150">
-          <div className="max-w-7xl mx-auto px-4 py-4 space-y-1">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-4 space-y-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
