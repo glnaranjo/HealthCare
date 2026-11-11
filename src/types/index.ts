@@ -1,5 +1,7 @@
 export type UrgencyLevel = 'critical' | 'urgent' | 'moderate' | 'precautionary';
 
+export type Language = 'es' | 'en';
+
 export type MainCategory = 
   | 'emergencies' 
   | 'accidents' 

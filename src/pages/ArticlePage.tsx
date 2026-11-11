@@ -5,6 +5,7 @@ import { UrgencyBadge } from '../components/ui/UrgencyBadge';
 import { ArticleCard } from '../components/ui/ArticleCard';
 import { EmergencyStressMode } from '../components/tools/EmergencyStressMode';
 import { useCountry } from '../context/CountryContext';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   ChevronRight, 
   Clock, 
@@ -25,6 +26,7 @@ import {
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const { selectedCountry } = useCountry();
+  const { language, t } = useLanguage();
   const [stressModeOpen, setStressModeOpen] = useState(false);
   const [showFullGuide, setShowFullGuide] = useState(false);
 
@@ -103,7 +105,9 @@ export function ArticlePage() {
 
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="no-print flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Link to="/" className="hover:text-brand-600 transition">Home</Link>
+        <Link to="/" className="hover:text-brand-600 transition">
+          {language === 'es' ? 'Inicio' : 'Home'}
+        </Link>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
         <Link to={`/${article.category}`} className="hover:text-brand-600 transition capitalize">
           {article.category.replace('-', ' ')}
@@ -124,7 +128,7 @@ export function ArticlePage() {
               <AlertTriangle className="w-6 h-6 text-white animate-pulse flex-shrink-0" />
               <div>
                 <p className="text-[11px] font-black uppercase tracking-widest text-red-100">
-                  Quick Action — {article.urgency === 'critical' ? 'Life-Threatening' : 'Urgent'} Situation
+                  {article.urgency === 'critical' ? t('quickActionCritical') : t('quickActionUrgent')}
                 </p>
                 <h1 className="text-lg sm:text-xl font-extrabold text-white leading-tight">
                   {article.title}
@@ -138,14 +142,14 @@ export function ArticlePage() {
                 title="Fullscreen emergency view"
               >
                 <Zap className="w-3.5 h-3.5 fill-current" />
-                <span className="hidden sm:inline">Fullscreen</span>
+                <span className="hidden sm:inline">{t('fullscreen')}</span>
               </button>
               <a
                 href={`tel:${selectedCountry.ambulance || selectedCountry.generalEmergency}`}
                 className="flex items-center gap-1.5 bg-white text-emergency-700 font-black px-4 py-2 rounded-xl text-sm shadow transition hover:bg-red-50"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>Call {selectedCountry.generalEmergency}</span>
+                <span>{t('callNow')} {selectedCountry.generalEmergency}</span>
               </a>
             </div>
           </div>
@@ -153,7 +157,7 @@ export function ArticlePage() {
           {/* Step-by-step cards — large, scannable, no intro text */}
           <div className="bg-slate-950 px-4 sm:px-6 py-5 space-y-3">
             <p className="text-xs font-black uppercase tracking-widest text-slate-400 pb-1">
-              Do these steps in order:
+              {t('doTheseSteps')}
             </p>
             {article.whatToDo.map((step) => (
               <div
@@ -183,7 +187,7 @@ export function ArticlePage() {
             {/* Critical DON'Ts — most important ones inline */}
             <div className="mt-2 bg-red-950/50 border border-red-800/70 rounded-2xl p-4 space-y-2">
               <p className="text-xs font-black uppercase tracking-wider text-red-400 flex items-center gap-1.5">
-                <XCircle className="w-4 h-4" /> Do NOT:
+                <XCircle className="w-4 h-4" /> {t('doNotRule')}
               </p>
               <ul className="space-y-1.5">
                 {article.whatNotToDo.slice(0, 3).map((rule, idx) => (
@@ -201,7 +205,7 @@ export function ArticlePage() {
               className="w-full flex items-center justify-center gap-2 py-3 text-xs font-bold text-slate-400 hover:text-slate-200 transition border-t border-slate-800 mt-2"
             >
               <ChevronDown className={`w-4 h-4 transition-transform ${showFullGuide ? 'rotate-180' : ''}`} />
-              <span>{showFullGuide ? 'Hide full educational guide' : 'Read the full educational guide (what it is, all details, sources…)'}</span>
+              <span>{showFullGuide ? t('hideFullGuide') : t('expandFullGuide')}</span>
             </button>
           </div>
         </section>
@@ -269,11 +273,11 @@ export function ArticlePage() {
             <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 pt-2">
               <div className="flex items-center gap-1.5 font-medium">
                 <Clock className="w-3.5 h-3.5 text-slate-400" />
-                <span>Estimated reading time: <strong>{article.readingTimeMinutes} min</strong></span>
+                <span>{t('readingTime')}: <strong>{article.readingTimeMinutes} min</strong></span>
               </div>
               <div className="flex items-center gap-1.5 font-medium">
                 <Calendar className="w-3.5 h-3.5 text-slate-400" />
-                <span>Last medically reviewed: <strong>{article.lastReviewed}</strong></span>
+                <span>{t('lastReviewed')}: <strong>{article.lastReviewed}</strong></span>
               </div>
               <div className="flex items-center gap-1.5 font-medium text-brand-700">
                 <ShieldCheck className="w-3.5 h-3.5" />
@@ -286,7 +290,7 @@ export function ArticlePage() {
           <section className="space-y-3 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
             <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
               <BookOpen className="w-5 h-5 text-brand-600" />
-              <h2>What is it?</h2>
+              <h2>{t('whatIsIt')}</h2>
             </div>
             <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
               {article.whatIsIt}
@@ -297,7 +301,7 @@ export function ArticlePage() {
           <section className="space-y-4 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
             <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
               <AlertCircle className="w-5 h-5 text-amber-600" />
-              <h2>How to recognize it (Signs & Symptoms)</h2>
+              <h2>{t('howToRecognize')}</h2>
             </div>
             <ul className="grid grid-cols-1 gap-2.5">
               {article.howToRecognize.map((sign, idx) => (
@@ -316,10 +320,10 @@ export function ArticlePage() {
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2 text-slate-900 font-extrabold text-xl sm:text-2xl">
                 <CheckCircle2 className="w-6 h-6 text-brand-600" />
-                <h2>What to do: Step-by-Step Actions</h2>
+                <h2>{t('whatToDoTitle')}</h2>
               </div>
               <span className="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full">
-                Follow in Order
+                {t('followInOrder')}
               </span>
             </div>
 
@@ -346,7 +350,7 @@ export function ArticlePage() {
                     <div className="ml-11 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2">
                       <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                       <p>
-                        <strong>Warning:</strong> {step.warning}
+                        <strong>{language === 'es' ? 'Advertencia:' : 'Warning:'}</strong> {step.warning}
                       </p>
                     </div>
                   )}
@@ -359,10 +363,12 @@ export function ArticlePage() {
           <section className="space-y-4 bg-red-50/70 p-6 sm:p-8 rounded-3xl border border-red-200 shadow-2xs">
             <div className="flex items-center gap-2 text-red-950 font-bold text-lg sm:text-xl">
               <XCircle className="w-5 h-5 text-red-600" />
-              <h2>What NOT to do (Critical Common Mistakes)</h2>
+              <h2>{t('whatNotToDoTitle')}</h2>
             </div>
             <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
-              Outdated home remedies or instinctive reactions can worsen injuries or prove fatal. Strictly avoid:
+              {language === 'es'
+                ? 'Remedios caseros obsoletos o reacciones impulsivas pueden agravar las lesiones o resultar fatales. Evita estrictamente:'
+                : 'Outdated home remedies or instinctive reactions can worsen injuries or prove fatal. Strictly avoid:'}
             </p>
             <ul className="space-y-2.5 pt-1">
               {article.whatNotToDo.map((rule, idx) => (
@@ -380,7 +386,7 @@ export function ArticlePage() {
           <section className="space-y-3 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
             <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
               <PhoneCall className="w-5 h-5 text-brand-600" />
-              <h2>When to Seek Professional Medical Assistance</h2>
+              <h2>{t('whenToSeekHelp')}</h2>
             </div>
             <ul className="space-y-2">
               {article.whenToSeekMedicalHelp.map((item, idx) => (
@@ -396,10 +402,12 @@ export function ArticlePage() {
           <section className="space-y-3 p-6 rounded-2xl bg-slate-100/80 border border-slate-200 text-xs text-slate-600">
             <div className="flex items-center gap-2 text-slate-800 font-bold">
               <ShieldCheck className="w-4 h-4 text-brand-600" />
-              <h3>Recognized Clinical Sources & Consensus Guidelines</h3>
+              <h3>{t('clinicalSources')}</h3>
             </div>
             <p>
-              This educational guide reflects current resuscitation science and first aid practice guidelines from:
+              {language === 'es' 
+                ? 'Esta guía educativa refleja la ciencia de resucitación y consensos de primeros auxilios de:' 
+                : 'This educational guide reflects current resuscitation science and first aid practice guidelines from:'}
             </p>
             <ul className="space-y-1 list-disc pl-5 text-slate-700">
               {article.sources.map((src, idx) => (
@@ -409,7 +417,9 @@ export function ArticlePage() {
               ))}
             </ul>
             <p className="text-[11px] text-slate-500 pt-2 border-t border-slate-200/80">
-              Disclaimer: This guide is purely educational and does not constitute individual medical diagnosis or individualized prescription.
+              {language === 'es'
+                ? 'Aviso: Esta guía es de carácter puramente educativo y no constituye diagnóstico médico ni prescripción individualizada.'
+                : 'Disclaimer: This guide is purely educational and does not constitute individual medical diagnosis or individualized prescription.'}
             </p>
           </section>
         </>
@@ -419,7 +429,7 @@ export function ArticlePage() {
       {related.length > 0 && (
         <section className="no-print space-y-4 pt-4 border-t border-slate-200">
           <h3 className="text-xl font-bold text-slate-900">
-            Related Health & Safety Guides
+            {t('relatedGuides')}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {related.map((rel) => (

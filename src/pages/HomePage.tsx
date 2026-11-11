@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { CATEGORIES } from '../data/categories';
+import { getLocalizedCategories } from '../data/categories';
 import { ARTICLES } from '../data/articles';
 import { CategoryCard } from '../components/ui/CategoryCard';
 import { ArticleCard } from '../components/ui/ArticleCard';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   ShieldAlert, 
   BookOpen, 
@@ -27,61 +28,64 @@ interface HomePageProps {
 }
 
 export function HomePage({ onOpenSearch }: HomePageProps) {
-  // 6 Essential quick-action situations as specified in section 5
+  const { language, t } = useLanguage();
+  const categories = getLocalizedCategories(language);
+
+  // 6 Essential quick-action situations localized
   const quickSituations = [
     {
-      title: 'Someone is unconscious',
-      subtitle: 'Unresponsive, abnormal breathing, or collapsed.',
+      title: language === 'es' ? 'Alguien está inconsciente' : 'Someone is unconscious',
+      subtitle: language === 'es' ? 'No responde, respiración ausente o anormal, o desplome repentino.' : 'Unresponsive, abnormal breathing, or collapsed.',
       slug: 'cardiac-arrest-cpr',
       icon: Activity,
       color: 'text-red-600 bg-red-50 border-red-200 hover:border-red-400',
-      actionText: 'Check Breathing & Start CPR',
-      urgentBadge: 'Immediate CPR'
+      actionText: language === 'es' ? 'Verificar respiración e iniciar RCP' : 'Check Breathing & Start CPR',
+      urgentBadge: language === 'es' ? 'RCP Inmediata' : 'Immediate CPR'
     },
     {
-      title: 'Someone is choking',
-      subtitle: 'Cannot speak, clutching neck, silent coughing.',
+      title: language === 'es' ? 'Alguien se está atragantando' : 'Someone is choking',
+      subtitle: language === 'es' ? 'No puede hablar, se sujeta el cuello, tos silenciosa o nula.' : 'Cannot speak, clutching neck, silent coughing.',
       slug: 'choking-adult-child',
       icon: HeartCrack,
       color: 'text-amber-600 bg-amber-50 border-amber-200 hover:border-amber-400',
-      actionText: 'Back Blows & Heimlich Thrusts',
-      urgentBadge: 'Airway Block'
+      actionText: language === 'es' ? 'Golpes en la espalda y Heimlich' : 'Back Blows & Heimlich Thrusts',
+      urgentBadge: language === 'es' ? 'Vía Aérea' : 'Airway Block'
     },
     {
-      title: 'Someone has a burn',
-      subtitle: 'Scalds from boiling water, fire, or hot surfaces.',
+      title: language === 'es' ? 'Alguien sufrió una quemadura' : 'Someone has a burn',
+      subtitle: language === 'es' ? 'Escaldaduras con agua caliente, fuego, vapor o planchas.' : 'Scalds from boiling water, fire, or hot surfaces.',
       slug: 'burns-first-aid',
       icon: Flame,
       color: 'text-orange-600 bg-orange-50 border-orange-200 hover:border-orange-400',
-      actionText: 'Cool With Running Water 20 min',
-      urgentBadge: 'Cooling Protocol'
+      actionText: language === 'es' ? 'Enfriar con agua corriente 20 min' : 'Cool With Running Water 20 min',
+      urgentBadge: language === 'es' ? 'Enfriamiento' : 'Cooling Protocol'
     },
     {
-      title: 'Someone is bleeding',
-      subtitle: 'Continuous bleeding, deep cut, or puncture wound.',
+      title: language === 'es' ? 'Alguien está sangrando' : 'Someone is bleeding',
+      subtitle: language === 'es' ? 'Hemorragia continua, corte profundo o herida penetrante.' : 'Continuous bleeding, deep cut, or puncture wound.',
       slug: 'severe-bleeding-wounds',
       icon: Droplet,
       color: 'text-rose-600 bg-rose-50 border-rose-200 hover:border-rose-400',
-      actionText: 'Apply Direct Firm Pressure',
-      urgentBadge: 'Stop Bleeding'
+      actionText: language === 'es' ? 'Aplicar presión firme directa' : 'Apply Direct Firm Pressure',
+      urgentBadge: language === 'es' ? 'Frenar Sangrado' : 'Stop Bleeding'
     },
     {
-      title: 'Someone is having a seizure',
-      subtitle: 'Convulsions, body stiffening, loss of consciousness.',
+      title: language === 'es' ? 'Alguien tiene convulsiones' : 'Someone is having a seizure',
+      subtitle: language === 'es' ? 'Espasmos involuntarios, rigidez corporal, pérdida de conciencia.' : 'Convulsions, body stiffening, loss of consciousness.',
       slug: 'seizures-first-aid',
       icon: AlertTriangle,
       color: 'text-purple-600 bg-purple-50 border-purple-200 hover:border-purple-400',
-      actionText: 'Protect Head & Do NOT Restrain',
-      urgentBadge: 'Protect From Harm'
+      actionText: language === 'es' ? 'Proteger la cabeza y NO sujetar' : 'Protect Head & Do NOT Restrain',
+      urgentBadge: language === 'es' ? 'Proteger de Daño' : 'Protect From Harm'
     },
     {
-      title: 'Someone may be having a stroke',
-      subtitle: 'Face drooping, arm weakness, slurred speech.',
+      title: language === 'es' ? 'Alguien podría tener un ACV' : 'Someone may be having a stroke',
+      subtitle: language === 'es' ? 'Rostro caído, debilidad en un brazo, dificultad para hablar.' : 'Face drooping, arm weakness, slurred speech.',
       slug: 'stroke-recognition',
       icon: Brain,
       color: 'text-blue-600 bg-blue-50 border-blue-200 hover:border-blue-400',
-      actionText: 'BE-FAST Test & Emergency Call',
-      urgentBadge: 'Time is Brain'
+      actionText: language === 'es' ? 'Prueba BE-FAST y llamar a emergencias' : 'BE-FAST Test & Emergency Call',
+      urgentBadge: language === 'es' ? 'Tiempo es Cerebro' : 'Time is Brain'
     },
   ];
 
@@ -98,15 +102,15 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200/80 shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-brand-600" />
-              <span>International Medical Education Manual</span>
+              <span>{t('heroBadge')}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-              Know what to do.
+              {t('heroTitle')}
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-              Practical health knowledge for everyday situations. Learn how to recognize emergencies, provide basic first aid and protect yourself and others.
+              {t('heroSubtitle')}
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
@@ -114,7 +118,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                 to="/emergencies"
                 className="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition duration-150 flex items-center gap-2 text-sm sm:text-base"
               >
-                <span>Explore First Aid</span>
+                <span>{t('heroExploreFirstAid')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
@@ -122,7 +126,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                 className="bg-white hover:bg-slate-50 text-slate-800 font-semibold px-6 py-3.5 rounded-xl border border-slate-200 shadow-xs hover:border-slate-300 transition duration-150 flex items-center gap-2 text-sm sm:text-base"
               >
                 <BookOpen className="w-4 h-4 text-brand-600" />
-                <span>Browse Health Guides</span>
+                <span>{t('heroBrowseGuides')}</span>
               </a>
             </div>
 
@@ -136,11 +140,11 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                 <div className="flex items-center gap-3">
                   <Search className="w-5 h-5 text-brand-600 group-hover:scale-110 transition" />
                   <span className="text-sm text-slate-600">
-                    What should I do if someone faints or burns...?
+                    {t('heroSearchPlaceholder')}
                   </span>
                 </div>
                 <span className="bg-brand-50 text-brand-700 font-bold text-xs px-2.5 py-1 rounded-lg">
-                  Search
+                  {t('searchKbd')}
                 </span>
               </button>
             </div>
@@ -157,7 +161,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
                     <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                      Universal Resuscitation Rules
+                      {t('heroRulesTitle')}
                     </span>
                   </div>
                   <span className="text-[11px] font-semibold text-slate-400">WHO / IFRC</span>
@@ -170,8 +174,8 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                       100
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">CPR Compression Cadence</p>
-                      <p className="text-[11px] text-slate-500">100–120 compressions per minute to "Stayin' Alive"</p>
+                      <p className="text-xs font-bold text-slate-900">{t('heroCprCadence')}</p>
+                      <p className="text-[11px] text-slate-500">{t('heroCprSub')}</p>
                     </div>
                   </div>
 
@@ -180,8 +184,8 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                       20m
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">Immediate Burn Cooling</p>
-                      <p className="text-[11px] text-slate-500">20 minutes under clean running water, never ice or butter</p>
+                      <p className="text-xs font-bold text-slate-900">{t('heroBurnCooling')}</p>
+                      <p className="text-[11px] text-slate-500">{t('heroBurnSub')}</p>
                     </div>
                   </div>
 
@@ -190,17 +194,17 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                       FAST
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">Acute Stroke Recognition</p>
-                      <p className="text-[11px] text-slate-500">Face drooping, Arm weakness, Speech difficulty, Time</p>
+                      <p className="text-xs font-bold text-slate-900">{t('heroStrokeRec')}</p>
+                      <p className="text-[11px] text-slate-500">{t('heroStrokeSub')}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-brand-600" /> Non-diagnostic manual
+                    <CheckCircle2 className="w-4 h-4 text-brand-600" /> {t('heroNonDiagnostic')}
                   </span>
-                  <span className="font-semibold text-slate-700">100% Free & Open</span>
+                  <span className="font-semibold text-slate-700">{t('heroOpenAccess')}</span>
                 </div>
               </div>
             </div>
@@ -214,13 +218,13 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
             <div className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full mb-2">
-              <ShieldAlert className="w-3.5 h-3.5" /> High-Urgency Responses
+              <ShieldAlert className="w-3.5 h-3.5" /> {t('quickAccessBadge')}
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              What do you need help with right now?
+              {t('quickAccessTitle')}
             </h2>
             <p className="text-sm text-slate-600 mt-1 max-w-xl">
-              Tap the situation matching what you see. Follow clear, step-by-step actions without medical jargon.
+              {t('quickAccessSubtitle')}
             </p>
           </div>
 
@@ -228,7 +232,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
             to="/emergencies"
             className="text-xs sm:text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1 self-start md:self-auto"
           >
-            <span>View all emergency guides</span>
+            <span>{t('quickAccessViewAll')}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -276,18 +280,18 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
-            Educational Curriculum
+            {t('curriculumBadge')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
-            Explore Knowledge by Category
+            {t('categoriesTitle')}
           </h2>
           <p className="text-sm text-slate-600 mt-2">
-            Structured educational modules covering everything from severe trauma to everyday home prevention.
+            {t('categoriesSubtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const count = ARTICLES.filter(a => a.category === cat.id).length;
             return (
               <CategoryCard key={cat.id} category={cat} articleCount={count} />
@@ -300,13 +304,13 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
-            Practical Tools
+            {t('toolsBadge')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
-            Interactive Clinical Tools
+            {t('toolsTitle')}
           </h2>
           <p className="text-sm text-slate-600 mt-2">
-            Reference guides and checklists designed for real-life use — at home, travelling, or in an emergency.
+            {t('toolsSubtitle')}
           </p>
         </div>
 
@@ -326,21 +330,27 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
 
             <div className="space-y-2">
               <div className="text-[11px] font-bold uppercase tracking-wider text-brand-600">
-                Reference Guide
+                {language === 'es' ? 'Guía de Referencia' : 'Reference Guide'}
               </div>
               <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
-                Vital Signs Reference
+                {t('vitalSignsTitle')}
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Normal ranges for pulse, blood pressure, respiratory rate and temperature — across adults, children and infants.
+                {t('vitalSignsDesc')}
               </p>
             </div>
 
             <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Adult</span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Child</span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Infant</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? 'Adulto' : 'Adult'}
+                </span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? 'Niño' : 'Child'}
+                </span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? 'Bebé' : 'Infant'}
+                </span>
               </div>
               <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
             </div>
@@ -361,21 +371,27 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
 
             <div className="space-y-2">
               <div className="text-[11px] font-bold uppercase tracking-wider text-teal-600">
-                Persistent Checklist
+                {language === 'es' ? 'Checklist Persistente' : 'Persistent Checklist'}
               </div>
               <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
-                First Aid Kit Audit
+                {t('kitChecklistTitle')}
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Inventory your home and travel kit against a clinically-recommended supply list. Progress saves automatically.
+                {t('kitChecklistDesc')}
               </p>
             </div>
 
             <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">16 items</span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Auto-save</span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">Print-ready</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? '16 artículos' : '16 items'}
+                </span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? 'Auto-guardado' : 'Auto-save'}
+                </span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? 'Imprimible' : 'Print-ready'}
+                </span>
               </div>
               <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
             </div>
@@ -396,20 +412,24 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
 
             <div className="space-y-2">
               <div className="text-[11px] font-bold uppercase tracking-wider text-navy-600">
-                Knowledge Check
+                {language === 'es' ? 'Evaluación Práctica' : 'Knowledge Check'}
               </div>
               <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
-                First Aid Quiz
+                {t('quizTitle')}
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Scenario-based questions that test real decision-making under pressure. Instant feedback with clinical rationale.
+                {t('quizDesc')}
               </p>
             </div>
 
             <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">6 questions</span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">5 min</span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  {language === 'es' ? '6 preguntas' : '6 questions'}
+                </span>
+                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                  5 min
+                </span>
               </div>
               <ArrowRight className="w-5 h-5 text-brand-500 group-hover:translate-x-1 transition duration-150" />
             </div>
@@ -422,13 +442,13 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-              Evidence-Based Protocols
+              {t('featuredBadge')}
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
-              Featured Health & Safety Guides
+              {t('featuredTitle')}
             </h2>
             <p className="text-sm text-slate-600 mt-1">
-              Standardized step-by-step instructions reviewed according to WHO and Red Cross guidelines.
+              {t('featuredSubtitle')}
             </p>
           </div>
 
@@ -436,7 +456,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
             to="/emergencies"
             className="text-xs sm:text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1 self-start md:self-auto"
           >
-            <span>Browse all articles</span>
+            <span>{t('featuredViewAll')}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -458,15 +478,15 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
           <div className="max-w-2xl relative z-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-500/20 text-brand-300 border border-brand-500/30">
               <Award className="w-4 h-4 text-brand-400" />
-              <span>Interactive Knowledge Check</span>
+              <span>{t('quizBannerBadge')}</span>
             </div>
 
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Test your first aid decision-making.
+              {t('quizBannerTitle')}
             </h2>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Would you know what to do if someone burned their hand or choked at dinner? Test your instincts with our clinical scenario quizzes and learn why specific actions save lives.
+              {t('quizBannerDesc')}
             </p>
 
             <div className="pt-3 flex flex-wrap items-center gap-4">
@@ -474,12 +494,12 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                 to="/quiz"
                 className="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition duration-150 flex items-center gap-2 shadow-md"
               >
-                <span>Take the 5-Minute Quiz</span>
+                <span>{t('quizBannerButton')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <Clock className="w-4 h-4 text-slate-400" />
-                <span>6 scenario-based questions</span>
+                <span>{t('quizBannerMeta')}</span>
               </div>
             </div>
           </div>
@@ -489,4 +509,3 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
     </div>
   );
 }
-

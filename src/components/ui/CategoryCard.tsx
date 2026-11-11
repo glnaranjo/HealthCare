@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CategoryMetadata } from '../../data/categories';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   ShieldAlert, 
   Bandage, 
@@ -16,6 +17,8 @@ interface CategoryCardProps {
 }
 
 export function CategoryCard({ category, articleCount }: CategoryCardProps) {
+  const { language } = useLanguage();
+
   const iconMap: Record<string, React.ElementType> = {
     ShieldAlert,
     Bandage,
@@ -39,7 +42,7 @@ export function CategoryCard({ category, articleCount }: CategoryCardProps) {
           </div>
           {typeof articleCount === 'number' && (
             <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">
-              {articleCount} {articleCount === 1 ? 'guide' : 'guides'}
+              {articleCount} {articleCount === 1 ? (language === 'es' ? 'guía' : 'guide') : (language === 'es' ? 'guías' : 'guides')}
             </span>
           )}
         </div>
@@ -54,10 +57,9 @@ export function CategoryCard({ category, articleCount }: CategoryCardProps) {
       </div>
 
       <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600 group-hover:text-brand-700">
-        <span>Explore Category Guides</span>
+        <span>{language === 'es' ? 'Explorar Guías de la Categoría' : 'Explore Category Guides'}</span>
         <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition duration-150" />
       </div>
     </Link>
   );
 }
-
