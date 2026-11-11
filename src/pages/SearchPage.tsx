@@ -164,3 +164,4 @@ export function SearchPage() {
     </div>
   );
 }
+

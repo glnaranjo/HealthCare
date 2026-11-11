@@ -6,8 +6,12 @@ import { HomePage } from './pages/HomePage';
 import { CategoryPage } from './pages/CategoryPage';
 import { ArticlePage } from './pages/ArticlePage';
 import { SearchPage } from './pages/SearchPage';
+import { QuizPage } from './pages/QuizPage';
+import { DisclaimerPage } from './pages/DisclaimerPage';
+import { ContactPage } from './pages/ContactPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
 import { SearchModal } from './components/search/SearchModal';
-import { BookOpen } from 'lucide-react';
 
 export default function App() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -47,12 +51,16 @@ export default function App() {
           {/* Interactive "What should I do if...?" Search Page */}
           <Route path="/search" element={<SearchPage />} />
 
-          {/* Placeholders for Quiz and Legal to be completed in upcoming parts */}
-          <Route path="/quiz" element={<PlaceholderPage title="First Aid Knowledge Quiz" description="Interactive clinical scenario quizzes based on WHO and Red Cross guidelines." />} />
-          <Route path="/disclaimer" element={<PlaceholderPage title="Medical Scope Disclaimer" description="Official educational scope, non-diagnostic statement, and international guidance standards." />} />
-          <Route path="/privacy" element={<PlaceholderPage title="Privacy Policy" description="HealthCare does not collect personal medical data or use advertising cookies." />} />
-          <Route path="/terms" element={<PlaceholderPage title="Terms of Educational Use" description="HealthCare is an open educational platform for public health and safety." />} />
-          <Route path="/contact" element={<PlaceholderPage title="Contact & Feedback" description="For non-emergency feedback, suggestions, and medical curriculum reviews." />} />
+          {/* Interactive Educational Quiz */}
+          <Route path="/quiz" element={<QuizPage />} />
+
+          {/* Medical Scope Disclaimer & Sources */}
+          <Route path="/disclaimer" element={<DisclaimerPage />} />
+
+          {/* Institutional & Legal Pages */}
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
           {/* Catch-all */}
           <Route path="*" element={<HomePage onOpenSearch={() => setSearchModalOpen(true)} />} />
@@ -65,22 +73,5 @@ export default function App() {
         onClose={() => setSearchModalOpen(false)} 
       />
     </CountryProvider>
-  );
-}
-
-function PlaceholderPage({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <div className="max-w-xl mx-auto bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-        <div className="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto">
-          <BookOpen className="w-6 h-6 stroke-[2]" />
-        </div>
-        <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
-        <p className="text-slate-600 text-sm leading-relaxed">{description}</p>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200">
-          Module ready for Part 7 integration
-        </span>
-      </div>
-    </div>
   );
 }
