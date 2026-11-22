@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FIRST_AID_QUIZZES } from '../data/quizzes';
+import { getLocalizedQuizzes } from '../data/quizzes';
 import { QuizCard } from '../components/quiz/QuizCard';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   Award, 
   RotateCcw, 
@@ -15,13 +16,15 @@ import {
 } from 'lucide-react';
 
 export function QuizPage() {
+  const { language } = useLanguage();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
 
-  const totalQuestions = FIRST_AID_QUIZZES.length;
-  const currentQuestion = FIRST_AID_QUIZZES[currentQuestionIndex];
+  const quizzes = getLocalizedQuizzes(language);
+  const totalQuestions = quizzes.length;
+  const currentQuestion = quizzes[currentQuestionIndex];
 
   const handleNextQuestion = (wasCorrect: boolean) => {
     if (wasCorrect) {
@@ -49,9 +52,13 @@ export function QuizPage() {
       
       {/* Breadcrumb Navigation */}
       <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-        <Link to="/" className="hover:text-brand-600 transition">Home</Link>
+        <Link to="/" className="hover:text-brand-600 transition">
+          {language === 'es' ? 'Inicio' : 'Home'}
+        </Link>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-        <span className="text-slate-900 font-bold">First Aid Knowledge Quiz</span>
+        <span className="text-slate-900 font-bold">
+          {language === 'es' ? 'Quiz de Primeros Auxilios' : 'First Aid Knowledge Quiz'}
+        </span>
       </nav>
 
       {/* Intro Screen */}
@@ -64,23 +71,27 @@ export function QuizPage() {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Interactive Knowledge Check</span>
+              <span>{language === 'es' ? 'Evaluación Práctica Interactiva' : 'Interactive Knowledge Check'}</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Test Your First Aid Readiness
+              {language === 'es' ? 'Pon a Prueba tu Capacidad de Respuesta' : 'Test Your First Aid Readiness'}
             </h1>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-md mx-auto">
-              Answer 6 realistic clinical scenarios based on international resuscitation and first aid guidelines. Learn why certain instinctive actions are dangerous.
+              {language === 'es'
+                ? 'Responde 6 escenarios clínicos realistas basados en pautas internacionales de resucitación y primeros auxilios. Descubre por qué ciertas reacciones intuitivas son peligrosas.'
+                : 'Answer 6 realistic clinical scenarios based on international resuscitation and first aid guidelines. Learn why certain instinctive actions are dangerous.'}
             </p>
           </div>
 
           <div className="bg-slate-50 rounded-2xl p-4 text-xs text-slate-600 text-left border border-slate-200 space-y-1.5">
             <p className="font-bold text-slate-800 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-brand-600" />
-              Educational Scope Reminder:
+              {language === 'es' ? 'Recordatorio de Alcance Educativo:' : 'Educational Scope Reminder:'}
             </p>
             <p>
-              This quiz is designed for educational reinforcement and public awareness. It is not an accredited certification or replacement for hands-on certified CPR training.
+              {language === 'es'
+                ? 'Este cuestionario está diseñado para la concientización ciudadana y refuerzo educativo. No reemplaza un curso presencial certificado de RCP y primeros auxilios.'
+                : 'This quiz is designed for educational reinforcement and public awareness. It is not an accredited certification or replacement for hands-on certified CPR training.'}
             </p>
           </div>
 
@@ -88,7 +99,7 @@ export function QuizPage() {
             onClick={() => setHasStarted(true)}
             className="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-3.5 rounded-xl transition duration-150 shadow-md inline-flex items-center justify-center gap-2 text-base"
           >
-            <span>Start First Aid Quiz</span>
+            <span>{language === 'es' ? 'Comenzar el Quiz de Primeros Auxilios' : 'Start First Aid Quiz'}</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
@@ -100,8 +111,14 @@ export function QuizPage() {
           {/* Progress Bar */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-bold text-slate-600">
-              <span>Progress: Question {currentQuestionIndex + 1} of {totalQuestions}</span>
-              <span>{Math.round(((currentQuestionIndex) / totalQuestions) * 100)}% Complete</span>
+              <span>
+                {language === 'es' 
+                  ? `Progreso: Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}` 
+                  : `Progress: Question ${currentQuestionIndex + 1} of ${totalQuestions}`}
+              </span>
+              <span>
+                {Math.round(((currentQuestionIndex) / totalQuestions) * 100)}% {language === 'es' ? 'completado' : 'Complete'}
+              </span>
             </div>
             <div className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
               <div 
@@ -133,15 +150,17 @@ export function QuizPage() {
             </div>
 
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Quiz Completed!
+              {language === 'es' ? '¡Quiz Finalizado!' : 'Quiz Completed!'}
             </h2>
 
             <p className="text-sm text-slate-600">
-              You correctly answered <strong>{correctCount}</strong> out of <strong>{totalQuestions}</strong> scenarios.
+              {language === 'es' 
+                ? <>Respondiste correctamente <strong>{correctCount}</strong> de <strong>{totalQuestions}</strong> escenarios.</>
+                : <>You correctly answered <strong>{correctCount}</strong> out of <strong>{totalQuestions}</strong> scenarios.</>}
             </p>
 
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-lg font-black text-slate-900">
-              <span>Score:</span>
+              <span>{language === 'es' ? 'Puntaje:' : 'Score:'}</span>
               <span className={scorePercentage >= 80 ? 'text-emerald-600' : 'text-brand-600'}>
                 {scorePercentage}%
               </span>
@@ -152,14 +171,29 @@ export function QuizPage() {
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs sm:text-sm text-slate-700">
             <div className="font-bold text-slate-900 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-brand-600" />
-              <span>Key First Aid Lessons to Remember:</span>
+              <span>{language === 'es' ? 'Lecciones clave para recordar siempre:' : 'Key First Aid Lessons to Remember:'}</span>
             </div>
             <ul className="space-y-1.5 list-disc pl-5 leading-relaxed">
-              <li><strong>CPR:</strong> Compress chest 5-6 cm deep at 100-120 bpm to "Stayin' Alive".</li>
-              <li><strong>Burns:</strong> Cool immediately under cool running tap water for 20 minutes (no ice or butter).</li>
-              <li><strong>Choking:</strong> If the person can still cough, do NOT interfere; let them cough forcefully.</li>
-              <li><strong>Seizures:</strong> Protect the head and NEVER place objects inside the mouth.</li>
-              <li><strong>Stroke:</strong> Check BE-FAST and call emergency immediately.</li>
+              <li>
+                <strong>{language === 'es' ? 'RCP:' : 'CPR:'}</strong>{' '}
+                {language === 'es' ? 'Comprimir entre 5 y 6 cm de profundidad a 100-120 lpm al ritmo de "Stayin\' Alive".' : 'Compress chest 5-6 cm deep at 100-120 bpm to "Stayin\' Alive".'}
+              </li>
+              <li>
+                <strong>{language === 'es' ? 'Quemaduras:' : 'Burns:'}</strong>{' '}
+                {language === 'es' ? 'Enfriar de inmediato con agua corriente limpia durante 20 minutos (jamás hielo ni manteca).' : 'Cool immediately under cool running tap water for 20 minutes (no ice or butter).'}
+              </li>
+              <li>
+                <strong>{language === 'es' ? 'Atragantamiento:' : 'Choking:'}</strong>{' '}
+                {language === 'es' ? 'Si la persona aún tose con fuerza, NO golpees la espalda; déjala toser.' : 'If the person can still cough, do NOT interfere; let them cough forcefully.'}
+              </li>
+              <li>
+                <strong>{language === 'es' ? 'Convulsiones:' : 'Seizures:'}</strong>{' '}
+                {language === 'es' ? 'Protege la cabeza de golpes y NUNCA metas nada dentro de la boca.' : 'Protect the head and NEVER place objects inside the mouth.'}
+              </li>
+              <li>
+                <strong>{language === 'es' ? 'ACV / Ictus:' : 'Stroke:'}</strong>{' '}
+                {language === 'es' ? 'Verifica el protocolo BE-FAST y llama de inmediato a emergencias.' : 'Check BE-FAST and call emergency immediately.'}
+              </li>
             </ul>
           </div>
 
@@ -170,14 +204,14 @@ export function QuizPage() {
               className="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl transition duration-150 flex items-center gap-2 text-sm shadow-sm"
             >
               <RotateCcw className="w-4 h-4" />
-              <span>Retake Quiz</span>
+              <span>{language === 'es' ? 'Reintentar Quiz' : 'Retake Quiz'}</span>
             </button>
             <Link
               to="/emergencies"
               className="bg-white hover:bg-slate-50 text-slate-800 font-semibold px-6 py-3 rounded-xl border border-slate-200 transition duration-150 flex items-center gap-2 text-sm"
             >
               <BookOpen className="w-4 h-4 text-brand-600" />
-              <span>Review Emergency Guides</span>
+              <span>{language === 'es' ? 'Repasar Guías de Emergencia' : 'Review Emergency Guides'}</span>
             </Link>
           </div>
         </div>
@@ -187,14 +221,15 @@ export function QuizPage() {
       <div className="p-4 rounded-2xl bg-slate-100 border border-slate-200 text-xs text-slate-600 flex items-center justify-between flex-wrap gap-2">
         <span className="flex items-center gap-1.5">
           <AlertCircle className="w-4 h-4 text-slate-500" />
-          Quizzes are educational exercises based on WHO, IFRC, and AHA consensus guidelines.
+          {language === 'es'
+            ? 'Los quizzes son ejercicios educativos basados en consensos de la OMS, Cruz Roja y AHA.'
+            : 'Quizzes are educational exercises based on WHO, IFRC, and AHA consensus guidelines.'}
         </span>
         <Link to="/disclaimer" className="text-brand-600 font-bold hover:underline">
-          Read Medical Scope Disclaimer &rarr;
+          {language === 'es' ? 'Ver Aviso de Alcance Médico' : 'Read Medical Scope Disclaimer'} &rarr;
         </Link>
       </div>
 
     </div>
   );
 }
-

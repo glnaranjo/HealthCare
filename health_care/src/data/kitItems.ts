@@ -1,3 +1,5 @@
+import { Language } from '../types';
+
 export interface KitItem {
   id: string;
   name: string;
@@ -7,7 +9,7 @@ export interface KitItem {
   essential: boolean;
 }
 
-export const FIRST_AID_KIT_ITEMS: KitItem[] = [
+export const FIRST_AID_KIT_ITEMS_EN: KitItem[] = [
   // Dressings & Wound Care
   {
     id: 'gauze-pads',
@@ -145,3 +147,146 @@ export const FIRST_AID_KIT_ITEMS: KitItem[] = [
   }
 ];
 
+export const FIRST_AID_KIT_ITEMS_ES: KitItem[] = [
+  // Curaciones y apósitos
+  {
+    id: 'gauze-pads',
+    name: 'Gasas Estériles (5x5 cm y 10x10 cm)',
+    category: 'dressings',
+    recommendedQty: '10 sobres de cada una',
+    description: 'Para cubrir heridas abiertas, contener sangrados y limpiar raspaduras.',
+    essential: true
+  },
+  {
+    id: 'adhesive-bandages',
+    name: 'Apósitos Adhesivos Variados (Curitas)',
+    category: 'dressings',
+    recommendedQty: '25-40 unidades surtidas',
+    description: 'Resistentes al agua, de varias formas para cortes pequeños en dedos y nudillos.',
+    essential: true
+  },
+  {
+    id: 'elastic-roller',
+    name: 'Vendas Elásticas de Rollo (Conformables)',
+    category: 'dressings',
+    recommendedQty: '3 rollos (7.5 cm y 10 cm)',
+    description: 'Para sujetar apósitos, realizar vendajes compresivos y sostener esguinces.',
+    essential: true
+  },
+  {
+    id: 'medical-tape',
+    name: 'Cinta Adhesiva Hipoalergénica (Microporosa)',
+    category: 'dressings',
+    recommendedQty: '1-2 rollos (2.5 cm de ancho)',
+    description: 'Cinta suave para fijar gasas firmemente sin dañar la piel sensible.',
+    essential: true
+  },
+  {
+    id: 'sterile-saline',
+    name: 'Solución Fisiológica Estéril (Ampollas 0.9%)',
+    category: 'dressings',
+    recommendedQty: '5 ampollas monodosis de 20 ml',
+    description: 'Para lavar suciedad de heridas o enjuagar sustancias en ojos sin ardor.',
+    essential: true
+  },
+
+  // Instrumental y protección
+  {
+    id: 'shears',
+    name: 'Tijeras de Trauma (Punta Roma)',
+    category: 'tools',
+    recommendedQty: '1 par',
+    description: 'Tijeras resistentes que cortan ropa gruesa, jeans y cinturones con seguridad.',
+    essential: true
+  },
+  {
+    id: 'tweezers',
+    name: 'Pinza para Astillas de Punta Fina',
+    category: 'tools',
+    recommendedQty: '1 unidad',
+    description: 'Pinzas de acero inoxidable para retirar espinas, vidrios y aguijones.',
+    essential: true
+  },
+  {
+    id: 'thermometer',
+    name: 'Termómetro Clínico Digital',
+    category: 'tools',
+    recommendedQty: '1 unidad',
+    description: 'Lectura rápida sin mercurio, con señal sonora y baterías de repuesto.',
+    essential: true
+  },
+  {
+    id: 'penlight',
+    name: 'Linterna LED de Diagnóstico Compacta',
+    category: 'tools',
+    recommendedQty: '1 unidad',
+    description: 'Para examinar garganta, ojos o iluminar durante cortes de energía.',
+    essential: false
+  },
+
+  // Higiene y barrera de bioseguridad
+  {
+    id: 'gloves',
+    name: 'Guantes Descartables de Nitrilo',
+    category: 'hygiene',
+    recommendedQty: '4-6 pares (sin látex)',
+    description: 'Protege al socorrista y a la víctima del contagio por contacto con sangre o fluidos.',
+    essential: true
+  },
+  {
+    id: 'cpr-shield',
+    name: 'Mascarilla / Pantalla Facial de RCP (Válvula Unidireccional)',
+    category: 'hygiene',
+    recommendedQty: '1 unidad',
+    description: 'Barrera física con filtro antiviral para ventilaciones de rescate seguras.',
+    essential: true
+  },
+  {
+    id: 'antiseptic-wipes',
+    name: 'Toallitas Antisépticas (Sin Alcohol)',
+    category: 'hygiene',
+    recommendedQty: '10-15 sobres',
+    description: 'Para higienizar la piel alrededor de heridas sin provocar dolor intenso.',
+    essential: true
+  },
+  {
+    id: 'hand-sanitizer',
+    name: 'Alcohol en Gel (Mínimo 60% Alcohol)',
+    category: 'hygiene',
+    recommendedQty: '1 frasco pequeño (100 ml)',
+    description: 'Para desinfectar las manos antes y después de atender cualquier herida.',
+    essential: true
+  },
+
+  // Emergencia y control térmico
+  {
+    id: 'cold-pack',
+    name: 'Compresa Fría Instantánea',
+    category: 'emergency',
+    recommendedQty: '2 paquetes',
+    description: 'Se activa al apretar sin necesidad de freezer para aliviar golpes y torceduras.',
+    essential: true
+  },
+  {
+    id: 'foil-blanket',
+    name: 'Manta Térmica de Emergencia (Aluminizada)',
+    category: 'emergency',
+    recommendedQty: '2 unidades',
+    description: 'Lámina reflectante que retiene hasta el 90% del calor corporal y evita la hipotermia.',
+    essential: true
+  },
+  {
+    id: 'first-aid-manual',
+    name: 'Tarjeta / Guía de Bolsillo de Emergencia HealthCare',
+    category: 'emergency',
+    recommendedQty: '1 tarjeta impresa',
+    description: 'Hoja plastificada con los teléfonos locales de ambulancia, bomberos y policía.',
+    essential: true
+  }
+];
+
+export const getLocalizedKitItems = (lang: Language): KitItem[] => {
+  return lang === 'es' ? FIRST_AID_KIT_ITEMS_ES : FIRST_AID_KIT_ITEMS_EN;
+};
+
+export const FIRST_AID_KIT_ITEMS = FIRST_AID_KIT_ITEMS_EN;

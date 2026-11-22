@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   Heart, 
   Wind, 
@@ -26,8 +27,9 @@ interface VitalMetric {
 
 export function VitalSignsReference() {
   const [activeGroup, setActiveGroup] = useState<AgeGroup>('adult');
+  const { language } = useLanguage();
 
-  const vitalsData: Record<AgeGroup, { label: string; ageSpan: string; metrics: VitalMetric[] }> = {
+  const vitalsDataEn: Record<AgeGroup, { label: string; ageSpan: string; metrics: VitalMetric[] }> = {
     adult: {
       label: 'Adults',
       ageSpan: '18+ years',
@@ -223,6 +225,203 @@ export function VitalSignsReference() {
     }
   };
 
+  const vitalsDataEs: Record<AgeGroup, { label: string; ageSpan: string; metrics: VitalMetric[] }> = {
+    adult: {
+      label: 'Adultos',
+      ageSpan: '18+ años',
+      metrics: [
+        {
+          name: 'Frecuencia Cardíaca en Reposo (Pulso)',
+          unit: 'latidos por minuto (lpm)',
+          icon: Heart,
+          normalRange: '60 – 100 lpm',
+          lowAlert: '< 50 lpm (Bradicardia)',
+          highAlert: '> 100 lpm (Taquicardia)',
+          howToMeasure: 'Coloca las yemas de los dedos índice y mayor suavemente sobre la arteria radial en la cara interna de la muñeca, debajo del pulgar. Cuenta los latidos durante 30 segundos y multiplica por 2.',
+          clinicalNote: 'Deportistas de alto rendimiento frecuentemente tienen pulsos normales en reposo entre 40 y 60 lpm.',
+          redFlags: [
+            'Pulso en reposo > 120 lpm acompañado de mareo, dolor de pecho o falta de aire.',
+            'Palpitaciones o aleteo irregular que produce sensación de desmayo.',
+            'Pulso < 45 lpm en una persona no entrenada que siente debilidad o mareo.'
+          ]
+        },
+        {
+          name: 'Frecuencia Respiratoria',
+          unit: 'respiraciones por minuto (rpm)',
+          icon: Wind,
+          normalRange: '12 – 20 rpm',
+          lowAlert: '< 10 rpm',
+          highAlert: '> 24 rpm',
+          howToMeasure: 'Cuenta las elevaciones del pecho mientras la persona está en reposo. Es mejor observar discretamente sin avisar, ya que saberlo altera el ritmo involuntario.',
+          clinicalNote: 'Cada ciclo respiratorio comprende una inhalación más una exhalación completa.',
+          redFlags: [
+            'Frecuencia respiratoria > 25 rpm en reposo absoluto.',
+            'Incapacidad de pronunciar una frase de 5 palabras seguidas sin detenerse a tomar aire.',
+            'Tinte azulado (cianosis) en labios o lecho de las uñas.'
+          ]
+        },
+        {
+          name: 'Temperatura Corporal Central',
+          unit: 'Grados Celsius (°C)',
+          icon: Thermometer,
+          normalRange: '36.5°C – 37.5°C',
+          lowAlert: '< 35.0°C (Riesgo de hipotermia)',
+          highAlert: '≥ 38.0°C (Fiebre clínica)',
+          howToMeasure: 'Usa un termómetro digital sublingual con labios cerrados durante 60 segundos, o en la axila seca (sumar ~0.5°C para estimar la temperatura central).',
+          clinicalNote: 'La temperatura corporal normal oscila unos 0.5°C a lo largo del día, alcanzando su pico al atardecer.',
+          redFlags: [
+            'Temperatura ≥ 39.5°C que no cede con hidratación y antipiréticos.',
+            'Fiebre acompañada de rigidez en el cuello, confusión mental o manchas oscuras que no desaparecen al presionar.',
+            'Temperatura < 35.0°C en una persona expuesta al frío.'
+          ]
+        },
+        {
+          name: 'Presión Arterial',
+          unit: 'mmHg (Sistólica / Diastólica)',
+          icon: Activity,
+          normalRange: '< 120 / < 80 mmHg',
+          lowAlert: '< 90 / 60 mmHg (Hipotensión)',
+          highAlert: '≥ 140 / 90 mmHg (Hipertensión Etapa 2)',
+          howToMeasure: 'Siéntate en silencio durante 5 minutos con los pies apoyados en el piso. Coloca el manguito automático a la altura del corazón. No hables durante la medición.',
+          clinicalNote: 'Una única lectura alta no diagnostica hipertensión crónica; mide dos veces con un intervalo de 2 minutos.',
+          redFlags: [
+            'Crisis hipertensiva: Sistólica > 180 mmHg o Diastólica > 120 mmHg.',
+            'Presión alta acompañada de dolor de cabeza explosivo, visión borrosa o dolor en el pecho.',
+            'Caída brusca < 90/60 mmHg con desvanecimiento o pérdida del conocimiento.'
+          ]
+        }
+      ]
+    },
+    child: {
+      label: 'Niños',
+      ageSpan: '1 – 12 años',
+      metrics: [
+        {
+          name: 'Frecuencia Cardíaca en Reposo (Pulso)',
+          unit: 'latidos por minuto (lpm)',
+          icon: Heart,
+          normalRange: '75 – 115 lpm (varía según la edad)',
+          lowAlert: '< 60 lpm',
+          highAlert: '> 140 lpm en reposo',
+          howToMeasure: 'Palpa el pulso en la muñeca o coloca la palma suavemente sobre el lado izquierdo del pecho cuando el niño esté tranquilo y relajado.',
+          clinicalNote: 'Los niños tienen un metabolismo más rápido y un corazón más pequeño, por lo que su pulso es naturalmente más veloz.',
+          redFlags: [
+            'Pulso acelerado continuo > 150 lpm estando en calma y sin fiebre.',
+            'Letargo, palidez extrema o falta de respuesta a los llamados.'
+          ]
+        },
+        {
+          name: 'Frecuencia Respiratoria',
+          unit: 'respiraciones por minuto (rpm)',
+          icon: Wind,
+          normalRange: '20 – 30 rpm',
+          lowAlert: '< 15 rpm',
+          highAlert: '> 35 rpm',
+          howToMeasure: 'Cuenta las elevaciones del abdomen durante un minuto completo mientras el niño duerme o juega tranquilamente.',
+          clinicalNote: 'Los niños pequeños respiran predominantemente con el diafragma (respiración abdominal).',
+          redFlags: [
+            'Tiraje subcostal (la piel se hunde entre las costillas o en la base del cuello al inhalar).',
+            'Aleteo nasal o quejido audible con cada exhalación.',
+            'Estridor (silbido agudo al tomar aire).'
+          ]
+        },
+        {
+          name: 'Temperatura Corporal',
+          unit: 'Grados Celsius (°C)',
+          icon: Thermometer,
+          normalRange: '36.5°C – 37.5°C',
+          lowAlert: '< 35.5°C',
+          highAlert: '≥ 38.0°C (Umbral de fiebre)',
+          howToMeasure: 'Termómetro digital axilar o timpánico (oído). Nunca utilices termómetros de vidrio con mercurio.',
+          clinicalNote: 'La conducta y vitalidad del niño son indicadores más importantes que el decimal exacto del termómetro.',
+          redFlags: [
+            'Fiebre con manchitas violáceas en la piel que no desaparecen al apoyar un vaso de vidrio transparente.',
+            'Niño decaído, que no sostiene la mirada o con llanto débil y continuo.',
+            'Convulsión febril que dura más de 5 minutos.'
+          ]
+        },
+        {
+          name: 'Presión Arterial',
+          unit: 'mmHg',
+          icon: Activity,
+          normalRange: '90 – 110 / 55 – 75 mmHg',
+          lowAlert: '< 80 / 50 mmHg',
+          highAlert: '> 120 / 80 mmHg',
+          howToMeasure: 'Debe medirse con un manguito de tamaño pediátrico adecuado que cubra dos tercios del brazo.',
+          clinicalNote: 'La presión arterial se evalúa principalmente en consultas pediátricas y no como control habitual en el hogar.',
+          redFlags: [
+            'Desvanecimiento súbito, manos y pies fríos y sudorosos, y mareos al incorporarse.'
+          ]
+        }
+      ]
+    },
+    infant: {
+      label: 'Lactantes / Bebés',
+      ageSpan: '0 – 12 meses',
+      metrics: [
+        {
+          name: 'Frecuencia Cardíaca (Pulso)',
+          unit: 'latidos por minuto (lpm)',
+          icon: Heart,
+          normalRange: '100 – 160 lpm',
+          lowAlert: '< 90 lpm (Alarma médica urgente)',
+          highAlert: '> 180 lpm en reposo',
+          howToMeasure: 'En lactantes, el pulso radial es difícil de palpar. Palpa la arteria braquial en la cara interna del brazo entre el codo y el hombro, o escucha los latidos en el pecho.',
+          clinicalNote: 'El pulso de un bebé sube normalmente hasta 180 lpm durante el llanto y baja a ~100 lpm durante el sueño profundo.',
+          redFlags: [
+            'Pulso sostenido < 80 lpm con flacidez muscular o piel azulada/pálida.',
+            'Pulso constante > 190 lpm sin estar llorando ni con fiebre.'
+          ]
+        },
+        {
+          name: 'Frecuencia Respiratoria',
+          unit: 'respiraciones por minuto (rpm)',
+          icon: Wind,
+          normalRange: '30 – 50 rpm',
+          lowAlert: '< 25 rpm',
+          highAlert: '> 60 rpm',
+          howToMeasure: 'Cuenta las respiraciones abdominales durante 60 segundos completos, ya que los bebés tienen un patrón de respiración irregular y periódico.',
+          clinicalNote: 'Pausas breves de 5 a 10 segundos seguidas de respiraciones rápidas pueden ser normales en recién nacidos sanos.',
+          redFlags: [
+            'Frecuencia respiratoria sostenida > 60 rpm (taquipnea).',
+            'Pausas respiratorias que duran más de 15 a 20 segundos (apneas).',
+            'El pecho se hunde marcadamente con cada respiración o cabeceo rítmico.'
+          ]
+        },
+        {
+          name: 'Temperatura Corporal',
+          unit: 'Grados Celsius (°C)',
+          icon: Thermometer,
+          normalRange: '36.5°C – 37.5°C',
+          lowAlert: '< 36.0°C (Riesgo de hipotermia)',
+          highAlert: '≥ 38.0°C (CRÍTICO en menores de 3 meses)',
+          howToMeasure: 'La medición rectal digital es el estándar clínico en menores de 3 meses. La axilar se usa para controles cotidianos.',
+          clinicalNote: 'Los bebés pequeños tienen poca capacidad de regular la temperatura y se enfrían con rapidez en habitaciones frescas.',
+          redFlags: [
+            'CUALQUIER fiebre ≥ 38.0°C en un bebé menor de 3 meses es una emergencia médica que exige guardia hospitalaria inmediata.',
+            'Mollera (fontanela) hundida acompañada de pañales secos durante más de 6 horas.',
+            'Rechazo del alimento, succión débil o flacidez muscular anormal.'
+          ]
+        },
+        {
+          name: 'Perfusión General y Relleno Capilar',
+          unit: 'segundos',
+          icon: Activity,
+          normalRange: '< 2 segundos',
+          lowAlert: 'N/A',
+          highAlert: '> 3 segundos (Mala perfusión periférica)',
+          howToMeasure: 'Presiona el centro del esternón o la frente del bebé suavemente durante 5 segundos hasta que quede blanco, luego suelta. Cuenta cuántos segundos tarda en volver el color rosado.',
+          clinicalNote: 'La prueba de relleno capilar evalúa el flujo de sangre periférico y detecta signos tempranos de deshidratación o shock.',
+          redFlags: [
+            'El retorno del color tarda más de 3 segundos.',
+            'Piel marmórea (con manchas violáceas en red), grisácea o pálida con manitos y pies muy fríos.'
+          ]
+        }
+      ]
+    }
+  };
+
+  const vitalsData = language === 'es' ? vitalsDataEs : vitalsDataEn;
   const current = vitalsData[activeGroup];
 
   return (
@@ -231,10 +430,12 @@ export function VitalSignsReference() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-3 sm:p-4 rounded-3xl border border-slate-200 shadow-2xs">
         <div>
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
-            Select Patient Cohort:
+            {language === 'es' ? 'Seleccionar Grupo de Paciente:' : 'Select Patient Cohort:'}
           </span>
           <p className="text-xs text-slate-600 mt-0.5">
-            Normal physiological baselines vary dramatically between infants, children, and adults.
+            {language === 'es' 
+              ? 'Los valores normales varían significativamente entre lactantes, niños y adultos.'
+              : 'Normal physiological baselines vary dramatically between infants, children, and adults.'}
           </p>
         </div>
 
@@ -279,7 +480,7 @@ export function VitalSignsReference() {
                         {metric.name}
                       </h3>
                       <p className="text-xs text-slate-500 font-medium">
-                        Unit: {metric.unit}
+                        {language === 'es' ? 'Unidad:' : 'Unit:'} {metric.unit}
                       </p>
                     </div>
                   </div>
@@ -290,7 +491,7 @@ export function VitalSignsReference() {
                   <div className="flex items-center justify-between text-xs font-semibold text-brand-800">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-brand-600" />
-                      Normal Clinical Baseline:
+                      {language === 'es' ? 'Valor Normal de Referencia:' : 'Normal Clinical Baseline:'}
                     </span>
                     <span className="text-[11px] text-brand-700 bg-white/80 px-2 py-0.5 rounded-md font-bold">
                       {current.label}
@@ -305,13 +506,13 @@ export function VitalSignsReference() {
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                     <span className="text-[11px] font-bold text-slate-500 block mb-0.5">
-                      Low Warning:
+                      {language === 'es' ? 'Alerta por Valor Bajo:' : 'Low Warning:'}
                     </span>
                     <span className="font-semibold text-slate-800">{metric.lowAlert}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200">
                     <span className="text-[11px] font-bold text-amber-800 block mb-0.5">
-                      High Warning:
+                      {language === 'es' ? 'Alerta por Valor Alto:' : 'High Warning:'}
                     </span>
                     <span className="font-semibold text-amber-900">{metric.highAlert}</span>
                   </div>
@@ -321,7 +522,7 @@ export function VitalSignsReference() {
                 <div className="space-y-1 text-xs sm:text-sm text-slate-700">
                   <strong className="text-slate-900 font-bold block flex items-center gap-1.5">
                     <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
-                    How to measure correctly:
+                    {language === 'es' ? 'Cómo medir correctamente:' : 'How to measure correctly:'}
                   </strong>
                   <p className="leading-relaxed text-slate-600 pl-5">
                     {metric.howToMeasure}
@@ -338,7 +539,7 @@ export function VitalSignsReference() {
               <div className="pt-4 border-t border-slate-100 space-y-2">
                 <div className="flex items-center gap-1.5 text-xs font-bold text-red-700 uppercase tracking-wide">
                   <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
-                  <span>Emergency Red Flags:</span>
+                  <span>{language === 'es' ? 'Señales de Alarma Médica:' : 'Emergency Red Flags:'}</span>
                 </div>
                 <ul className="space-y-1 text-xs text-slate-700">
                   {metric.redFlags.map((flag, fIdx) => (
@@ -359,11 +560,13 @@ export function VitalSignsReference() {
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-brand-600 flex-shrink-0" />
           <span>
-            <strong>Reference Notice:</strong> Values represent healthy population resting medians. Measurements outside these ranges require clinical correlation by a medical professional.
+            <strong>{language === 'es' ? 'Nota de Referencia:' : 'Reference Notice:'}</strong>{' '}
+            {language === 'es'
+              ? 'Los valores representan medianas en reposo para poblaciones sanas. Mediciones fuera de estos rangos requieren evaluación clínica por un profesional de la salud.'
+              : 'Values represent healthy population resting medians. Measurements outside these ranges require clinical correlation by a medical professional.'}
           </span>
         </div>
       </div>
     </div>
   );
 }
-

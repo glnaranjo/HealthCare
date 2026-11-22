@@ -4,7 +4,6 @@
 [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF.svg?logo=vite)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC.svg?logo=tailwind-css)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **"Know what to do." / "Saber qué hacer."**  
 > An open, evidence-based civic first aid and health education platform designed to empower everyday people without medical training to recognize life-threatening emergencies and take immediate, life-saving action.

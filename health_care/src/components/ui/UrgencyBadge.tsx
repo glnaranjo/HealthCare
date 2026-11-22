@@ -1,4 +1,5 @@
 import { UrgencyLevel } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 import { AlertTriangle, AlertCircle, Clock, ShieldCheck } from 'lucide-react';
 
 interface UrgencyBadgeProps {
@@ -7,24 +8,26 @@ interface UrgencyBadgeProps {
 }
 
 export function UrgencyBadge({ urgency, showIcon = true }: UrgencyBadgeProps) {
+  const { language } = useLanguage();
+
   const configs = {
     critical: {
-      label: 'Critical Emergency',
+      label: language === 'es' ? 'Emergencia Crítica' : 'Critical Emergency',
       style: 'bg-red-50 text-red-700 border-red-200 ring-1 ring-red-500/20',
       icon: AlertTriangle,
     },
     urgent: {
-      label: 'Urgent Care',
+      label: language === 'es' ? 'Atención Urgente' : 'Urgent Care',
       style: 'bg-amber-50 text-amber-800 border-amber-200 ring-1 ring-amber-500/20',
       icon: AlertCircle,
     },
     moderate: {
-      label: 'Moderate Attention',
+      label: language === 'es' ? 'Atención Moderada' : 'Moderate Attention',
       style: 'bg-blue-50 text-blue-700 border-blue-200 ring-1 ring-blue-500/20',
       icon: Clock,
     },
     precautionary: {
-      label: 'Everyday Safety',
+      label: language === 'es' ? 'Seguridad y Prevención' : 'Everyday Safety',
       style: 'bg-emerald-50 text-emerald-800 border-emerald-200 ring-1 ring-emerald-500/20',
       icon: ShieldCheck,
     },
@@ -42,4 +45,3 @@ export function UrgencyBadge({ urgency, showIcon = true }: UrgencyBadgeProps) {
     </span>
   );
 }
-

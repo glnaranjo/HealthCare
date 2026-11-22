@@ -44,15 +44,19 @@ export function ArticlePage() {
         <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h1 className="text-3xl font-extrabold text-slate-900 mb-2">Guide Not Found</h1>
+        <h1 className="text-3xl font-extrabold text-slate-900 mb-2">
+          {language === 'es' ? 'Guía No Encontrada' : 'Guide Not Found'}
+        </h1>
         <p className="text-slate-600 text-sm mb-6 max-w-md mx-auto">
-          The educational guide you requested could not be found or may have been reorganized.
+          {language === 'es'
+            ? 'La guía educativa que buscas no fue encontrada o pudo haber sido reorganizada.'
+            : 'The educational guide you requested could not be found or may have been reorganized.'}
         </p>
         <Link
           to="/"
           className="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-2.5 rounded-xl transition text-sm"
         >
-          Return to Platform Home
+          {language === 'es' ? 'Volver al Inicio' : 'Return to Platform Home'}
         </Link>
       </div>
     );
@@ -70,7 +74,7 @@ export function ArticlePage() {
       }).catch(() => {});
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Guide link copied to clipboard!');
+      alert(language === 'es' ? '¡Enlace del protocolo copiado al portapapeles!' : 'Guide link copied to clipboard!');
     }
   };
 
@@ -234,16 +238,16 @@ export function ArticlePage() {
                   <button
                     onClick={() => setStressModeOpen(true)}
                     className="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-black text-amber-300 font-extrabold px-4 py-2 rounded-xl text-xs transition duration-150 shadow border border-slate-700"
-                    title="Switch to ultra-high-contrast emergency view"
+                    title={language === 'es' ? 'Cambiar a modo de emergencia de alto contraste' : 'Switch to ultra-high-contrast emergency view'}
                   >
                     <Zap className="w-3.5 h-3.5 fill-current" />
-                    <span>Emergency Action Mode</span>
+                    <span>{language === 'es' ? 'Modo Acción de Emergencia' : 'Emergency Action Mode'}</span>
                   </button>
                 )}
                 <button
                   onClick={handleShare}
                   className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition"
-                  title="Share this emergency protocol"
+                  title={language === 'es' ? 'Compartir este protocolo' : 'Share this emergency protocol'}
                   aria-label="Share guide"
                 >
                   <Share2 className="w-4 h-4" />
@@ -251,11 +255,11 @@ export function ArticlePage() {
                 <button
                   onClick={handlePrint}
                   className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition flex items-center gap-1.5 text-xs font-semibold"
-                  title="Print emergency sheet"
+                  title={language === 'es' ? 'Imprimir ficha de protocolo' : 'Print emergency sheet'}
                   aria-label="Print guide"
                 >
                   <Printer className="w-4 h-4" />
-                  <span className="hidden sm:inline">Print Protocol Sheet</span>
+                  <span className="hidden sm:inline">{language === 'es' ? 'Imprimir Ficha' : 'Print Protocol Sheet'}</span>
                 </button>
               </div>
             </div>

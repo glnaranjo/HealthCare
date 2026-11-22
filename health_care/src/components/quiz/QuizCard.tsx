@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { QuizQuestion } from '../../types';
+import { useLanguage } from '../../context/LanguageContext';
 import { CheckCircle2, XCircle, HelpCircle, Shield, ArrowRight } from 'lucide-react';
 
 interface QuizCardProps {
@@ -19,6 +20,7 @@ export function QuizCard({
 }: QuizCardProps) {
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [hasAnswered, setHasAnswered] = useState(false);
+  const { language } = useLanguage();
 
   const handleSelectOption = (index: number) => {
     if (hasAnswered) return;
@@ -47,7 +49,9 @@ export function QuizCard({
             {questionNumber}
           </span>
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-            Question {questionNumber} of {totalQuestions}
+            {language === 'es' 
+              ? `Pregunta ${questionNumber} de ${totalQuestions}` 
+              : `Question ${questionNumber} of ${totalQuestions}`}
           </span>
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200">
@@ -121,12 +125,12 @@ export function QuizCard({
             {isSelectedCorrect ? (
               <>
                 <CheckCircle2 className="w-4 h-4 text-emerald-700" />
-                <span>Correct action! Here is why:</span>
+                <span>{language === 'es' ? '¡Acción correcta! Explicación clínica:' : 'Correct action! Here is why:'}</span>
               </>
             ) : (
               <>
                 <XCircle className="w-4 h-4 text-red-700" />
-                <span>Incorrect choice. Here is the clinical rationale:</span>
+                <span>{language === 'es' ? 'Respuesta incorrecta. Fundamento médico:' : 'Incorrect choice. Here is the clinical rationale:'}</span>
               </>
             )}
           </div>
@@ -137,7 +141,10 @@ export function QuizCard({
 
           <div className="pt-2 text-[11px] font-semibold text-slate-500 flex items-center gap-1.5 border-t border-slate-200/60">
             <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
-            <span>Authority Reference: <strong>{question.medicalAuthority}</strong></span>
+            <span>
+              {language === 'es' ? 'Guía de Autoridad Médica:' : 'Authority Reference:'}{' '}
+              <strong>{question.medicalAuthority}</strong>
+            </span>
           </div>
         </div>
       )}
@@ -149,7 +156,11 @@ export function QuizCard({
             onClick={handleContinue}
             className="bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl transition duration-150 flex items-center gap-2 shadow-sm text-sm"
           >
-            <span>{isLastQuestion ? 'View Quiz Results' : 'Next Scenario'}</span>
+            <span>
+              {isLastQuestion 
+                ? (language === 'es' ? 'Ver Resultados del Quiz' : 'View Quiz Results') 
+                : (language === 'es' ? 'Siguiente Caso' : 'Next Scenario')}
+            </span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -158,4 +169,3 @@ export function QuizCard({
     </div>
   );
 }
-
