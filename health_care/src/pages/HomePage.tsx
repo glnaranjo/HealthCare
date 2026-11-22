@@ -105,11 +105,11 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               <span>{t('heroBadge')}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.12]">
               {t('heroTitle')}
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
               {t('heroSubtitle')}
             </p>
 
@@ -123,9 +123,9 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               </Link>
               <a
                 href="#categories"
-                className="bg-white hover:bg-slate-50 text-slate-800 font-semibold px-6 py-3.5 rounded-xl border border-slate-200 shadow-xs hover:border-slate-300 transition duration-150 flex items-center gap-2 text-sm sm:text-base"
+                className="bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition duration-150 flex items-center gap-2 text-sm sm:text-base"
               >
-                <BookOpen className="w-4 h-4 text-brand-600" />
+                <BookOpen className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>{t('heroBrowseGuides')}</span>
               </a>
             </div>
@@ -135,15 +135,15 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               <button
                 type="button"
                 onClick={onOpenSearch}
-                className="w-full flex items-center justify-between bg-white border border-slate-200 hover:border-brand-400 rounded-2xl px-4 py-3 text-slate-500 shadow-sm transition text-left group"
+                className="w-full flex items-center justify-between bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-400 dark:hover:border-brand-500 rounded-2xl px-4 py-3 text-slate-500 dark:text-slate-400 shadow-sm transition text-left group"
               >
                 <div className="flex items-center gap-3">
-                  <Search className="w-5 h-5 text-brand-600 group-hover:scale-110 transition" />
-                  <span className="text-sm text-slate-600">
+                  <Search className="w-5 h-5 text-brand-600 dark:text-brand-400 group-hover:scale-110 transition" />
+                  <span className="text-sm text-slate-600 dark:text-slate-300">
                     {t('heroSearchPlaceholder')}
                   </span>
                 </div>
-                <span className="bg-brand-50 text-brand-700 font-bold text-xs px-2.5 py-1 rounded-lg">
+                <span className="bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 font-bold text-xs px-2.5 py-1 rounded-lg border border-brand-200/50 dark:border-brand-800/50">
                   {t('searchKbd')}
                 </span>
               </button>
@@ -156,55 +156,55 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               {/* Background ambient blur */}
               <div className="absolute -inset-2 bg-gradient-to-r from-brand-500/20 to-teal-400/20 rounded-3xl blur-2xl opacity-60"></div>
 
-              <div className="relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl space-y-6">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+              <div className="relative bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/90 dark:border-slate-800 shadow-xl space-y-6">
+                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-                    <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
                       {t('heroRulesTitle')}
                     </span>
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-400">WHO / IFRC</span>
+                  <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500">WHO / IFRC</span>
                 </div>
 
                 {/* Core evidence-based stats cards */}
                 <div className="space-y-3.5">
-                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div className="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold text-sm">
+                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80">
+                    <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/80 text-red-600 dark:text-red-400 flex items-center justify-center font-bold text-sm">
                       100
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">{t('heroCprCadence')}</p>
-                      <p className="text-[11px] text-slate-500">{t('heroCprSub')}</p>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white">{t('heroCprCadence')}</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">{t('heroCprSub')}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div className="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold text-sm">
+                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80">
+                    <div className="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 flex items-center justify-center font-bold text-sm">
                       20m
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">{t('heroBurnCooling')}</p>
-                      <p className="text-[11px] text-slate-500">{t('heroBurnSub')}</p>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white">{t('heroBurnCooling')}</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">{t('heroBurnSub')}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                    <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
+                  <div className="flex items-center gap-4 p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700/80">
+                    <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold text-sm">
                       FAST
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-900">{t('heroStrokeRec')}</p>
-                      <p className="text-[11px] text-slate-500">{t('heroStrokeSub')}</p>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white">{t('heroStrokeRec')}</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">{t('heroStrokeSub')}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-brand-600" /> {t('heroNonDiagnostic')}
+                    <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" /> {t('heroNonDiagnostic')}
                   </span>
-                  <span className="font-semibold text-slate-700">{t('heroOpenAccess')}</span>
+                  <span className="font-semibold text-slate-700 dark:text-slate-200">{t('heroOpenAccess')}</span>
                 </div>
               </div>
             </div>
@@ -220,17 +220,17 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
             <div className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full mb-2">
               <ShieldAlert className="w-3.5 h-3.5" /> {t('quickAccessBadge')}
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {t('quickAccessTitle')}
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-xl">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl">
               {t('quickAccessSubtitle')}
             </p>
           </div>
 
           <Link
             to="/emergencies"
-            className="text-xs sm:text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1 self-start md:self-auto"
+            className="text-xs sm:text-sm font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center gap-1 self-start md:self-auto"
           >
             <span>{t('quickAccessViewAll')}</span>
             <ArrowRight className="w-4 h-4" />
@@ -245,28 +245,28 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               <Link
                 key={idx}
                 to={`/guide/${sit.slug}`}
-                className="group bg-white rounded-2xl border border-slate-200 p-6 shadow-xs hover:shadow-md hover:border-brand-500 transition-all duration-200 flex flex-col justify-between"
+                className="group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${sit.color}`}>
                       <Icon className="w-6 h-6 stroke-[2]" />
                     </div>
-                    <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full">
                       {sit.urgentBadge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition duration-150 mb-1.5">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition duration-150 mb-1.5">
                     {sit.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
                     {sit.subtitle}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600 group-hover:text-brand-700">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300">
                   <span>{sit.actionText}</span>
                   <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition duration-150" />
                 </div>
@@ -279,13 +279,13 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       {/* 3. MAIN CATEGORIES SECTION */}
       <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
             {t('curriculumBadge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
             {t('categoriesTitle')}
           </h2>
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
             {t('categoriesSubtitle')}
           </p>
         </div>
@@ -303,13 +303,13 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       {/* 4. INTERACTIVE TOOLS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
             {t('toolsBadge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
             {t('toolsTitle')}
           </h2>
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
             {t('toolsSubtitle')}
           </p>
         </div>
@@ -318,37 +318,37 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
           {/* Vital Signs Reference */}
           <Link
             to="/vital-signs"
-            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+            className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 dark:hover:border-brand-500 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
           >
             <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
               <Activity className="w-48 h-48 text-brand-600" />
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center shadow-xs group-hover:bg-brand-100 transition">
-              <Activity className="w-7 h-7 text-brand-600 stroke-[1.8]" />
+            <div className="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-950/70 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center shadow-xs group-hover:bg-brand-100 dark:group-hover:bg-brand-900/60 transition">
+              <Activity className="w-7 h-7 text-brand-600 dark:text-brand-400 stroke-[1.8]" />
             </div>
 
             <div className="space-y-2">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-brand-600">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                 {language === 'es' ? 'Guía de Referencia' : 'Reference Guide'}
               </div>
-              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-brand-300 transition tracking-tight">
                 {t('vitalSignsTitle')}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('vitalSignsDesc')}
               </p>
             </div>
 
-            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? 'Adulto' : 'Adult'}
                 </span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? 'Niño' : 'Child'}
                 </span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? 'Bebé' : 'Infant'}
                 </span>
               </div>
@@ -359,37 +359,37 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
           {/* First Aid Kit Checklist */}
           <Link
             to="/kit-checklist"
-            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+            className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 dark:hover:border-brand-500 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
           >
             <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
               <CheckSquare className="w-48 h-48 text-brand-600" />
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center shadow-xs group-hover:bg-teal-100 transition">
-              <CheckSquare className="w-7 h-7 text-teal-600 stroke-[1.8]" />
+            <div className="w-14 h-14 rounded-2xl bg-teal-50 dark:bg-teal-950/70 border border-teal-100 dark:border-teal-800/50 flex items-center justify-center shadow-xs group-hover:bg-teal-100 dark:group-hover:bg-teal-900/60 transition">
+              <CheckSquare className="w-7 h-7 text-teal-600 dark:text-teal-400 stroke-[1.8]" />
             </div>
 
             <div className="space-y-2">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-teal-600">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
                 {language === 'es' ? 'Checklist Persistente' : 'Persistent Checklist'}
               </div>
-              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-brand-300 transition tracking-tight">
                 {t('kitChecklistTitle')}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('kitChecklistDesc')}
               </p>
             </div>
 
-            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? '16 artículos' : '16 items'}
                 </span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? 'Auto-guardado' : 'Auto-save'}
                 </span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? 'Imprimible' : 'Print-ready'}
                 </span>
               </div>
@@ -400,34 +400,34 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
           {/* Knowledge Quiz */}
           <Link
             to="/quiz"
-            className="group relative bg-white rounded-3xl border border-slate-200 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
+            className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-7 shadow-xs hover:shadow-lg hover:border-brand-400 dark:hover:border-brand-500 transition-all duration-200 flex flex-col gap-5 overflow-hidden"
           >
             <div className="absolute right-0 top-0 translate-x-6 -translate-y-4 opacity-5 pointer-events-none">
               <ClipboardList className="w-48 h-48 text-brand-600" />
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-navy-50 border border-navy-100 flex items-center justify-center shadow-xs group-hover:bg-navy-100 transition">
-              <ClipboardList className="w-7 h-7 text-navy-600 stroke-[1.8]" />
+            <div className="w-14 h-14 rounded-2xl bg-navy-50 dark:bg-slate-800 border border-navy-100 dark:border-slate-700 flex items-center justify-center shadow-xs group-hover:bg-navy-100 dark:group-hover:bg-slate-700/80 transition">
+              <ClipboardList className="w-7 h-7 text-navy-600 dark:text-slate-300 stroke-[1.8]" />
             </div>
 
             <div className="space-y-2">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-navy-600">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-navy-600 dark:text-slate-400">
                 {language === 'es' ? 'Evaluación Práctica' : 'Knowledge Check'}
               </div>
-              <h3 className="text-xl font-extrabold text-slate-900 group-hover:text-brand-700 transition tracking-tight">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-brand-300 transition tracking-tight">
                 {t('quizTitle')}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 {t('quizDesc')}
               </p>
             </div>
 
-            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
+            <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
               <div className="flex gap-2 flex-wrap">
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   {language === 'es' ? '6 preguntas' : '6 questions'}
                 </span>
-                <span className="text-[11px] font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full">
                   5 min
                 </span>
               </div>
@@ -441,20 +441,20 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               {t('featuredBadge')}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
               {t('featuredTitle')}
             </h2>
-            <p className="text-sm text-slate-600 mt-1">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-1">
               {t('featuredSubtitle')}
             </p>
           </div>
 
           <Link
             to="/emergencies"
-            className="text-xs sm:text-sm font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1 self-start md:self-auto"
+            className="text-xs sm:text-sm font-bold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center gap-1 self-start md:self-auto"
           >
             <span>{t('featuredViewAll')}</span>
             <ArrowRight className="w-4 h-4" />

@@ -20,25 +20,25 @@ export function TermsPage() {
       </nav>
 
       {/* Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
-          <BookOpen className="w-4 h-4 text-brand-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+          <BookOpen className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Licencia de Salud Pública' : 'Public Health License'}</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {language === 'es' ? 'Términos de Uso Educativo' : 'Terms of Educational Use'}
         </h1>
-        <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
           {language === 'es'
             ? 'Al acceder a HealthCare, aceptas estos términos fundamentales de salud pública diseñados para priorizar la seguridad del paciente y la derivación clínica adecuada.'
             : 'By accessing HealthCare, you agree to these fundamental public health terms designed to prioritize casualty safety and proper clinical escalation.'}
         </p>
       </div>
 
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6 text-sm text-slate-700 leading-relaxed">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-amber-600" />
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
             {language === 'es' ? '1. Naturaleza Estrictamente Educativa' : '1. Strictly Educational Nature'}
           </h2>
           <p>
@@ -49,8 +49,8 @@ export function TermsPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-brand-600" />
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-brand-600 dark:text-brand-400" />
             {language === 'es' ? '2. Prioridad de los Servicios de Emergencia' : '2. Priority of Emergency Services'}
           </h2>
           <p>
@@ -61,8 +61,8 @@ export function TermsPage() {
         </section>
 
         <section className="space-y-2">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-brand-600" />
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-brand-600 dark:text-brand-400" />
             {language === 'es' ? '3. Difusión y Distribución Educativa Abierta' : '3. Open Educational Sharing'}
           </h2>
           <p>

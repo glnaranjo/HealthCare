@@ -63,29 +63,29 @@ export function QuizPage() {
 
       {/* Intro Screen */}
       {!hasStarted && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm text-center max-w-2xl mx-auto space-y-6">
-          <div className="w-16 h-16 rounded-3xl bg-brand-50 text-brand-600 flex items-center justify-center mx-auto shadow-xs">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-sm text-center max-w-2xl mx-auto space-y-6">
+          <div className="w-16 h-16 rounded-3xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto shadow-xs">
             <Award className="w-8 h-8 stroke-[2.2]" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{language === 'es' ? 'Evaluación Práctica Interactiva' : 'Interactive Knowledge Check'}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {language === 'es' ? 'Pon a Prueba tu Capacidad de Respuesta' : 'Test Your First Aid Readiness'}
             </h1>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-md mx-auto">
               {language === 'es'
                 ? 'Responde 6 escenarios clínicos realistas basados en pautas internacionales de resucitación y primeros auxilios. Descubre por qué ciertas reacciones intuitivas son peligrosas.'
                 : 'Answer 6 realistic clinical scenarios based on international resuscitation and first aid guidelines. Learn why certain instinctive actions are dangerous.'}
             </p>
           </div>
 
-          <div className="bg-slate-50 rounded-2xl p-4 text-xs text-slate-600 text-left border border-slate-200 space-y-1.5">
-            <p className="font-bold text-slate-800 flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-brand-600" />
+          <div className="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-4 text-xs text-slate-600 dark:text-slate-300 text-left border border-slate-200 dark:border-slate-700 space-y-1.5">
+            <p className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               {language === 'es' ? 'Recordatorio de Alcance Educativo:' : 'Educational Scope Reminder:'}
             </p>
             <p>
@@ -110,7 +110,7 @@ export function QuizPage() {
         <div className="space-y-6">
           {/* Progress Bar */}
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-600">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
               <span>
                 {language === 'es' 
                   ? `Progreso: Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}` 
@@ -120,7 +120,7 @@ export function QuizPage() {
                 {Math.round(((currentQuestionIndex) / totalQuestions) * 100)}% {language === 'es' ? 'completado' : 'Complete'}
               </span>
             </div>
-            <div className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+            <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-brand-600 rounded-full transition-all duration-300"
                 style={{ width: `${((currentQuestionIndex + 1) / totalQuestions) * 100}%` }}
@@ -141,36 +141,36 @@ export function QuizPage() {
 
       {/* Final Results Screen */}
       {quizFinished && (
-        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm max-w-2xl mx-auto space-y-8 animate-in fade-in duration-200">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-sm max-w-2xl mx-auto space-y-8 animate-in fade-in duration-200">
           <div className="text-center space-y-3">
             <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto shadow-sm ${
-              scorePercentage >= 80 ? 'bg-emerald-100 text-emerald-600' : 'bg-brand-100 text-brand-600'
+              scorePercentage >= 80 ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400' : 'bg-brand-100 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400'
             }`}>
               <Award className="w-10 h-10" />
             </div>
 
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               {language === 'es' ? '¡Quiz Finalizado!' : 'Quiz Completed!'}
             </h2>
 
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               {language === 'es' 
                 ? <>Respondiste correctamente <strong>{correctCount}</strong> de <strong>{totalQuestions}</strong> escenarios.</>
                 : <>You correctly answered <strong>{correctCount}</strong> out of <strong>{totalQuestions}</strong> scenarios.</>}
             </p>
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-lg font-black text-slate-900">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-lg font-black text-slate-900 dark:text-white">
               <span>{language === 'es' ? 'Puntaje:' : 'Score:'}</span>
-              <span className={scorePercentage >= 80 ? 'text-emerald-600' : 'text-brand-600'}>
+              <span className={scorePercentage >= 80 ? 'text-emerald-600 dark:text-emerald-400' : 'text-brand-600 dark:text-brand-400'}>
                 {scorePercentage}%
               </span>
             </div>
           </div>
 
           {/* Performance Assessment Box */}
-          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 text-xs sm:text-sm text-slate-700">
-            <div className="font-bold text-slate-900 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-brand-600" />
+          <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <div className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <span>{language === 'es' ? 'Lecciones clave para recordar siempre:' : 'Key First Aid Lessons to Remember:'}</span>
             </div>
             <ul className="space-y-1.5 list-disc pl-5 leading-relaxed">
@@ -208,9 +208,9 @@ export function QuizPage() {
             </button>
             <Link
               to="/emergencies"
-              className="bg-white hover:bg-slate-50 text-slate-800 font-semibold px-6 py-3 rounded-xl border border-slate-200 transition duration-150 flex items-center gap-2 text-sm"
+              className="bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-700 transition duration-150 flex items-center gap-2 text-sm"
             >
-              <BookOpen className="w-4 h-4 text-brand-600" />
+              <BookOpen className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <span>{language === 'es' ? 'Repasar Guías de Emergencia' : 'Review Emergency Guides'}</span>
             </Link>
           </div>
@@ -218,7 +218,7 @@ export function QuizPage() {
       )}
 
       {/* Safety Notice Footer */}
-      <div className="p-4 rounded-2xl bg-slate-100 border border-slate-200 text-xs text-slate-600 flex items-center justify-between flex-wrap gap-2">
+      <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between flex-wrap gap-2">
         <span className="flex items-center gap-1.5">
           <AlertCircle className="w-4 h-4 text-slate-500" />
           {language === 'es'

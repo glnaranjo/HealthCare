@@ -40,33 +40,33 @@ export function QuizCard({
   const isSelectedCorrect = selectedOption === question.correctAnswerIndex;
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-6">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-6">
       
       {/* Question Header & Meta */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
         <div className="flex items-center gap-2">
           <span className="w-7 h-7 rounded-lg bg-brand-600 text-white font-extrabold text-xs flex items-center justify-center">
             {questionNumber}
           </span>
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             {language === 'es' 
               ? `Pregunta ${questionNumber} de ${totalQuestions}` 
               : `Question ${questionNumber} of ${totalQuestions}`}
           </span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200">
-          <Shield className="w-3.5 h-3.5 text-brand-600" />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+          <Shield className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
           <span>{question.topic}</span>
         </div>
       </div>
 
       {/* Question Prompt */}
       <div className="space-y-2">
-        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
           {question.question}
         </h3>
         {question.context && (
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             {question.context}
           </p>
         )}
@@ -75,19 +75,19 @@ export function QuizCard({
       {/* Answer Options */}
       <div className="space-y-3 pt-2">
         {question.options.map((option, idx) => {
-          let optionStyle = 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800';
-          let letterStyle = 'bg-white border-slate-300 text-slate-700';
+          let optionStyle = 'bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200';
+          let letterStyle = 'bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300';
 
           if (hasAnswered) {
             if (idx === question.correctAnswerIndex) {
-              optionStyle = 'bg-emerald-50 border-emerald-400 text-emerald-950 ring-1 ring-emerald-500';
+              optionStyle = 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-400 dark:border-emerald-600 text-emerald-950 dark:text-emerald-100 ring-1 ring-emerald-500';
               letterStyle = 'bg-emerald-600 text-white border-emerald-600';
             } else if (idx === selectedOption) {
-              optionStyle = 'bg-red-50 border-red-300 text-red-950 ring-1 ring-red-400';
+              optionStyle = 'bg-red-50 dark:bg-red-950/60 border-red-300 dark:border-red-700 text-red-950 dark:text-red-100 ring-1 ring-red-400';
               letterStyle = 'bg-red-600 text-white border-red-600';
             } else {
-              optionStyle = 'bg-slate-50/50 border-slate-200 text-slate-400 opacity-60';
-              letterStyle = 'bg-slate-100 text-slate-400 border-slate-200';
+              optionStyle = 'bg-slate-50/50 dark:bg-slate-850/40 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500 opacity-60';
+              letterStyle = 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-800';
             }
           }
 
@@ -106,10 +106,10 @@ export function QuizCard({
               <span className="flex-1">{option}</span>
 
               {hasAnswered && idx === question.correctAnswerIndex && (
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
               )}
               {hasAnswered && idx === selectedOption && idx !== question.correctAnswerIndex && (
-                <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                <XCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
               )}
             </button>
           );
@@ -119,28 +119,30 @@ export function QuizCard({
       {/* Immediate Clinical Explanation Feedback */}
       {hasAnswered && (
         <div className={`p-5 rounded-2xl border space-y-2 animate-in fade-in duration-200 ${
-          isSelectedCorrect ? 'bg-emerald-50/80 border-emerald-200 text-emerald-950' : 'bg-red-50/80 border-red-200 text-red-950'
+          isSelectedCorrect
+            ? 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-100'
+            : 'bg-red-50/80 dark:bg-red-950/40 border-red-200 dark:border-red-800 text-red-950 dark:text-red-100'
         }`}>
           <div className="flex items-center gap-2 font-bold text-sm">
             {isSelectedCorrect ? (
               <>
-                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                 <span>{language === 'es' ? '¡Acción correcta! Explicación clínica:' : 'Correct action! Here is why:'}</span>
               </>
             ) : (
               <>
-                <XCircle className="w-4 h-4 text-red-700" />
+                <XCircle className="w-4 h-4 text-red-700 dark:text-red-400" />
                 <span>{language === 'es' ? 'Respuesta incorrecta. Fundamento médico:' : 'Incorrect choice. Here is the clinical rationale:'}</span>
               </>
             )}
           </div>
 
-          <p className="text-xs sm:text-sm leading-relaxed text-slate-800">
+          <p className="text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200">
             {question.explanation}
           </p>
 
-          <div className="pt-2 text-[11px] font-semibold text-slate-500 flex items-center gap-1.5 border-t border-slate-200/60">
-            <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
+          <div className="pt-2 text-[11px] font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1.5 border-t border-slate-200/60 dark:border-slate-800/80">
+            <HelpCircle className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
             <span>
               {language === 'es' ? 'Guía de Autoridad Médica:' : 'Authority Reference:'}{' '}
               <strong>{question.medicalAuthority}</strong>

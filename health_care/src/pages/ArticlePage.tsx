@@ -4,6 +4,7 @@ import { getArticleBySlug, getRelatedArticles } from '../utils/search';
 import { UrgencyBadge } from '../components/ui/UrgencyBadge';
 import { ArticleCard } from '../components/ui/ArticleCard';
 import { EmergencyStressMode } from '../components/tools/EmergencyStressMode';
+import { ProtocolDiagram, DiagramType } from '../components/ui/ProtocolDiagram';
 import { useCountry } from '../context/CountryContext';
 import { useLanguage } from '../context/LanguageContext';
 import { 
@@ -64,6 +65,17 @@ export function ArticlePage() {
 
   const related = getRelatedArticles(article.relatedArticles, language);
   const isCritical = article.urgency === 'critical' || article.urgency === 'urgent';
+
+  const diagramMap: Record<string, DiagramType> = {
+    'cardiac-arrest-cpr': 'cpr',
+    'choking-adult-child': 'choking',
+    'burns-first-aid': 'burns',
+    'severe-bleeding-wounds': 'bleeding',
+    'anaphylaxis-epipen': 'epipen',
+    'fainting-syncope': 'recovery-position',
+    'seizures-first-aid': 'recovery-position',
+  };
+  const activeDiagram = diagramMap[article.slug];
 
   const handleShare = () => {
     if (navigator.share) {
@@ -223,11 +235,11 @@ export function ArticlePage() {
       {(!isCritical || showFullGuide) && (
         <>
           {/* Article Header & Metadata */}
-          <header className="space-y-4 border-b border-slate-200 pb-8">
+          <header className="space-y-4 border-b border-slate-200 dark:border-slate-800 pb-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <UrgencyBadge urgency={article.urgency} />
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full capitalize">
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full capitalize">
                   {article.category.replace('-', ' ')}
                 </span>
               </div>
@@ -246,7 +258,7 @@ export function ArticlePage() {
                 )}
                 <button
                   onClick={handleShare}
-                  className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition"
+                  className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition"
                   title={language === 'es' ? 'Compartir este protocolo' : 'Share this emergency protocol'}
                   aria-label="Share guide"
                 >
@@ -254,7 +266,7 @@ export function ArticlePage() {
                 </button>
                 <button
                   onClick={handlePrint}
-                  className="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition flex items-center gap-1.5 text-xs font-semibold"
+                  className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition flex items-center gap-1.5 text-xs font-semibold"
                   title={language === 'es' ? 'Imprimir ficha de protocolo' : 'Print emergency sheet'}
                   aria-label="Print guide"
                 >
@@ -265,16 +277,16 @@ export function ArticlePage() {
             </div>
 
             {!isCritical && (
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {article.title}
               </h1>
             )}
 
-            <p className="text-lg text-slate-600 leading-relaxed font-normal">
+            <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               {article.summary}
             </p>
 
-            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 pt-2">
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-500 dark:text-slate-400 pt-2">
               <div className="flex items-center gap-1.5 font-medium">
                 <Clock className="w-3.5 h-3.5 text-slate-400" />
                 <span>{t('readingTime')}: <strong>{article.readingTimeMinutes} min</strong></span>
@@ -283,7 +295,7 @@ export function ArticlePage() {
                 <Calendar className="w-3.5 h-3.5 text-slate-400" />
                 <span>{t('lastReviewed')}: <strong>{article.lastReviewed}</strong></span>
               </div>
-              <div className="flex items-center gap-1.5 font-medium text-brand-700">
+              <div className="flex items-center gap-1.5 font-medium text-brand-700 dark:text-brand-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>{article.reviewedBy}</span>
               </div>
@@ -291,26 +303,26 @@ export function ArticlePage() {
           </header>
 
           {/* SECTION 1: WHAT IS IT? */}
-          <section className="space-y-3 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
-            <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
-              <BookOpen className="w-5 h-5 text-brand-600" />
+          <section className="space-y-3 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xs">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-lg sm:text-xl">
+              <BookOpen className="w-5 h-5 text-brand-600 dark:text-brand-400" />
               <h2>{t('whatIsIt')}</h2>
             </div>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
               {article.whatIsIt}
             </p>
           </section>
 
           {/* SECTION 2: HOW TO RECOGNIZE IT */}
-          <section className="space-y-4 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
-            <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
-              <AlertCircle className="w-5 h-5 text-amber-600" />
+          <section className="space-y-4 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xs">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-lg sm:text-xl">
+              <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
               <h2>{t('howToRecognize')}</h2>
             </div>
             <ul className="grid grid-cols-1 gap-2.5">
               {article.howToRecognize.map((sign, idx) => (
-                <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-amber-50/50 border border-amber-200/40 text-xs sm:text-sm text-slate-800">
-                  <span className="w-5 h-5 rounded-full bg-amber-100 text-amber-800 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+                <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-amber-50/50 dark:bg-amber-950/40 border border-amber-200/40 dark:border-amber-800/40 text-xs sm:text-sm text-slate-800 dark:text-slate-200">
+                  <span className="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-300 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                     !
                   </span>
                   <span className="leading-relaxed">{sign}</span>
@@ -321,38 +333,43 @@ export function ArticlePage() {
 
           {/* SECTION 3: WHAT TO DO */}
           <section className="space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-              <div className="flex items-center gap-2 text-slate-900 font-extrabold text-xl sm:text-2xl">
-                <CheckCircle2 className="w-6 h-6 text-brand-600" />
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="flex items-center gap-2 text-slate-900 dark:text-white font-extrabold text-xl sm:text-2xl">
+                <CheckCircle2 className="w-6 h-6 text-brand-600 dark:text-brand-400" />
                 <h2>{t('whatToDoTitle')}</h2>
               </div>
-              <span className="text-xs font-bold text-brand-700 bg-brand-50 px-2.5 py-1 rounded-full">
+              <span className="text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/70 px-2.5 py-1 rounded-full border border-brand-200/50 dark:border-brand-800/50">
                 {t('followInOrder')}
               </span>
             </div>
+
+            {/* Step-by-Step Anatomical Diagram if available */}
+            {activeDiagram && (
+              <ProtocolDiagram type={activeDiagram} />
+            )}
 
             <div className="space-y-4">
               {article.whatToDo.map((step) => (
                 <div
                   key={step.step}
-                  className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-xs hover:border-brand-300 transition duration-150 space-y-3"
+                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-xs hover:border-brand-300 dark:hover:border-brand-500 transition duration-150 space-y-3"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-xl bg-brand-600 text-white font-black text-sm flex items-center justify-center flex-shrink-0 shadow-xs">
                       {step.step}
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed pl-11">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed pl-11">
                     {step.description}
                   </p>
 
                   {step.warning && (
-                    <div className="ml-11 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div className="ml-11 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 text-xs flex items-start gap-2">
+                      <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                       <p>
                         <strong>{language === 'es' ? 'Advertencia:' : 'Warning:'}</strong> {step.warning}
                       </p>
@@ -364,20 +381,20 @@ export function ArticlePage() {
           </section>
 
           {/* SECTION 4: WHAT NOT TO DO */}
-          <section className="space-y-4 bg-red-50/70 p-6 sm:p-8 rounded-3xl border border-red-200 shadow-2xs">
-            <div className="flex items-center gap-2 text-red-950 font-bold text-lg sm:text-xl">
-              <XCircle className="w-5 h-5 text-red-600" />
+          <section className="space-y-4 bg-red-50/70 dark:bg-red-950/40 p-6 sm:p-8 rounded-3xl border border-red-200 dark:border-red-900/60 shadow-2xs">
+            <div className="flex items-center gap-2 text-red-950 dark:text-red-200 font-bold text-lg sm:text-xl">
+              <XCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
               <h2>{t('whatNotToDoTitle')}</h2>
             </div>
-            <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
+            <p className="text-xs sm:text-sm text-red-900 dark:text-red-300 leading-relaxed">
               {language === 'es'
                 ? 'Remedios caseros obsoletos o reacciones impulsivas pueden agravar las lesiones o resultar fatales. Evita estrictamente:'
                 : 'Outdated home remedies or instinctive reactions can worsen injuries or prove fatal. Strictly avoid:'}
             </p>
             <ul className="space-y-2.5 pt-1">
               {article.whatNotToDo.map((rule, idx) => (
-                <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white/90 border border-red-200 text-xs sm:text-sm text-slate-900">
-                  <span className="w-5 h-5 rounded-full bg-red-100 text-red-700 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+                <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-red-200 dark:border-red-900/50 text-xs sm:text-sm text-slate-900 dark:text-slate-200">
+                  <span className="w-5 h-5 rounded-full bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                     ✕
                   </span>
                   <span className="leading-relaxed">{rule}</span>
@@ -387,14 +404,14 @@ export function ArticlePage() {
           </section>
 
           {/* SECTION 5: WHEN TO SEEK MEDICAL HELP */}
-          <section className="space-y-3 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-2xs">
-            <div className="flex items-center gap-2 text-slate-900 font-bold text-lg sm:text-xl">
-              <PhoneCall className="w-5 h-5 text-brand-600" />
+          <section className="space-y-3 bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xs">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-lg sm:text-xl">
+              <PhoneCall className="w-5 h-5 text-brand-600 dark:text-brand-400" />
               <h2>{t('whenToSeekHelp')}</h2>
             </div>
             <ul className="space-y-2">
               {article.whenToSeekMedicalHelp.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-500 mt-2 flex-shrink-0"></span>
                   <span>{item}</span>
                 </li>
@@ -403,9 +420,9 @@ export function ArticlePage() {
           </section>
 
           {/* SECTION 6: SOURCES */}
-          <section className="space-y-3 p-6 rounded-2xl bg-slate-100/80 border border-slate-200 text-xs text-slate-600">
-            <div className="flex items-center gap-2 text-slate-800 font-bold">
-              <ShieldCheck className="w-4 h-4 text-brand-600" />
+          <section className="space-y-3 p-6 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
+            <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200 font-bold">
+              <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <h3>{t('clinicalSources')}</h3>
             </div>
             <p>
@@ -413,14 +430,14 @@ export function ArticlePage() {
                 ? 'Esta guía educativa refleja la ciencia de resucitación y consensos de primeros auxilios de:' 
                 : 'This educational guide reflects current resuscitation science and first aid practice guidelines from:'}
             </p>
-            <ul className="space-y-1 list-disc pl-5 text-slate-700">
+            <ul className="space-y-1 list-disc pl-5 text-slate-700 dark:text-slate-300">
               {article.sources.map((src, idx) => (
                 <li key={idx}>
                   <strong>{src.name}</strong> {src.year ? `(${src.year})` : ''}
                 </li>
               ))}
             </ul>
-            <p className="text-[11px] text-slate-500 pt-2 border-t border-slate-200/80">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200/80 dark:border-slate-800">
               {language === 'es'
                 ? 'Aviso: Esta guía es de carácter puramente educativo y no constituye diagnóstico médico ni prescripción individualizada.'
                 : 'Disclaimer: This guide is purely educational and does not constitute individual medical diagnosis or individualized prescription.'}

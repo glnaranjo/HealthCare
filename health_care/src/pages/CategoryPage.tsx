@@ -70,10 +70,10 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
       </nav>
 
       {/* Category Hero Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="max-w-2xl space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center shadow-xs">
               <IconComponent className="w-6 h-6 stroke-[2]" />
             </div>
             <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${category.badgeColor}`}>
@@ -81,11 +81,11 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {category.title}
           </h1>
 
-          <p className="text-base text-slate-600 leading-relaxed">
+          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             {category.description}
           </p>
         </div>

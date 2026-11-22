@@ -1151,6 +1151,224 @@ export const ARTICLES_EN: Article[] = [
     ],
     relatedArticles: ['dehydration-warning-signs', 'household-poisoning-prevention'],
     searchKeywords: ['food safety', 'food poisoning', 'salmonella', 'handwashing', 'hygiene', 'refrigerator temperature', 'raw chicken']
+  },
+
+  // 20. ANAPHYLAXIS & EPIPEN
+  {
+    id: 'anaphylaxis-epipen',
+    slug: 'anaphylaxis-epipen',
+    title: 'Severe Allergic Reaction (Anaphylaxis) & EpiPen Guide',
+    shortDescription: 'How to recognize life-threatening allergic reactions and administer an adrenaline autoinjector safely.',
+    category: 'emergencies',
+    urgency: 'critical',
+    readingTimeMinutes: 4,
+    lastReviewed: 'November 2024',
+    reviewedBy: 'World Allergy Organization (WAO) & Resuscitation Council',
+    summary: 'Anaphylaxis is a rapidly progressing, systemic allergic emergency affecting breathing and blood pressure. Intramuscular adrenaline into the outer thigh is the only first-line medication that halts airway collapse.',
+    whatIsIt: 'Anaphylaxis happens when the immune system overreacts to an allergen (such as peanuts, tree nuts, bee stings, seafood, latex, or medications), releasing massive amounts of histamine that constrict the airways and dilate blood vessels, causing circulatory shock.',
+    howToRecognize: [
+      'Swelling of the lips, tongue, throat, face, or eyes (angioedema).',
+      'Difficulty breathing, wheezing, persistent cough, or stridor (high-pitched whistling breath sound).',
+      'Widespread itchy hives, intense redness, or tingling of palms and soles.',
+      'Dizziness, lightheadedness, pale clammy skin, or sudden loss of consciousness.',
+      'Sense of impending doom, abdominal cramps, nausea, or vomiting.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Administer Adrenaline (EpiPen / Jext / Emerade) Immediately',
+        description: 'Remove safety cap. Form a fist around the device and position it at a 90° angle against the outer middle thigh. Push firmly until it clicks to deliver the dose. Hold in place for 3 to 5 seconds before withdrawing.',
+        warning: 'Adrenaline is safe and life-saving. In severe reactions, never hesitate: early administration saves lives.'
+      },
+      {
+        step: 2,
+        title: 'Call Emergency Services Right Away',
+        description: 'Call 911 / 112 immediately. Inform the dispatcher: "Patient is experiencing severe anaphylaxis; adrenaline was administered."',
+      },
+      {
+        step: 3,
+        title: 'Position Patient Flat (Lie Down)',
+        description: 'Keep the patient lying flat on their back with legs elevated to sustain blood pressure. If breathing is very difficult, allow them to sit up slightly, but do NOT make them stand or walk.',
+      },
+      {
+        step: 4,
+        title: 'Prepare Second Dose if Symptoms Persist',
+        description: 'If there is no improvement or symptoms worsen after 5 minutes, administer a second autoinjector in the opposite thigh if available.',
+      }
+    ],
+    whatNotToDo: [
+      'DO NOT make the person stand up or walk; sudden upright posture can cause a fatal cardiac arrest due to empty heart syndrome.',
+      'DO NOT rely on oral antihistamines or asthma inhalers as a substitute for adrenaline in systemic anaphylaxis.',
+      'DO NOT hesitate to use an expired autoinjector if no fresh unit is available in a life-or-death emergency.',
+      'DO NOT inject adrenaline into veins, buttocks, fingers, or toes.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Every episode of anaphylaxis requires emergency dispatch and at least 4 to 6 hours of hospital observation due to the risk of a biphasic rebound reaction.'
+    ],
+    sources: [
+      { name: 'World Allergy Organization (WAO) Anaphylaxis Guidelines', year: '2023' },
+      { name: 'Resuscitation Council UK Emergency Treatment of Anaphylaxis', year: '2022' }
+    ],
+    relatedArticles: ['choking-adult-child', 'cardiac-arrest-cpr', 'fainting-syncope'],
+    searchKeywords: ['anaphylaxis', 'allergic reaction', 'epipen', 'allergy', 'adrenaline', 'bee sting', 'peanut allergy', 'swollen throat', 'hives']
+  },
+
+  // 21. HEATSTROKE & HYPOTHERMIA
+  {
+    id: 'heatstroke-hypothermia',
+    slug: 'heatstroke-hypothermia',
+    title: 'Extreme Temperature Emergencies: Heatstroke & Hypothermia',
+    shortDescription: 'How to manage life-threatening core body temperature extremes: rapid cooling for heatstroke vs. safe rewarming for hypothermia.',
+    category: 'emergencies',
+    urgency: 'urgent',
+    readingTimeMinutes: 5,
+    lastReviewed: 'November 2024',
+    reviewedBy: 'International Wilderness & Environmental Medicine Consensus',
+    summary: 'When the body loses its ability to thermoregulate, core temperature either rises dangerously (>40°C in heatstroke) or drops critically (<35°C in hypothermia), causing neurological failure and multi-organ damage.',
+    whatIsIt: 'Heatstroke is a medical emergency characterized by thermoregulatory breakdown leading to systemic hyperthermia and central nervous system dysfunction. Hypothermia occurs when the body loses heat faster than it can produce it, usually in cold water immersion or prolonged environmental exposure.',
+    howToRecognize: [
+      'Heatstroke: Core temperature >40°C (104°F), hot skin (may be dry or heavily sweating), confusion, disorientation, slurred speech, seizures, or coma.',
+      'Hypothermia: Shivering initially, which ceases in severe hypothermia; slurred speech, sluggish clumsy movements, apathy, confusion, and weak pulse.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Heatstroke: Immediate Whole-Body Rapid Cooling',
+        description: 'Move casualty to shade or air-conditioned space. Strip clothing. Immerse in cold water tub if available, or spray/sponge with cool water while fanning vigorously. Apply ice packs wrapped in cloth to neck, armpits, and groin.',
+        warning: 'Heatstroke cooling must begin immediately on-scene without waiting for paramedics.'
+      },
+      {
+        step: 2,
+        title: 'Hypothermia: Gentle Handling & Dry Insulation',
+        description: 'Move casualty out of wind and rain. Remove wet clothing gently. Wrap in multiple layers of dry blankets, including head covering. Rewarm center of body (chest and neck) first.',
+        warning: 'Handle hypothermia patients very gently; rough movement can trigger ventricular fibrillation.'
+      },
+      {
+        step: 3,
+        title: 'Call Emergency Dispatch',
+        description: 'Both severe heatstroke and moderate-to-severe hypothermia require emergency ambulance transportation and core temperature telemetry.',
+      }
+    ],
+    whatNotToDo: [
+      'DO NOT give alcohol or caffeinated drinks to cold or overheated patients.',
+      'DO NOT rub or massage cold extremities (causes tissue damage and sends cold acidic blood to the heart).',
+      'DO NOT apply boiling water, direct heating pads, or fire to hypothermic skin.',
+      'DO NOT give oral fluids to anyone with altered mental status or confusion.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Call emergency dispatch immediately if casualty shows confusion, fainting, cessation of shivering in cold, or core temperature above 39.5°C.'
+    ],
+    sources: [
+      { name: 'Wilderness Medical Society Clinical Practice Guidelines', year: '2023' },
+      { name: 'WHO Guidelines on Heat and Health', year: '2022' }
+    ],
+    relatedArticles: ['dehydration-warning-signs', 'fainting-syncope', 'burns-first-aid'],
+    searchKeywords: ['heatstroke', 'hypothermia', 'overheating', 'freezing', 'cold exposure', 'shivering', 'sunstroke', 'fever']
+  },
+
+  // 22. VENOMOUS BITES & STINGS
+  {
+    id: 'venomous-bites-stings',
+    slug: 'venomous-bites-stings',
+    title: 'Venomous Bites and Stings (Scorpions, Spiders, Snakes)',
+    shortDescription: 'Evidence-based first aid for venomous animal encounters: why immobilizing the limb saves tissue and what dangerous myths to avoid.',
+    category: 'accidents',
+    urgency: 'urgent',
+    readingTimeMinutes: 4,
+    lastReviewed: 'November 2024',
+    reviewedBy: 'WHO Snakebite Envenoming Working Group',
+    summary: 'Envenomation from venomous snakes, spiders, and scorpions requires strict physical rest and urgent antivenom therapy. Traditional myths like cutting or tourniquets cause severe amputation risk.',
+    whatIsIt: 'Venomous bites introduce bioactive toxins (neurotoxins, hemotoxins, or cytotoxins) into human tissue. Muscle activity accelerates venom lymphatic uptake, so keeping the victim calm and still is the paramount first aid priority.',
+    howToRecognize: [
+      'Snakebite: Fang puncture marks, rapid localized swelling, intense burning pain, bleeding from bite site or gums, blurred vision, drooping eyelids.',
+      'Scorpion: Intense radiating pain, numbness, hypersalivation, involuntary eye movements, sweating, rapid heartbeat.',
+      'Spider (e.g. Black Widow / Brown Recluse): Cramping abdominal muscle rigidity, necrotic ulceration, severe joint pain.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Keep the Patient Completely Still and Calm',
+        description: 'Sit or lay the casualty down immediately. Keep the bitten limb immobile at or slightly below heart level. Restrict all walking or physical exertion.',
+      },
+      {
+        step: 2,
+        title: 'Remove Jewelry and Constricting Clothing',
+        description: 'Promptly remove rings, watches, bracelets, shoes, and tight clothing from the affected limb before tissue edema and swelling escalate.',
+      },
+      {
+        step: 3,
+        title: 'Clean Wound Gently & Transport to Hospital',
+        description: 'Gently wash with clean water and mild soap. Cover with a clean, dry, loose sterile bandage. Arrange urgent transport to an emergency department equipped with antivenom.',
+      }
+    ],
+    whatNotToDo: [
+      'DO NOT cut the wound with knives or razor blades (causes hemorrhage and deep infection).',
+      'DO NOT attempt to suck out venom with mouth or commercial suction pumps (useless and harmful).',
+      'DO NOT apply a tight arterial tourniquet (causes ischemic limb gangrene and limb loss).',
+      'DO NOT apply ice packs, herbal compresses, or electric shocks.',
+      'DO NOT attempt to capture or kill a live snake; take a safe photo from distance if possible to assist species identification.'
+    ],
+    whenToSeekMedicalHelp: [
+      'All suspected venomous snake, brown recluse, and severe scorpion stings require immediate emergency evaluation and antivenom titration.'
+    ],
+    sources: [
+      { name: 'WHO Guidelines for the Management of Snakebites', year: '2023' },
+      { name: 'American College of Medical Toxicology Envenomation Protocol', year: '2022' }
+    ],
+    relatedArticles: ['anaphylaxis-epipen', 'severe-bleeding-wounds'],
+    searchKeywords: ['snakebite', 'scorpion sting', 'spider bite', 'venom', 'poisonous bite', 'antivenom', 'black widow', 'rattlesnake']
+  },
+
+  // 23. CARBON MONOXIDE POISONING
+  {
+    id: 'carbon-monoxide-poisoning',
+    slug: 'carbon-monoxide-poisoning',
+    title: 'Carbon Monoxide Poisoning and Smoke Inhalation',
+    shortDescription: 'How to recognize the odorless "silent killer" in indoor environments and execute immediate safe evacuation.',
+    category: 'home-health',
+    urgency: 'critical',
+    readingTimeMinutes: 4,
+    lastReviewed: 'November 2024',
+    reviewedBy: 'International Public Health & Toxicological Safety Board',
+    summary: 'Carbon monoxide (CO) is a colorless, odorless, non-irritating toxic gas produced by incomplete combustion. It binds to hemoglobin 200 times more strongly than oxygen, suffocating cells from within.',
+    whatIsIt: 'Defective heaters, gas boilers, closed fireplaces, charcoal grills used indoors, or car engines running in garages generate carbon monoxide. Because victims cannot smell or see it, poisoning often occurs during sleep or causes gradual incapacitation before victims realize the hazard.',
+    howToRecognize: [
+      'Dull headache (often frontal), nausea, vomiting, dizziness, and generalized fatigue.',
+      'Confusion, disorientation, visual disturbances, and loss of coordination.',
+      'Multiple household members or pets showing similar symptoms at the same time.',
+      'Chest pain or breathlessness in individuals with heart conditions; seizures and unconsciousness in severe exposure.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Evacuate Everyone into Fresh Outdoor Air Immediately',
+        description: 'Get every person and pet out of the house into open fresh air immediately. Do not stop to collect belongings.',
+      },
+      {
+        step: 2,
+        title: 'Call Emergency Services and Fire Department',
+        description: 'Call 911 / 112 from outside the building. State: "Suspected carbon monoxide poisoning, casualties present."',
+      },
+      {
+        step: 3,
+        title: 'Administer High-Flow Oxygen Upon Medic Arrival',
+        description: 'Paramedics will administer 100% normobaric or hyperbaric oxygen, which rapidly displaces carbon monoxide from red blood cell hemoglobin.',
+      }
+    ],
+    whatNotToDo: [
+      'DO NOT turn light switches on or off, light matches, or create sparks if a fuel gas leak is also suspected (explosion hazard).',
+      'DO NOT re-enter the building for any reason until professional firefighters with gas meters declare it safe.',
+      'DO NOT assume cherry-red skin must be present to suspect CO; it is a very late or post-mortem finding rarely seen in living casualties.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Any suspected CO exposure requires prompt emergency hospital carboxyhemoglobin blood testing and cardiac monitoring.'
+    ],
+    sources: [
+      { name: 'WHO Environmental Health Criteria for Carbon Monoxide', year: '2022' },
+      { name: 'CDC Clinical Guidance for Carbon Monoxide Poisoning', year: '2023' }
+    ],
+    relatedArticles: ['household-poisoning-prevention', 'cardiac-arrest-cpr'],
+    searchKeywords: ['carbon monoxide', 'co poisoning', 'silent killer', 'gas leak', 'smoke inhalation', 'heater fumes', 'headache indoor']
   }
 ];
 

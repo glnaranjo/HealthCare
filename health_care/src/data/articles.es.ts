@@ -1062,6 +1062,224 @@ export const ARTICLES_ES: Article[] = [
     ],
     relatedArticles: ['dehydration-warning-signs', 'household-poisoning-prevention'],
     searchKeywords: ['seguridad alimentaria', 'salmonella', 'intoxicacion por comida', 'carne cruda', 'higiene cocina', 'diarrea alimentaria']
+  },
+
+  // 20. ANAPHYLAXIS & EPIPEN
+  {
+    id: 'anaphylaxis-epipen',
+    slug: 'anaphylaxis-epipen',
+    title: 'Reacción Alérgica Grave (Anafilaxia) y Uso del EpiPen',
+    shortDescription: 'Cómo reconocer una anafilaxia potencialmente mortal y aplicar el autoinyector de adrenalina en el muslo.',
+    category: 'emergencies',
+    urgency: 'critical',
+    readingTimeMinutes: 4,
+    lastReviewed: 'Noviembre 2024',
+    reviewedBy: 'Organización Mundial de Alergia (WAO) y Comité de Resucitación',
+    summary: 'La anafilaxia es una emergencia alérgica generalizada que compromete las vías respiratorias y la presión arterial. La inyección intramuscular de adrenalina en el muslo es el único tratamiento de rescate inmediato.',
+    whatIsIt: 'Ocurre cuando el sistema inmunitario reacciona de forma desmedida ante un alérgeno (como maní, frutos secos, picaduras de avispa/abeja, mariscos, látex o medicamentos), liberando histamina masiva que cierra las vías respiratorias y dilata los vasos sanguíneos, provocando shock anafiláctico.',
+    howToRecognize: [
+      'Hinchazón visible de labios, lengua, garganta, párpados o rostro (angioedema).',
+      'Dificultad para respirar, silbidos en el pecho, tos continua o estridor (sonido agudo al inhalar).',
+      'Urticaria generalizada, picazón intensa, ronchas rojas en la piel o calor súbito.',
+      'Mareo intenso, confusión, palidez extrema, sudor frío o desmayo repentino.',
+      'Sensación de opresión en la garganta o angustia vital inminente.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Aplicar el Autoinyector de Adrenalina (EpiPen) de Inmediato',
+        description: 'Retira la tapa de seguridad azul. Sujeta el inyector con el puño cerrado y colócalo a 90° contra la cara lateral externa del muslo. Empuja con firmeza hasta oír el "clic" y mantenlo presionado de 3 a 5 segundos antes de retirarlo.',
+        warning: 'La adrenalina es segura y salva vidas. En reacciones graves, nunca demores su aplicación esperando que pasen los síntomas.'
+      },
+      {
+        step: 2,
+        title: 'Llamar Inmediatamente a Emergencias',
+        description: 'Llama al número de emergencias local (ej. 911, 107, 112). Aclara al operador: "Paciente con anafilaxia severa; se administró una dosis de adrenalina".',
+      },
+      {
+        step: 3,
+        title: 'Acostar a la Persona con las Piernas Elevadas',
+        description: 'Mantenla recostada boca arriba con las piernas levantadas para favorecer el retorno de sangre al corazón. Si le cuesta mucho respirar, déjala sentarse ligeramente, pero NUNCA permitas que se ponga de pie o camine.',
+      },
+      {
+        step: 4,
+        title: 'Preparar una Segunda Dosis si no Mejora',
+        description: 'Si tras 5 minutos no hay mejoría o los síntomas respiratorios empeoran, administra una segunda inyección en el otro muslo si cuentas con otra unidad.',
+      }
+    ],
+    whatNotToDo: [
+      'NO permitas que la persona se incorpore de golpe o camine; la postura de pie súbita puede provocar un colapso cardíaco irreversible.',
+      'NO sustituyas la adrenalina por antihistamínicos orales en pastillas; tardan más de 30 minutos y no destraban la vía aérea.',
+      'NO dudes en usar un inyector vencido si es el único disponible en una emergencia de vida o muerte.',
+      'NO inyectes adrenalina en venas, glúteos, dedos ni manos.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Todo episodio anafiláctico requiere traslado de urgencia en ambulancia y al menos 4 a 6 horas de guardia médica por riesgo de rebote tardío.'
+    ],
+    sources: [
+      { name: 'Guías de Anafilaxia de la Organización Mundial de Alergia (WAO)', year: '2023' },
+      { name: 'Consejo de Resucitación del Reino Unido: Tratamiento de Emergencia de Anafilaxia', year: '2022' }
+    ],
+    relatedArticles: ['choking-adult-child', 'cardiac-arrest-cpr', 'fainting-syncope'],
+    searchKeywords: ['anafilaxia', 'reaccion alergica', 'alergia', 'epipen', 'adrenalina', 'picadura abeja', 'hinchazon garganta', 'shock anafilactico']
+  },
+
+  // 21. HEATSTROKE & HYPOTHERMIA
+  {
+    id: 'heatstroke-hypothermia',
+    slug: 'heatstroke-hypothermia',
+    title: 'Emergencias por Temperatura Extrema: Golpe de Calor e Hipotermia',
+    shortDescription: 'Cómo actuar ante descompensaciones térmicas graves: enfriamiento urgente en golpe de calor vs. recalentamiento seguro en hipotermia.',
+    category: 'emergencies',
+    urgency: 'urgent',
+    readingTimeMinutes: 5,
+    lastReviewed: 'Noviembre 2024',
+    reviewedBy: 'Consenso Internacional de Medicina Ambiental y de Emergencia',
+    summary: 'Cuando el cuerpo pierde la capacidad de regular su temperatura, esta puede subir a niveles letales (>40 °C en golpe de calor) o caer peligrosamente (<35 °C en hipotermia), causando daño multiorgánico.',
+    whatIsIt: 'El golpe de calor es una urgencia vital por falla del sistema termorregulador. La hipotermia ocurre cuando el cuerpo pierde más calor del que produce, típicamente por inmersión en agua helada o exposición prolongada al frío ambiental.',
+    howToRecognize: [
+      'Golpe de calor: Temperatura corporal >40 °C, piel muy caliente (puede estar seca o sudorosa), confusión mental, mareos, dificultad para articular palabras, convulsiones o pérdida de conocimiento.',
+      'Hipotermia: Escalofríos violentos que desaparecen en etapas avanzadas, habla arrastrada, torpeza motriz, letargo, confusión y pulso lento y débil.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Golpe de Calor: Enfriamiento Rápido Inmediato',
+        description: 'Lleva a la persona a la sombra o a un ambiente climatizado. Quita el exceso de ropa. Sumerge el cuerpo en agua fría si es posible, o rocía agua fresca sobre la piel mientras abanicas enérgicamente. Coloca compresas frías en cuello, axilas e ingles.',
+        warning: 'El enfriamiento del golpe de calor debe comenzar en el lugar de inmediato, sin esperar a la ambulancia.'
+      },
+      {
+        step: 2,
+        title: 'Hipotermia: Aislamiento Seco y Movimientos Suaves',
+        description: 'Resguarda a la persona del viento y la humedad. Retira ropa mojada con sumo cuidado. Envuélvela en varias capas de mantas secas, cubriendo también la cabeza pero dejando libre el rostro. Calienta el pecho y el cuello primero.',
+        warning: 'Mueve a la persona con extrema suavidad; los movimientos bruscos pueden desencadenar fibrilación ventricular.'
+      },
+      {
+        step: 3,
+        title: 'Llamar a Emergencias',
+        description: 'Tanto el golpe de calor con alteración mental como la hipotermia moderada o grave requieren evaluación y estabilización médica urgente.',
+      }
+    ],
+    whatNotToDo: [
+      'NO des bebidas con alcohol o cafeína a personas con frío extremo o golpe de calor.',
+      'NO frotes ni masajees brazos o piernas heladas (daña los tejidos y envía sangre ácida al corazón).',
+      'NO apliques agua hirviendo, bolsas de agua muy caliente ni fuego directo sobre piel hipotérmica.',
+      'NO des líquidos por boca a quien esté desorientado, somnoliento o confundido.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Llama a emergencias de inmediato si hay confusión, delirio, desmayo, cese de temblores en frío o temperatura axilar superior a 39.5 °C.'
+    ],
+    sources: [
+      { name: 'Guías de Práctica Clínica de la Wilderness Medical Society', year: '2023' },
+      { name: 'Pautas de Salud y Olas de Calor de la OMS', year: '2022' }
+    ],
+    relatedArticles: ['dehydration-warning-signs', 'fainting-syncope', 'burns-first-aid'],
+    searchKeywords: ['golpe de calor', 'hipotermia', 'insolacion', 'temperatura corporal', 'frio extremo', 'deshidratacion termica', 'escalofrios']
+  },
+
+  // 22. VENOMOUS BITES & STINGS
+  {
+    id: 'venomous-bites-stings',
+    slug: 'venomous-bites-stings',
+    title: 'Picaduras y Mordeduras Venenosas (Alacranes, Arañas y Serpientes)',
+    shortDescription: 'Primeros auxilios basados en evidencia: por qué inmovilizar la extremidad salva tejidos y qué mitos peligrosos no debes cometer.',
+    category: 'accidents',
+    urgency: 'urgent',
+    readingTimeMinutes: 4,
+    lastReviewed: 'Noviembre 2024',
+    reviewedBy: 'Grupo de Trabajo en Envenenamiento de la OMS',
+    summary: 'El envenenamiento por animales ponzoñosos requiere reposo físico absoluto y aplicación oportuna de antiveneno. Mitos populares como hacer cortes o torniquetes provocan daños graves y riesgo de amputación.',
+    whatIsIt: 'Las mordeduras y picaduras inoculan toxinas en los tejidos. La actividad muscular acelera la propagación del veneno por el sistema linfático; por ello, mantener a la persona en calma y quieta es la prioridad máxima.',
+    howToRecognize: [
+      'Serpientes: Marcas de dos colmillos, hinchazón rápida, dolor urente, sangrado en la herida, visión borrosa o párpados caídos.',
+      'Alacranes / Escorpiones: Dolor punzante e intenso que se irradia, adormecimiento local, salivación excesiva, sudoración y taquicardia.',
+      'Arañas peligrosas (Loxosceles / Latrodectus): Dolor agudo punzante, contracturas musculares intensas o ampolla central con mancha violácea.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Mantener a la Persona Quieta y en Calma Absoluta',
+        description: 'Sienta o acuesta a la persona. Mantén la extremidad mordida o picada inmóvil y a la misma altura o ligeramente por debajo del nivel del corazón. Evita que camine.',
+      },
+      {
+        step: 2,
+        title: 'Retirar Anillos, Relojes y Ropa Ajustada',
+        description: 'Quita rápidamente pulseras, anillos, calzado o prendas ajustadas antes de que la inflamación avance y corte la circulación.',
+      },
+      {
+        step: 3,
+        title: 'Lavar con Agua y Jabón y Trasladar al Hospital',
+        description: 'Lava suavemente la zona con agua y jabón neutro. Cubre con una gasa limpia y seca sin apretar. Acude de inmediato al centro de salud con suero antiofídico o antiescorpiónico.',
+      }
+    ],
+    whatNotToDo: [
+      'NO hagas cortes ni incisiones con cuchillos o navajas sobre la herida (causa hemorragias e infecciones severas).',
+      'NO succiones el veneno con la boca ni con kits comerciales (es ineficaz y riesgoso).',
+      'NO coloques torniquetes ni ligaduras apretadas (destruye el tejido y provoca necrosis y gangrena).',
+      'NO apliques hielo, barro, kerosene ni descargas eléctricas.',
+      'NO intentes atrapar ni matar al animal; si es seguro, tómale una foto desde lejos para identificar la especie.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Toda sospecha de mordedura de serpiente venenosa, picadura de alacrán en niños o mordedura de araña ponzoñosa requiere atención médica hospitalaria de inmediato.'
+    ],
+    sources: [
+      { name: 'Guías de la OMS para el Manejo de Mordeduras de Serpiente', year: '2023' },
+      { name: 'Protocolos de Toxicología y Envenenamiento del Colegio Médico', year: '2022' }
+    ],
+    relatedArticles: ['anaphylaxis-epipen', 'severe-bleeding-wounds'],
+    searchKeywords: ['picadura alacran', 'mordedura vibora', 'serpiente', 'arana', 'veneno', 'antidoto', 'escorpion', 'loxosceles']
+  },
+
+  // 23. CARBON MONOXIDE POISONING
+  {
+    id: 'carbon-monoxide-poisoning',
+    slug: 'carbon-monoxide-poisoning',
+    title: 'Intoxicación por Monóxido de Carbono e Inhalación de Humo',
+    shortDescription: 'Cómo reconocer al "asesino invisible" en el hogar y ejecutar una evacuación segura inmediata.',
+    category: 'home-health',
+    urgency: 'critical',
+    readingTimeMinutes: 4,
+    lastReviewed: 'Noviembre 2024',
+    reviewedBy: 'Comité de Seguridad Toxicológica y Salud Pública',
+    summary: 'El monóxido de carbono (CO) es un gas incoloro, inodoro e imperceptible producido por mala combustión. Se une a la hemoglobina 200 veces más fuerte que el oxígeno, asfixiando las células del cuerpo.',
+    whatIsIt: 'Calefactores defectuosos, estufas sin tiro balanceado, braseros, calderas, chimeneas cerradas o motores encendidos en garajes generan monóxido de carbono. Al no poder olerse ni verse, muchas personas se duermen o quedan incapacitadas antes de percibir el peligro.',
+    howToRecognize: [
+      'Dolor de cabeza sordo y continuo (frecuentemente en la frente), mareos, náuseas y debilidad.',
+      'Somnolencia excesiva, confusión, visión borrosa o pérdida de coordinación.',
+      'Múltiples personas o mascotas en la misma vivienda presentando síntomas similares al mismo tiempo.',
+      'Falta de aire, palpitaciones y desmayo o convulsiones en exposiciones prolongadas.'
+    ],
+    whatToDo: [
+      {
+        step: 1,
+        title: 'Evacuar Inmediatamente al Aire Libre',
+        description: 'Saca a todas las personas y mascotas al exterior de la vivienda al aire libre de inmediato. No te demores en juntar pertenencias.',
+      },
+      {
+        step: 2,
+        title: 'Llamar a Emergencias y Bomberos desde Afuera',
+        description: 'Comunícate al 911 / 107 / 112 desde el exterior. Indica: "Sospecha de intoxicación por monóxido de carbono con personas afectadas".',
+      },
+      {
+        step: 3,
+        title: 'Administrar Oxígeno Médico al Llegar la Ambulancia',
+        description: 'Los paramédicos administrarán oxígeno al 100%, el cual acelera la eliminación del monóxido de carbono de la sangre.',
+      }
+    ],
+    whatNotToDo: [
+      'NO prendas ni apagues luces ni uses fósforos si además sospechas pérdida de gas combustible (riesgo de explosión).',
+      'NO vuelvas a ingresar a la vivienda bajo ningún motivo hasta que personal de bomberos con detectores confirme que el lugar es seguro.',
+      'NO asumas que la piel debe verse "roja cereza" para sospechar monóxido; es un signo tardío o post mórtem que rara vez se ve en personas vivas.'
+    ],
+    whenToSeekMedicalHelp: [
+      'Toda persona expuesta a monóxido de carbono requiere evaluación en guardia médica y análisis de carboxihemoglobina en sangre.'
+    ],
+    sources: [
+      { name: 'Criterios de Salud Ambiental para Monóxido de Carbono de la OMS', year: '2022' },
+      { name: 'Guía Clínica de Intoxicación por CO de los CDC', year: '2023' }
+    ],
+    relatedArticles: ['household-poisoning-prevention', 'cardiac-arrest-cpr'],
+    searchKeywords: ['monoxido de carbono', 'gas invisible', 'estufa', 'calefon', 'humo', 'dolor de cabeza hogar', 'intoxicacion por gas']
   }
 ];
 

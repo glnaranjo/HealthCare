@@ -69,15 +69,15 @@ export function SearchPage() {
       </nav>
 
       {/* Main Search Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-6">
         <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
             {language === 'es' ? 'Búsqueda Clínica en Lenguaje Natural' : 'Natural Language Quick Access'}
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
             {language === 'es' ? '¿Qué debo hacer si...?' : 'What should I do if...?'}
           </h1>
-          <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
             {language === 'es'
               ? 'Describe el síntoma o la situación con tus propias palabras. El motor de búsqueda local encontrará de inmediato el protocolo clínico adecuado.'
               : 'Describe the symptom or situation in plain words. Our verified local first aid directory will instantly retrieve the appropriate clinical response protocol.'}
@@ -92,12 +92,12 @@ export function SearchPage() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={language === 'es' ? 'Ej: ¿Qué hago si alguien se desmaya o se quema?' : 'e.g. What should I do if someone faints or gets burned?'}
-            className="w-full pl-13 pr-12 py-4 rounded-2xl bg-slate-50 border border-slate-300 focus:bg-white focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-slate-900 placeholder:text-slate-400 text-base font-medium shadow-xs transition"
+            className="w-full pl-13 pr-12 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base font-medium shadow-xs transition"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1.5"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5"
               aria-label="Clear search"
             >
               <X className="w-5 h-5" />
@@ -107,8 +107,8 @@ export function SearchPage() {
 
         {/* Suggested Situations Chips */}
         <div className="space-y-2 pt-2">
-          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5 text-brand-600" />
+          <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
             {language === 'es' ? 'Situaciones buscadas con frecuencia:' : 'Frequently Searched Situations:'}
           </p>
           <div className="flex flex-wrap gap-2">
@@ -119,7 +119,7 @@ export function SearchPage() {
                 className={`text-xs px-3.5 py-1.5 rounded-xl font-semibold border transition duration-150 ${
                   query === sit.query
                     ? 'bg-brand-600 text-white border-brand-600 shadow-xs'
-                    : 'bg-white hover:bg-brand-50 hover:text-brand-700 text-slate-700 border-slate-200 hover:border-brand-300'
+                    : 'bg-white dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 hover:text-brand-700 dark:hover:text-brand-300 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-brand-300'
                 }`}
               >
                 {sit.label}

@@ -14,38 +14,38 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
 
   return (
     <article
-      className={`group bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-brand-400 transition-all duration-200 flex flex-col justify-between ${
+      className={`group bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:shadow-md hover:border-brand-400 dark:hover:border-brand-500 transition-all duration-200 flex flex-col justify-between ${
         featured ? 'ring-1 ring-brand-500/10' : ''
       }`}
     >
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           <UrgencyBadge urgency={article.urgency} />
-          <div className="flex items-center gap-1 text-xs text-slate-500 font-medium">
+          <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
             <Clock className="w-3.5 h-3.5" />
             <span>{article.readingTimeMinutes} {language === 'es' ? 'min de lectura' : 'min read'}</span>
           </div>
         </div>
 
         <Link to={`/guide/${article.slug}`}>
-          <h3 className="text-lg font-bold text-slate-900 group-hover:text-brand-600 transition duration-150 mb-2 leading-snug">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition duration-150 mb-2 leading-snug">
             {article.title}
           </h3>
         </Link>
 
-        <p className="text-sm text-slate-600 leading-relaxed mb-6 line-clamp-2">
+        <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 line-clamp-2">
           {article.shortDescription}
         </p>
       </div>
 
-      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-        <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1 capitalize">
-          <BookOpen className="w-3.5 h-3.5 text-slate-400" />
+      <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider flex items-center gap-1 capitalize">
+          <BookOpen className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
           {article.category.replace('-', ' ')}
         </span>
         <Link
           to={`/guide/${article.slug}`}
-          className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 group-hover:text-brand-700 transition"
+          className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 dark:text-brand-400 group-hover:text-brand-700 dark:group-hover:text-brand-300 transition"
         >
           <span>{language === 'es' ? 'Leer Protocolo' : 'Read Protocol'}</span>
           <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition duration-150" />

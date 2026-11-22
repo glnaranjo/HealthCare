@@ -98,17 +98,17 @@ export function DisclaimerPage() {
       </nav>
 
       {/* Main Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
-          <ShieldAlert className="w-4 h-4 text-amber-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+          <ShieldAlert className="w-4 h-4 text-amber-600 dark:text-amber-400" />
           <span>{language === 'es' ? 'Mandato Educativo Oficial' : 'Official Educational Mandate'}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {language === 'es' ? 'Aviso de Alcance Médico y Fuentes Clínicas' : 'Medical Disclaimer & Clinical Standards'}
         </h1>
 
-        <p className="text-base text-slate-600 leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
           {language === 'es'
             ? 'HealthCare es una plataforma educativa internacional creada para enseñar a la comunidad conocimientos indispensables de salud, primeros auxilios, respuesta ante emergencias y seguridad cotidiana.'
             : 'HealthCare is an international educational platform created to teach ordinary people essential health knowledge, first aid, emergency response, and everyday safety.'}
@@ -116,9 +116,9 @@ export function DisclaimerPage() {
       </div>
 
       {/* MANDATORY PERSISTENT NOTICE BOX */}
-      <div className="bg-red-50 border-2 border-red-300 rounded-3xl p-6 sm:p-8 space-y-4 text-red-950">
-        <div className="flex items-center gap-2 font-black text-lg text-red-900">
-          <AlertTriangle className="w-6 h-6 text-red-600 animate-pulse flex-shrink-0" />
+      <div className="bg-red-50 dark:bg-red-950/40 border-2 border-red-300 dark:border-red-900/60 rounded-3xl p-6 sm:p-8 space-y-4 text-red-950 dark:text-red-200">
+        <div className="flex items-center gap-2 font-black text-lg text-red-900 dark:text-red-200">
+          <AlertTriangle className="w-6 h-6 text-red-600 dark:text-red-400 animate-pulse flex-shrink-0" />
           <h2>{language === 'es' ? 'Aviso Médico de Cumplimiento Obligatorio' : 'Mandatory Medical Notice'}</h2>
         </div>
 
@@ -130,8 +130,8 @@ export function DisclaimerPage() {
           </strong>
         </p>
 
-        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-red-200">
-          <span className="text-xs text-red-900">
+        <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-red-200 dark:border-red-900/60">
+          <span className="text-xs text-red-900 dark:text-red-200">
             {language === 'es' ? 'Configuración de país actual:' : 'Current country setting:'}{' '}
             <strong>{selectedCountry.countryName}</strong> ({language === 'es' ? 'Central de Emergencias:' : 'Emergency Dispatch:'}{' '}
             <strong>{selectedCountry.generalEmergency}</strong>)
@@ -147,18 +147,18 @@ export function DisclaimerPage() {
       </div>
 
       {/* Scope Boundaries */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-        <h2 className="text-xl font-bold text-slate-900">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white">
           {language === 'es' ? 'Alcance de la Plataforma y lo que NUNCA hacemos' : 'Platform Scope & What We Never Do'}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-          <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
-            <div className="font-bold text-emerald-900 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+          <div className="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 space-y-2">
+            <div className="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>{language === 'es' ? 'Lo que HealthCare SÍ proporciona:' : 'What HealthCare Provides:'}</span>
             </div>
-            <ul className="space-y-1 list-disc pl-5 text-emerald-950">
+            <ul className="space-y-1 list-disc pl-5 text-emerald-950 dark:text-emerald-100">
               <li>{language === 'es' ? 'Guías universales de primeros auxilios paso a paso.' : 'Universal first aid step-by-step guidance.'}</li>
               <li>{language === 'es' ? 'Criterios de reconocimiento de emergencias (ACV, RCP, asfixia).' : 'Emergency recognition criteria (stroke, CPR, choking).'}</li>
               <li>{language === 'es' ? 'Delimitación rigurosa de lo que NO se debe hacer ante una crisis.' : 'Clear demarcation of what NOT to do in an emergency.'}</li>
@@ -167,12 +167,12 @@ export function DisclaimerPage() {
             </ul>
           </div>
 
-          <div className="p-4 rounded-2xl bg-red-50/70 border border-red-200 space-y-2">
-            <div className="font-bold text-red-900 flex items-center gap-1.5">
-              <AlertTriangle className="w-4 h-4 text-red-600" />
+          <div className="p-4 rounded-2xl bg-red-50/70 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 space-y-2">
+            <div className="font-bold text-red-900 dark:text-red-200 flex items-center gap-1.5">
+              <AlertTriangle className="w-4 h-4 text-red-600 dark:text-red-400" />
               <span>{language === 'es' ? 'Lo que HealthCare NUNCA hace:' : 'What HealthCare NEVER Does:'}</span>
             </div>
-            <ul className="space-y-1 list-disc pl-5 text-red-950">
+            <ul className="space-y-1 list-disc pl-5 text-red-950 dark:text-red-100">
               <li>{language === 'es' ? 'Jamás emite diagnósticos médicos individualizados.' : 'Never provides individual medical diagnosis.'}</li>
               <li>{language === 'es' ? 'Jamás prescribe dosis ni recetas de fármacos.' : 'Never prescribes medication dosages.'}</li>
               <li>{language === 'es' ? 'Jamás avala remedios caseros sin evidencia o tratamientos populares.' : 'Never endorses unverified home remedies or folk treatments.'}</li>
@@ -184,13 +184,13 @@ export function DisclaimerPage() {
       </div>
 
       {/* Authoritative Sources List */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-        <div className="flex items-center gap-2 text-slate-900 font-bold text-xl">
-          <BookOpen className="w-5 h-5 text-brand-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
+        <div className="flex items-center gap-2 text-slate-900 dark:text-white font-bold text-xl">
+          <BookOpen className="w-5 h-5 text-brand-600 dark:text-brand-400" />
           <h2>{language === 'es' ? 'Fuentes Médicas Internacionales Reconocidas' : 'Recognized International Medical Sources'}</h2>
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           {language === 'es'
             ? 'HealthCare cura y organiza contenidos derivados exclusivamente de consensos establecidos por autoridades de salud pública y resucitación:'
             : 'HealthCare curates and organizes content exclusively derived from established international public health and resuscitation consensus authorities:'}
@@ -198,16 +198,16 @@ export function DisclaimerPage() {
 
         <div className="grid grid-cols-1 gap-3">
           {clinicalSources.map((source, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div key={idx} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h3 className="font-bold text-slate-900 text-sm">{source.name}</h3>
-                <p className="text-xs text-slate-600 mt-0.5">{source.scope}</p>
+                <h3 className="font-bold text-slate-900 dark:text-white text-sm">{source.name}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">{source.scope}</p>
               </div>
               <a
                 href={source.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 flex-shrink-0"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex-shrink-0"
               >
                 <span>{language === 'es' ? 'Portal Oficial' : 'Official Portal'}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -218,15 +218,15 @@ export function DisclaimerPage() {
       </div>
 
       {/* Contact & Feedback */}
-      <div className="p-6 rounded-2xl bg-slate-100 border border-slate-200 text-xs text-slate-600 space-y-2">
-        <h3 className="font-bold text-slate-900 text-sm">
+      <div className="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2">
+        <h3 className="font-bold text-slate-900 dark:text-white text-sm">
           {language === 'es' ? 'Consultas Editoriales y Colaboración' : 'Editorial Curriculum Inquiries'}
         </h3>
         <p className="leading-relaxed">
           {language === 'es'
             ? 'Si representas a una autoridad médica, centro de formación de primeros auxilios certificado u organización de salud pública y deseas revisar o proponer mejoras a nuestro contenido educativo, contáctanos a través de '
             : 'If you represent a medical authority, certified first aid training center, or public health organization and wish to review or propose improvements to our educational content, please contact our curriculum team via '}
-          <Link to="/contact" className="text-brand-600 font-bold hover:underline">
+          <Link to="/contact" className="text-brand-600 dark:text-brand-400 font-bold hover:underline">
             {language === 'es' ? 'Contacto y Sugerencias' : 'Contact & Feedback'}
           </Link>.
         </p>

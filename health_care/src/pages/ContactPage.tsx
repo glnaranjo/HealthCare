@@ -57,15 +57,15 @@ export function ContactPage() {
       </div>
 
       {/* Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
-          <MessageSquare className="w-4 h-4 text-brand-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+          <MessageSquare className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Colaboración en Salud Pública' : 'Public Health Collaboration'}</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {language === 'es' ? 'Contacto y Sugerencias de Contenido' : 'Contact & Curriculum Feedback'}
         </h1>
-        <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
           {language === 'es'
             ? 'Agradecemos sugerencias, correcciones clínicas y propuestas de colaboración de profesionales de la salud, instructores de primeros auxilios certificados y entidades comunitarias.'
             : 'We welcome contributions, clinical corrections, and partnership inquiries from healthcare practitioners, certified first aid instructors, and public safety organizations.'}
@@ -73,16 +73,16 @@ export function ContactPage() {
       </div>
 
       {/* Contact Form Container */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm">
         {submitted ? (
           <div className="text-center py-12 space-y-4 max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               {language === 'es' ? 'Mensaje Recibido' : 'Message Received'}
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {language === 'es'
                 ? 'Gracias por ayudarnos a mantener la precisión internacional de nuestras guías. El equipo editorial revisará tu sugerencia.'
                 : 'Thank you for helping us maintain international first aid accuracy. Our educational editorial team will review your submission.'}
@@ -92,7 +92,7 @@ export function ContactPage() {
                 setSubmitted(false);
                 setFormData({ name: '', email: '', organization: '', subject: 'curriculum-review', message: '' });
               }}
-              className="text-xs font-bold text-brand-600 hover:underline pt-2"
+              className="text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline pt-2"
             >
               {language === 'es' ? 'Enviar otro mensaje' : 'Send another note'}
             </button>
@@ -101,7 +101,7 @@ export function ContactPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   {language === 'es' ? 'Tu Nombre *' : 'Your Name *'}
                 </label>
                 <input
@@ -110,12 +110,12 @@ export function ContactPage() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder={language === 'es' ? 'Ej: Dra. María Pérez / Juan Gómez' : 'e.g. Dr. Jane Doe / John Smith'}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   {language === 'es' ? 'Correo Electrónico *' : 'Email Address *'}
                 </label>
                 <input
@@ -124,14 +124,14 @@ export function ContactPage() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="nombre@ejemplo.com"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   {language === 'es' ? 'Institución / Organización Médica (Opcional)' : 'Medical / Safety Organization (Optional)'}
                 </label>
                 <input
@@ -139,18 +139,18 @@ export function ContactPage() {
                   value={formData.organization}
                   onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                   placeholder={language === 'es' ? 'Ej: Cruz Roja / Hospital Municipal' : 'e.g. Regional Red Cross / Emergency Hospital'}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                   {language === 'es' ? 'Motivo del Contacto' : 'Subject Category'}
                 </label>
                 <select
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm bg-white"
                 >
                   <option value="curriculum-review">
                     {language === 'es' ? 'Corrección / Revisión de Guía Médica' : 'Clinical Guideline Correction / Review'}
@@ -169,7 +169,7 @@ export function ContactPage() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+              <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider block">
                 {language === 'es' ? 'Mensaje o Detalle Clínico *' : 'Message / Clinical Details *'}
               </label>
               <textarea
@@ -178,12 +178,12 @@ export function ContactPage() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder={language === 'es' ? 'Indica la guía correspondiente, fuentes o citas pertinentes y tu sugerencia...' : 'Please include specific guide references, source citations, or details of your inquiry...'}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm"
               />
             </div>
 
             <div className="flex items-center justify-between pt-2">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 {language === 'es' ? 'Toda la información se maneja con estricta confidencialidad.' : 'All submissions are held in strict privacy.'}
               </p>
               <button

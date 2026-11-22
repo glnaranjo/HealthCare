@@ -15,7 +15,20 @@
 ### 🌐 Native Bilingual Support (Español / English)
 - **First-Visit Language Selection**: Mandatory initial splash dialog prompting the user to choose their preferred language (Español 🇪🇸 or English 🇬🇧) before viewing content.
 - **On-the-Fly Switching**: Quick toggle located in the navigation bar and footer to swap languages at any time without losing state.
-- **Full Clinical Translation**: All 19 protocols, user interface components, and educational tools are 100% localized.
+- **Full Clinical Translation**: All 23 protocols, user interface components, and educational tools are 100% localized.
+
+### 🌓 Dark Mode & Light Mode (High Legibility)
+- **Adaptive Contrast**: Instant toggle switch between Light and Dark mode with persistence via `localStorage`.
+- **Night / Low-Light Emergency Readiness**: High-contrast dark backgrounds (`slate-950` / `slate-900`) designed to minimize eye strain and screen glare during nocturnal emergencies without sacrificing urgency color cues.
+
+### 📐 Step-by-Step Procedural Diagrams (Visual Action Guides)
+- Clean, high-legibility anatomical and procedural SVG diagrams embedded directly into the action steps:
+  - **Adult Hands-Only CPR**: Hand placement over lower half of sternum, 90° straight arms, 5–6 cm compression depth, 100–120 BPM indicator.
+  - **Heimlich Maneuver (Choking)**: Upward & inward abdominal thrust vector between navel and ribcage.
+  - **Severe Bleeding Control**: Direct manual pressure on sterile pad and limb elevation.
+  - **Burn & Scald Cooling**: 20-minute cool running tap water protocol with explicit prohibition against ice or butter.
+  - **EpiPen / Auto-Injector Protocol**: 90° jab into anterolateral mid-outer thigh with 3–5 second countdown hold.
+  - **Recovery Position (PLS)**: Lateral safe airway positioning preventing aspiration in unconscious breathing patients.
 
 ### 🚨 Quick Action Panel (Emergency-First UI)
 - For life-threatening (`critical`) and urgent (`urgent`) situations, the page **prioritizes action steps immediately**, before clinical descriptions, background, or metadata.
@@ -59,16 +72,16 @@
 
 ## 📚 Clinical Curriculums & Guides
 
-The platform organizes 19 verified protocols across 6 foundational categories:
+The platform organizes 23 verified protocols across 6 foundational categories:
 
 | Category | Topics Covered |
 |---|---|
-| **Medical Emergencies** | Hands-Only Adult CPR, AED Public Defibrillator Guide, Choking Relief (Heimlich), Acute Stroke Recognition (BE-FAST), Anaphylaxis & EpiPen, Chest Pain & Heart Attack. |
-| **Accidents & Injuries** | Burns & Scalds Cooling, Severe Bleeding & Wound Pressure, Bone Fractures & Sprains, Head Injuries & Concussion Monitoring. |
-| **Health at Home** | First Aid Kit Essentials, Household Chemical Poisoning, Safe Fever & Thermometer Management. |
+| **Medical Emergencies** | Hands-Only Adult CPR, AED Public Defibrillator Guide, Choking Relief (Heimlich), Acute Stroke Recognition (BE-FAST), Anaphylaxis & EpiPen Auto-Injector, Chest Pain & Heart Attack. |
+| **Accidents & Injuries** | Burns & Scalds Cooling, Severe Bleeding & Wound Pressure, Bone Fractures & Sprains, Head Injuries & Concussion Monitoring, Venomous Bites & Stings (Scorpions, Spiders & Snakes). |
+| **Health at Home** | First Aid Kit Essentials, Household Chemical Poisoning, Safe Fever & Thermometer Management, Carbon Monoxide Poisoning & Smoke Inhalation. |
 | **Warning Signs** | Severe Dehydration Red Flags, Fainting (Syncope) & Dizziness. |
 | **Preparedness** | 72-Hour Family Emergency Evacuation Go-Bag. |
-| **Prevention & Safety** | Heat Illness & Heat Stroke Prevention, Food Safety & Infection Prevention. |
+| **Prevention & Safety** | Heatstroke & Hypothermia (Extreme Temperature Emergencies), Food Safety & Infection Prevention. |
 
 *All guides are formulated in alignment with international guidelines from the **American Heart Association (AHA)**, **European Resuscitation Council (ERC)**, **International Federation of Red Cross (IFRC)**, and the **World Health Organization (WHO)**.*
 
@@ -105,10 +118,11 @@ HealthCare/
     │   └── index.ts                 # Article, Category, EmergencyGuide, Language types
     ├── context/
     │   ├── CountryContext.tsx       # Localized country emergency numbers
-    │   └── LanguageContext.tsx      # Bilingual i18n provider ('es' | 'en')
+    │   ├── LanguageContext.tsx      # Bilingual i18n provider ('es' | 'en')
+    │   └── ThemeContext.tsx         # Dark/Light mode theme state & persistence
     ├── data/
-    │   ├── articles.ts              # English clinical guides + localized resolver
-    │   ├── articles.es.ts           # Spanish clinical guides (19 protocols)
+    │   ├── articles.ts              # English clinical guides (23 protocols)
+    │   ├── articles.es.ts           # Spanish clinical guides (23 protocols)
     │   ├── categories.ts            # Localized curriculum categories
     │   ├── emergencyNumbers.ts      # 10+ country emergency dispatch directory
     │   ├── kitItems.ts              # First aid kit supply inventory
@@ -118,7 +132,7 @@ HealthCare/
     │   └── search.ts                # Bilingual client-side search engine
     ├── components/
     │   ├── layout/                  # Layout, Navbar, Footer, DisclaimerBanner, LanguageModal
-    │   ├── ui/                      # ArticleCard, CategoryCard, UrgencyBadge
+    │   ├── ui/                      # ArticleCard, CategoryCard, UrgencyBadge, ProtocolDiagram
     │   ├── search/                  # SearchModal (Ctrl+K)
     │   ├── tools/                   # VitalSignsReference, EmergencyStressMode, FirstAidKitChecklist
     │   └── quiz/                    # QuizCard

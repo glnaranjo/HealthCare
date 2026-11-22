@@ -13,22 +13,22 @@ export function UrgencyBadge({ urgency, showIcon = true }: UrgencyBadgeProps) {
   const configs = {
     critical: {
       label: language === 'es' ? 'Emergencia Crítica' : 'Critical Emergency',
-      style: 'bg-red-50 text-red-700 border-red-200 ring-1 ring-red-500/20',
+      style: 'bg-red-50 dark:bg-red-950/60 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800/80 ring-1 ring-red-500/20',
       icon: AlertTriangle,
     },
     urgent: {
       label: language === 'es' ? 'Atención Urgente' : 'Urgent Care',
-      style: 'bg-amber-50 text-amber-800 border-amber-200 ring-1 ring-amber-500/20',
+      style: 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800/80 ring-1 ring-amber-500/20',
       icon: AlertCircle,
     },
     moderate: {
       label: language === 'es' ? 'Atención Moderada' : 'Moderate Attention',
-      style: 'bg-blue-50 text-blue-700 border-blue-200 ring-1 ring-blue-500/20',
+      style: 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/80 ring-1 ring-blue-500/20',
       icon: Clock,
     },
     precautionary: {
       label: language === 'es' ? 'Seguridad y Prevención' : 'Everyday Safety',
-      style: 'bg-emerald-50 text-emerald-800 border-emerald-200 ring-1 ring-emerald-500/20',
+      style: 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/80 ring-1 ring-emerald-500/20',
       icon: ShieldCheck,
     },
   };

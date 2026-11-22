@@ -88,25 +88,25 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       aria-modal="true"
     >
       <div 
-        className="bg-white rounded-3xl max-w-2xl w-full border border-slate-200 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150"
+        className="bg-white dark:bg-slate-900 rounded-3xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150"
       >
         
         {/* Search Input Bar */}
-        <div className="relative border-b border-slate-200 p-4 sm:p-6 bg-white">
+        <div className="relative border-b border-slate-200 dark:border-slate-800 p-4 sm:p-6 bg-white dark:bg-slate-900">
           <div className="flex items-center gap-3">
-            <Search className="w-6 h-6 text-brand-600 flex-shrink-0" />
+            <Search className="w-6 h-6 text-brand-600 dark:text-brand-400 flex-shrink-0" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t('searchModalPlaceholder')}
-              className="w-full text-base sm:text-lg text-slate-900 placeholder:text-slate-400 focus:outline-none bg-transparent"
+              className="w-full text-base sm:text-lg text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none bg-transparent"
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="p-1 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+                className="p-1 rounded-md text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
                 aria-label="Clear query"
               >
                 <X className="w-5 h-5" />
@@ -114,7 +114,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             )}
             <button
               onClick={onClose}
-              className="hidden sm:inline-flex text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-1 rounded-md"
+              className="hidden sm:inline-flex text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-md"
             >
               ESC
             </button>
@@ -133,19 +133,19 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <button
                     key={article.id}
                     onClick={() => handleSelectResult(article.slug)}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200/80 hover:border-brand-500 hover:bg-brand-50/40 transition group flex items-start justify-between gap-4"
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 hover:bg-brand-50/40 dark:hover:bg-brand-950/40 transition group flex items-start justify-between gap-4"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <UrgencyBadge urgency={article.urgency} />
-                        <span className="text-xs font-semibold text-slate-500 capitalize">
+                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 capitalize">
                           {article.category.replace('-', ' ')}
                         </span>
                       </div>
-                      <h4 className="text-base font-bold text-slate-900 group-hover:text-brand-700 transition">
+                      <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-700 dark:group-hover:text-brand-400 transition">
                         {article.title}
                       </h4>
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
                         {article.shortDescription}
                       </p>
                     </div>
@@ -163,10 +163,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             ) : (
               <div className="text-center py-10 space-y-3">
                 <AlertTriangle className="w-8 h-8 text-amber-500 mx-auto" />
-                <h4 className="text-base font-bold text-slate-800">
+                <h4 className="text-base font-bold text-slate-800 dark:text-slate-200">
                   {t('searchModalNoResults')}
                 </h4>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto">
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
                   {language === 'es'
                     ? 'Intenta con palabras clave directas como "rcp", "quemadura", "sangrado", "atragantamiento" o "veneno".'
                     : 'Try simple keywords like "cpr", "burn", "choking", "bleeding", or "poison".'}
@@ -176,8 +176,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           ) : (
             /* Empty state with suggested questions */
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                <Sparkles className="w-4 h-4 text-brand-600" />
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <Sparkles className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                 <span>{t('searchModalSuggestions')}</span>
               </div>
               <div className="flex flex-col gap-2">
@@ -185,13 +185,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <button
                     key={idx}
                     onClick={() => handleSelectSuggested(suggested)}
-                    className="text-left text-xs sm:text-sm text-slate-700 hover:text-brand-700 hover:bg-slate-100/80 px-3.5 py-2.5 rounded-xl transition flex items-center justify-between group"
+                    className="text-left text-xs sm:text-sm text-slate-700 dark:text-slate-200 hover:text-brand-700 dark:hover:text-brand-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 px-3.5 py-2.5 rounded-xl transition flex items-center justify-between group"
                   >
                     <div className="flex items-center gap-2.5">
-                      <HelpCircle className="w-4 h-4 text-slate-400 group-hover:text-brand-600" />
+                      <HelpCircle className="w-4 h-4 text-slate-400 group-hover:text-brand-600 dark:group-hover:text-brand-400" />
                       <span>{suggested}</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-brand-600 transition" />
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-300 dark:text-slate-600 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition" />
                   </button>
                 ))}
               </div>
@@ -200,13 +200,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <div className="p-4 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
           <span className="flex items-center gap-1.5 font-medium">
             <span>HealthCare Local NLP Search • Instant Indexing</span>
           </span>
           <button
             onClick={onClose}
-            className="text-slate-600 hover:text-slate-900 font-bold px-3 py-1 rounded-lg hover:bg-slate-200 transition"
+            className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white font-bold px-3 py-1 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition"
           >
             {t('searchModalClose')}
           </button>
