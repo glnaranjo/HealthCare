@@ -81,7 +81,7 @@ export function FirstAidKitChecklist() {
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200 dark:border-brand-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-3 py-1 rounded-full border border-brand-200 dark:border-brand-800">
               {language === 'es' ? 'Auditoría del Botiquín' : 'Supply Inventory'}
             </span>
             <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-2">
@@ -121,7 +121,7 @@ export function FirstAidKitChecklist() {
               <ShieldCheck className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               {language === 'es' ? 'Disponibilidad del Botiquín:' : 'Kit Readiness Score:'}
             </span>
-            <span className="text-brand-700 dark:text-brand-300 font-extrabold">
+            <span className="text-brand-700 dark:text-brand-400 font-extrabold">
               {packedCount} / {totalItems} {language === 'es' ? 'insumos' : 'items'} ({progressPercent}%)
             </span>
           </div>
@@ -178,7 +178,7 @@ export function FirstAidKitChecklist() {
               onClick={() => toggleItem(item.id)}
               className={`p-5 rounded-2xl border transition-all duration-150 cursor-pointer flex items-start gap-4 select-none ${
                 isChecked
-                  ? 'bg-brand-50/50 dark:bg-brand-950/40 border-brand-300 dark:border-brand-800 shadow-2xs'
+                  ? 'bg-brand-50/50 dark:bg-brand-900/30 border-brand-300 dark:border-brand-800 shadow-2xs'
                   : 'bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/60 border-slate-200 dark:border-slate-800 shadow-2xs'
               }`}
             >

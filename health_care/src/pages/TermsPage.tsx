@@ -21,7 +21,7 @@ export function TermsPage() {
 
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
           <BookOpen className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Licencia de Salud Pública' : 'Public Health License'}</span>
         </div>

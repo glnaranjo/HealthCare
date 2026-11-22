@@ -472,7 +472,7 @@ export function VitalSignsReference() {
                 {/* Header */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center flex-shrink-0 shadow-xs">
+                    <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center flex-shrink-0 shadow-xs">
                       <Icon className="w-6 h-6 stroke-[2.2]" />
                     </div>
                     <div>
@@ -487,13 +487,13 @@ export function VitalSignsReference() {
                 </div>
 
                 {/* Normal Value Highlight */}
-                <div className="p-4 rounded-2xl bg-brand-50/70 dark:bg-brand-950/50 border border-brand-200/60 dark:border-brand-800/60 space-y-1">
-                  <div className="flex items-center justify-between text-xs font-semibold text-brand-800 dark:text-brand-300">
+                <div className="p-4 rounded-2xl bg-brand-50/70 dark:bg-brand-900/30 border border-brand-200/60 dark:border-brand-700/50 space-y-1">
+                  <div className="flex items-center justify-between text-xs font-semibold text-brand-800 dark:text-brand-400">
                     <span className="flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4 text-brand-600 dark:text-brand-400" />
                       {language === 'es' ? 'Valor Normal de Referencia:' : 'Normal Clinical Baseline:'}
                     </span>
-                    <span className="text-[11px] text-brand-700 dark:text-brand-300 bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-md font-bold">
+                    <span className="text-[11px] text-brand-700 dark:text-brand-400 bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-md font-bold">
                       {current.label}
                     </span>
                   </div>

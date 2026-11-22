@@ -12,29 +12,49 @@ const THEME_STORAGE_KEY = 'healthcare_theme_pref';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Helper to reliably apply theme to documentElement, body, and HTML attributes
+function applyThemeToDom(theme: Theme) {
+  const root = document.documentElement;
+  const body = document.body;
+
+  if (theme === 'dark') {
+    root.classList.add('dark');
+    if (body) {
+      body.classList.add('dark');
+    }
+    root.setAttribute('data-theme', 'dark');
+    root.style.colorScheme = 'dark';
+  } else {
+    root.classList.remove('dark');
+    if (body) {
+      body.classList.remove('dark');
+    }
+    root.setAttribute('data-theme', 'light');
+    root.style.colorScheme = 'light';
+  }
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     try {
       const stored = localStorage.getItem(THEME_STORAGE_KEY);
       if (stored === 'light' || stored === 'dark') {
+        applyThemeToDom(stored);
         return stored;
       }
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        applyThemeToDom('dark');
         return 'dark';
       }
     } catch {
-      // Fallback
+      // Fallback in case of restricted environment
     }
+    applyThemeToDom('light');
     return 'light';
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
+    applyThemeToDom(theme);
     try {
       localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch {
@@ -43,10 +63,25 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme]);
 
   const toggleTheme = () => {
-    setThemeState((prev) => (prev === 'light' ? 'dark' : 'light'));
+    setThemeState((prev) => {
+      const nextTheme = prev === 'light' ? 'dark' : 'light';
+      applyThemeToDom(nextTheme);
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      } catch {
+        // Ignore
+      }
+      return nextTheme;
+    });
   };
 
   const setTheme = (newTheme: Theme) => {
+    applyThemeToDom(newTheme);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, newTheme);
+    } catch {
+      // Ignore
+    }
     setThemeState(newTheme);
   };
 
@@ -64,4 +99,3 @@ export function useTheme() {
   }
   return context;
 }
-

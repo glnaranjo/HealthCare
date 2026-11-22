@@ -37,7 +37,7 @@ export function ContactPage() {
       </nav>
 
       {/* Emergency Warning */}
-      <div className="p-4 rounded-2xl bg-emergency-50 border border-emergency-200 text-emergency-900 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+      <div className="p-4 rounded-2xl bg-emergency-50 dark:bg-red-950/40 border border-emergency-200 dark:border-red-800/60 text-emergency-900 dark:text-red-200 text-xs sm:text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
         <div className="flex items-center gap-2">
           <ShieldAlert className="w-4 h-4 text-emergency-600 flex-shrink-0" />
           <span>
@@ -58,7 +58,7 @@ export function ContactPage() {
 
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
           <MessageSquare className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Colaboración en Salud Pública' : 'Public Health Collaboration'}</span>
         </div>
@@ -150,7 +150,7 @@ export function ContactPage() {
                 <select
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm bg-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 text-sm bg-white dark:bg-slate-800"
                 >
                   <option value="curriculum-review">
                     {language === 'es' ? 'Corrección / Revisión de Guía Médica' : 'Clinical Guideline Correction / Review'}

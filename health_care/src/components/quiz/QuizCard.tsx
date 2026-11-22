@@ -54,7 +54,7 @@ export function QuizCard({
               : `Question ${questionNumber} of ${totalQuestions}`}
           </span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
           <Shield className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
           <span>{question.topic}</span>
         </div>

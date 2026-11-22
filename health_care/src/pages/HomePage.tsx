@@ -38,7 +38,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'No responde, respiración ausente o anormal, o desplome repentino.' : 'Unresponsive, abnormal breathing, or collapsed.',
       slug: 'cardiac-arrest-cpr',
       icon: Activity,
-      color: 'text-red-600 bg-red-50 border-red-200 hover:border-red-400',
+      color: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/60 border-red-200 dark:border-red-900/60 hover:border-red-400',
       actionText: language === 'es' ? 'Verificar respiración e iniciar RCP' : 'Check Breathing & Start CPR',
       urgentBadge: language === 'es' ? 'RCP Inmediata' : 'Immediate CPR'
     },
@@ -47,7 +47,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'No puede hablar, se sujeta el cuello, tos silenciosa o nula.' : 'Cannot speak, clutching neck, silent coughing.',
       slug: 'choking-adult-child',
       icon: HeartCrack,
-      color: 'text-amber-600 bg-amber-50 border-amber-200 hover:border-amber-400',
+      color: 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 border-amber-200 dark:border-amber-900/60 hover:border-amber-400',
       actionText: language === 'es' ? 'Golpes en la espalda y Heimlich' : 'Back Blows & Heimlich Thrusts',
       urgentBadge: language === 'es' ? 'Vía Aérea' : 'Airway Block'
     },
@@ -56,7 +56,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'Escaldaduras con agua caliente, fuego, vapor o planchas.' : 'Scalds from boiling water, fire, or hot surfaces.',
       slug: 'burns-first-aid',
       icon: Flame,
-      color: 'text-orange-600 bg-orange-50 border-orange-200 hover:border-orange-400',
+      color: 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/60 border-orange-200 dark:border-orange-900/60 hover:border-orange-400',
       actionText: language === 'es' ? 'Enfriar con agua corriente 20 min' : 'Cool With Running Water 20 min',
       urgentBadge: language === 'es' ? 'Enfriamiento' : 'Cooling Protocol'
     },
@@ -65,7 +65,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'Hemorragia continua, corte profundo o herida penetrante.' : 'Continuous bleeding, deep cut, or puncture wound.',
       slug: 'severe-bleeding-wounds',
       icon: Droplet,
-      color: 'text-rose-600 bg-rose-50 border-rose-200 hover:border-rose-400',
+      color: 'text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/60 border-rose-200 dark:border-rose-900/60 hover:border-rose-400',
       actionText: language === 'es' ? 'Aplicar presión firme directa' : 'Apply Direct Firm Pressure',
       urgentBadge: language === 'es' ? 'Frenar Sangrado' : 'Stop Bleeding'
     },
@@ -74,7 +74,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'Espasmos involuntarios, rigidez corporal, pérdida de conciencia.' : 'Convulsions, body stiffening, loss of consciousness.',
       slug: 'seizures-first-aid',
       icon: AlertTriangle,
-      color: 'text-purple-600 bg-purple-50 border-purple-200 hover:border-purple-400',
+      color: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 border-purple-200 dark:border-purple-900/60 hover:border-purple-400',
       actionText: language === 'es' ? 'Proteger la cabeza y NO sujetar' : 'Protect Head & Do NOT Restrain',
       urgentBadge: language === 'es' ? 'Proteger de Daño' : 'Protect From Harm'
     },
@@ -83,7 +83,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       subtitle: language === 'es' ? 'Rostro caído, debilidad en un brazo, dificultad para hablar.' : 'Face drooping, arm weakness, slurred speech.',
       slug: 'stroke-recognition',
       icon: Brain,
-      color: 'text-blue-600 bg-blue-50 border-blue-200 hover:border-blue-400',
+      color: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-900/60 hover:border-blue-400',
       actionText: language === 'es' ? 'Prueba BE-FAST y llamar a emergencias' : 'BE-FAST Test & Emergency Call',
       urgentBadge: language === 'es' ? 'Tiempo es Cerebro' : 'Time is Brain'
     },
@@ -100,7 +100,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200/80 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200/80 dark:border-brand-700/50 shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-brand-600" />
               <span>{t('heroBadge')}</span>
             </div>
@@ -143,7 +143,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
                     {t('heroSearchPlaceholder')}
                   </span>
                 </div>
-                <span className="bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 font-bold text-xs px-2.5 py-1 rounded-lg border border-brand-200/50 dark:border-brand-800/50">
+                <span className="bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 font-bold text-xs px-2.5 py-1 rounded-lg border border-brand-200/50 dark:border-brand-800/50">
                   {t('searchKbd')}
                 </span>
               </button>
@@ -217,7 +217,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full mb-2">
+            <div className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800/60 px-2.5 py-0.5 rounded-full mb-2">
               <ShieldAlert className="w-3.5 h-3.5" /> {t('quickAccessBadge')}
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -279,7 +279,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       {/* 3. MAIN CATEGORIES SECTION */}
       <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-700/50">
             {t('curriculumBadge')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
@@ -303,7 +303,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
       {/* 4. INTERACTIVE TOOLS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-700/50">
             {t('toolsBadge')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
@@ -324,7 +324,7 @@ export function HomePage({ onOpenSearch }: HomePageProps) {
               <Activity className="w-48 h-48 text-brand-600" />
             </div>
 
-            <div className="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-950/70 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center shadow-xs group-hover:bg-brand-100 dark:group-hover:bg-brand-900/60 transition">
+            <div className="w-14 h-14 rounded-2xl bg-brand-50 dark:bg-brand-900/40 border border-brand-100 dark:border-brand-800/50 flex items-center justify-center shadow-xs group-hover:bg-brand-100 dark:group-hover:bg-brand-900/60 transition">
               <Activity className="w-7 h-7 text-brand-600 dark:text-brand-400 stroke-[1.8]" />
             </div>
 

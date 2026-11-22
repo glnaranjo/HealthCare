@@ -64,12 +64,12 @@ export function QuizPage() {
       {/* Intro Screen */}
       {!hasStarted && (
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-sm text-center max-w-2xl mx-auto space-y-6">
-          <div className="w-16 h-16 rounded-3xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto shadow-xs">
+          <div className="w-16 h-16 rounded-3xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto shadow-xs">
             <Award className="w-8 h-8 stroke-[2.2]" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{language === 'es' ? 'Evaluación Práctica Interactiva' : 'Interactive Knowledge Check'}</span>
             </div>
@@ -144,7 +144,7 @@ export function QuizPage() {
         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-sm max-w-2xl mx-auto space-y-8 animate-in fade-in duration-200">
           <div className="text-center space-y-3">
             <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto shadow-sm ${
-              scorePercentage >= 80 ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400' : 'bg-brand-100 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400'
+              scorePercentage >= 80 ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400' : 'bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400'
             }`}>
               <Award className="w-10 h-10" />
             </div>

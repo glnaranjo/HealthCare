@@ -50,7 +50,7 @@ export const LanguageSelectModal: React.FC = () => {
             <HeartPulse className="w-8 h-8 stroke-[2.2]" />
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-100/70 dark:bg-brand-950/80 px-3 py-1 rounded-full mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-700 dark:text-brand-400 bg-brand-100/70 dark:bg-brand-900/40 px-3 py-1 rounded-full mb-2 border border-brand-200/60 dark:border-brand-700/50">
             <Globe className="w-3.5 h-3.5" />
             <span>Language Selection • Selección de Idioma</span>
           </div>
@@ -77,8 +77,8 @@ export const LanguageSelectModal: React.FC = () => {
             onClick={() => setTempLang('es')}
             className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
               tempLang === 'es'
-                ? 'border-brand-600 bg-brand-50/60 dark:bg-brand-950/60 shadow-sm'
-                : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50/50 dark:hover:bg-slate-800/50'
+                ? 'border-brand-600 bg-brand-50/60 dark:bg-brand-900/30 shadow-sm'
+                : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-800'
             }`}
           >
             <div className="flex items-center gap-3.5">
@@ -112,8 +112,8 @@ export const LanguageSelectModal: React.FC = () => {
             onClick={() => setTempLang('en')}
             className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex items-center justify-between ${
               tempLang === 'en'
-                ? 'border-brand-600 bg-brand-50/60 dark:bg-brand-950/60 shadow-sm'
-                : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50/50 dark:hover:bg-slate-800/50'
+                ? 'border-brand-600 bg-brand-50/60 dark:bg-brand-900/30 shadow-sm'
+                : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-800'
             }`}
           >
             <div className="flex items-center gap-3.5">

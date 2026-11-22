@@ -37,7 +37,7 @@ export function CategoryCard({ category, articleCount }: CategoryCardProps) {
     >
       <div>
         <div className="flex items-center justify-between mb-4">
-          <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition duration-200 shadow-xs">
+          <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition duration-200 shadow-xs">
             <IconComponent className="w-6 h-6 stroke-[2]" />
           </div>
           {typeof articleCount === 'number' && (

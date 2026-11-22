@@ -66,14 +66,14 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
           {language === 'es' ? 'Inicio' : 'Home'}
         </Link>
         <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-        <span className="text-slate-900 font-bold">{category.title}</span>
+        <span className="text-slate-900 dark:text-white font-bold">{category.title}</span>
       </nav>
 
       {/* Category Hero Header */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="max-w-2xl space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center shadow-xs">
               <IconComponent className="w-6 h-6 stroke-[2]" />
             </div>
             <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${category.badgeColor}`}>
@@ -92,12 +92,12 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
 
         {/* Emergency quick-action callout for high urgency categories */}
         {(category.id === 'emergencies' || category.id === 'accidents') && (
-          <div className="bg-emergency-50 border border-emergency-200 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
-            <div className="flex items-center gap-2 text-emergency-800 text-xs font-bold uppercase tracking-wide">
-              <PhoneCall className="w-4 h-4 text-emergency-600 animate-pulse" />
+          <div className="bg-emergency-50 dark:bg-red-950/40 border border-emergency-200 dark:border-red-800/60 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2 text-emergency-800 dark:text-red-300 text-xs font-bold uppercase tracking-wide">
+              <PhoneCall className="w-4 h-4 text-emergency-600 dark:text-red-400 animate-pulse" />
               <span>{language === 'es' ? 'Peligro Vital Inmediato' : 'Immediate Life Hazard'}</span>
             </div>
-            <p className="text-xs text-emergency-900 leading-relaxed">
+            <p className="text-xs text-emergency-900 dark:text-red-200 leading-relaxed">
               {language === 'es' 
                 ? 'Si una persona no responde, no respira o presenta hemorragia masiva, llama a emergencias sin demora.' 
                 : 'If a person is unresponsive, turning blue, or hemorrhaging severely, call emergency services without delay.'}
@@ -113,12 +113,12 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
 
         {/* Vital Signs reference callout for Warning Signs category */}
         {category.id === 'warning-signs' && (
-          <div className="bg-brand-50/80 border border-brand-200 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
-            <div className="flex items-center gap-2 text-brand-800 text-xs font-bold uppercase tracking-wide">
-              <Activity className="w-4 h-4 text-brand-600" />
+          <div className="bg-brand-50/80 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-700/50 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2 text-brand-800 dark:text-brand-400 text-xs font-bold uppercase tracking-wide">
+              <Activity className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <span>{language === 'es' ? 'Herramienta Clínica Interactiva' : 'Interactive Clinical Tool'}</span>
             </div>
-            <p className="text-xs text-brand-900 leading-relaxed">
+            <p className="text-xs text-brand-900 dark:text-brand-200 leading-relaxed">
               {language === 'es' 
                 ? 'Consulta rangos normales de pulso, respiraciones, presión arterial y temperatura para todas las edades.'
                 : 'Check resting baselines for pulse, respirations, blood pressure, and body temperature across all age groups.'}
@@ -134,12 +134,12 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
 
         {/* Kit Checklist callout for Health at Home category */}
         {category.id === 'home-health' && (
-          <div className="bg-brand-50/80 border border-brand-200 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
-            <div className="flex items-center gap-2 text-brand-800 text-xs font-bold uppercase tracking-wide">
-              <CheckSquare className="w-4 h-4 text-brand-600" />
+          <div className="bg-brand-50/80 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-700/50 p-5 rounded-2xl max-w-sm flex-shrink-0 flex flex-col justify-between gap-3 shadow-xs">
+            <div className="flex items-center gap-2 text-brand-800 dark:text-brand-400 text-xs font-bold uppercase tracking-wide">
+              <CheckSquare className="w-4 h-4 text-brand-600 dark:text-brand-400" />
               <span>{language === 'es' ? 'Lista Interactiva' : 'Interactive Checklist'}</span>
             </div>
-            <p className="text-xs text-brand-900 leading-relaxed">
+            <p className="text-xs text-brand-900 dark:text-brand-200 leading-relaxed">
               {language === 'es' 
                 ? 'Revisa y audita los insumos médicos de tu botiquín con guardado automático local.'
                 : 'Track and audit the medical supplies inside your home or travel first aid kit with automatic local saving.'}
@@ -155,10 +155,10 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
       </div>
 
       {/* Filter and Content Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-slate-500" />
-          <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             {language === 'es' ? 'Filtrar por Urgencia:' : 'Filter by Urgency:'}
           </span>
           <div className="flex flex-wrap gap-1.5 ml-2">
@@ -169,7 +169,7 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
                 className={`text-xs px-3 py-1.5 rounded-lg font-semibold transition ${
                   selectedUrgency === u.value
                     ? 'bg-brand-600 text-white shadow-2xs'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-600'
+                    : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300'
                 }`}
               >
                 {u.label}
@@ -178,7 +178,7 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
           </div>
         </div>
 
-        <div className="text-xs font-semibold text-slate-500">
+        <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
           {language === 'es' ? 'Mostrando' : 'Showing'} <strong>{filteredArticles.length}</strong> {filteredArticles.length === 1 ? (language === 'es' ? 'guía' : 'guide') : (language === 'es' ? 'guías' : 'guides')}
         </div>
       </div>
@@ -191,12 +191,12 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8">
+        <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8">
           <AlertCircle className="w-10 h-10 text-slate-400 mx-auto mb-3" />
-          <h3 className="text-lg font-bold text-slate-900 mb-1">
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">
             {language === 'es' ? 'Ninguna guía coincide con este filtro' : 'No guides match this filter'}
           </h3>
-          <p className="text-sm text-slate-500 mb-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
             {language === 'es' ? 'Intenta seleccionar "Todos los Protocolos" para ver el material.' : 'Try selecting "All Protocols" to see all educational material in this category.'}
           </p>
           <button
@@ -209,7 +209,7 @@ export function CategoryPage({ forcedCategory }: CategoryPageProps) {
       )}
 
       {/* Safety Notice Footer for Category */}
-      <div className="p-4 rounded-2xl bg-slate-100 border border-slate-200/80 text-xs text-slate-600 flex items-center justify-between flex-wrap gap-2">
+      <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-400 flex items-center justify-between flex-wrap gap-2">
         <span>
           <strong>{language === 'es' ? 'Estándar Educativo:' : 'Educational Standard:'}</strong> {language === 'es' 
             ? `Todas las guías de ${category.title} se formulan siguiendo consensos internacionales de primeros auxilios.`

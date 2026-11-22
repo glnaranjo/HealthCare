@@ -71,7 +71,7 @@ export function SearchPage() {
       {/* Main Search Header */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-6">
         <div className="max-w-2xl">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/80 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-800/60">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-3 py-1 rounded-full border border-brand-200/60 dark:border-brand-700/50">
             {language === 'es' ? 'Búsqueda Clínica en Lenguaje Natural' : 'Natural Language Quick Access'}
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">
@@ -131,16 +131,16 @@ export function SearchPage() {
 
       {/* Results Section */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-brand-600" />
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">
               {query 
                 ? (language === 'es' ? `Resultados para "${query}"` : `Search Results for "${query}"`) 
                 : (language === 'es' ? 'Todos los Protocolos Médicos Disponibles' : 'All Available Emergency & Health Protocols')}
             </h2>
           </div>
-          <span className="text-xs font-semibold text-slate-500">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
             {results.length} {results.length === 1 ? (language === 'es' ? 'protocolo' : 'protocol') : (language === 'es' ? 'protocolos' : 'protocols')}
           </span>
         </div>
@@ -152,14 +152,14 @@ export function SearchPage() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center max-w-lg mx-auto space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-12 text-center max-w-lg mx-auto space-y-4">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto">
               <AlertTriangle className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
               {language === 'es' ? `No se encontraron guías para "${query}"` : `No exact guide found for "${query}"`}
             </h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
               {language === 'es' 
                 ? 'Prueba buscando con palabras clave como rcp, atragantamiento, quemadura, hemorragia, o acv.'
                 : 'Try searching with general keywords such as cpr, choking, burn, bleeding, or stroke.'}
@@ -175,7 +175,7 @@ export function SearchPage() {
       </div>
 
       {/* Accuracy & Safety Assurance Banner */}
-      <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
         <div>
           <strong>{language === 'es' ? 'Garantía de Rigor Médico:' : 'Medical Accuracy Safeguard:'}</strong>{' '}
           {language === 'es'

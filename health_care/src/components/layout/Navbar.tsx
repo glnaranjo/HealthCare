@@ -80,7 +80,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
                 className={({ isActive }) =>
                   `px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-brand-700 dark:text-brand-300 bg-brand-50/80 dark:bg-brand-950/60'
+                      ? 'text-brand-700 dark:text-brand-400 bg-brand-50/80 dark:bg-brand-900/30'
                       : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800'
                   }`
                 }
@@ -90,8 +90,8 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Quick Actions (Search, Theme Toggle, Language Switcher & Emergency Dial Shortcut) */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          {/* Quick Actions Desktop (Search, Theme Toggle, Language Switcher & Emergency Dial Shortcut) */}
+          <div className="hidden lg:flex items-center gap-2.5">
             <button
               onClick={handleSearchClick}
               type="button"
@@ -109,14 +109,14 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             <button
               type="button"
               onClick={toggleTheme}
-              className="flex items-center justify-center p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition"
+              className="flex items-center justify-center p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
               title={theme === 'dark' ? (language === 'es' ? 'Cambiar a modo claro' : 'Switch to light mode') : (language === 'es' ? 'Cambiar a modo oscuro' : 'Switch to dark mode')}
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
+                <Sun className="w-4 h-4 text-amber-400 animate-in spin-in-180 duration-200" />
               ) : (
-                <Moon className="w-4 h-4 text-slate-600" />
+                <Moon className="w-4 h-4 text-slate-600 dark:text-slate-300" />
               )}
             </button>
 
@@ -124,7 +124,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             <button
               type="button"
               onClick={openLanguageSelector}
-              className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-2.5 py-2 rounded-xl text-xs font-bold transition"
+              className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-2.5 py-2 rounded-xl text-xs font-bold transition cursor-pointer"
               title={language === 'es' ? 'Cambiar idioma (Español / English)' : 'Switch language (Spanish / English)'}
             >
               <Languages className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
@@ -144,14 +144,17 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
           {/* Mobile Menu & Search Icon Buttons */}
           <div className="flex items-center gap-1.5 lg:hidden">
             <button
+              type="button"
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+              title={theme === 'dark' ? (language === 'es' ? 'Cambiar a modo claro' : 'Switch to light mode') : (language === 'es' ? 'Cambiar a modo oscuro' : 'Switch to dark mode')}
+              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
             </button>
 
             <button
+              type="button"
               onClick={openLanguageSelector}
               aria-label="Language"
               className="p-2 rounded-lg text-slate-700 dark:text-slate-200 font-extrabold text-xs bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
@@ -160,6 +163,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             </button>
 
             <button
+              type="button"
               onClick={handleSearchClick}
               aria-label="Search"
               className="p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none"
@@ -168,6 +172,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             </button>
 
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
@@ -194,7 +199,7 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
                   className={({ isActive }) =>
                     `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition ${
                       isActive
-                        ? 'text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/60'
+                        ? 'text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30'
                         : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`
                   }
@@ -206,6 +211,25 @@ export function Navbar({ onOpenSearch }: NavbarProps) {
             })}
 
             <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+              {/* Mobile theme toggle row inside drawer */}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="w-full flex items-center justify-between bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 py-2.5 px-4 rounded-xl text-sm font-semibold transition cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  {theme === 'dark' ? (
+                    <Sun className="w-4 h-4 text-amber-400" />
+                  ) : (
+                    <Moon className="w-4 h-4 text-slate-600 dark:text-slate-300" />
+                  )}
+                  <span>{theme === 'dark' ? (language === 'es' ? 'Modo Oscuro (Activo)' : 'Dark Mode (Active)') : (language === 'es' ? 'Modo Claro (Activo)' : 'Light Mode (Active)')}</span>
+                </div>
+                <span className="text-xs font-bold text-brand-600 dark:text-brand-400 bg-white/70 dark:bg-slate-900/70 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+                  {theme === 'dark' ? (language === 'es' ? 'Cambiar a Claro' : 'Switch to Light') : (language === 'es' ? 'Cambiar a Oscuro' : 'Switch to Dark')}
+                </span>
+              </button>
+
               <button
                 onClick={handleSearchClick}
                 className="w-full flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 py-2.5 px-4 rounded-xl text-sm font-semibold transition"

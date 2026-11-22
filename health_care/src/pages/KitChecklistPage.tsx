@@ -25,17 +25,17 @@ export function KitChecklistPage() {
       </nav>
 
       {/* Hero Header */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
-          <BriefcaseMedical className="w-4 h-4 text-brand-600" />
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
+          <BriefcaseMedical className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Herramienta de Preparación Doméstica' : 'Household Readiness Tool'}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
           {language === 'es' ? 'Checklist Interactivo del Botiquín de Primeros Auxilios' : 'First Aid Kit Interactive Checklist'}
         </h1>
 
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
+        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
           {language === 'es'
             ? 'Revisa y audita los insumos médicos en tu botiquín del hogar, vehículo o trabajo. Tu inventario se guarda automáticamente en este dispositivo.'
             : 'Check off the medical supplies in your home, vehicle, or workplace first aid kit. Your inventory is automatically saved on this device.'}
@@ -46,13 +46,13 @@ export function KitChecklistPage() {
       <FirstAidKitChecklist />
 
       {/* Related Article Guide Link */}
-      <div className="no-print bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="no-print bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h3 className="font-bold text-slate-900 text-base flex items-center gap-2">
+          <h3 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
             <BookOpen className="w-4 h-4 text-brand-600" />
             {language === 'es' ? '¿Necesitas instrucciones detalladas sobre el uso de estos insumos?' : 'Need detailed instructions on using these supplies?'}
           </h3>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             {language === 'es'
               ? 'Lee nuestro manual educativo completo sobre cómo armar, inspeccionar y usar los elementos del botiquín.'
               : 'Read our full educational manual on assembling, inspecting, and using home first aid items.'}

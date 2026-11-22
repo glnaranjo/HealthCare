@@ -195,6 +195,17 @@ export function Footer() {
             <span>
               © {new Date().getFullYear()} {t('footerAllRights')}
             </span>
+            <span className="flex items-center gap-1 text-slate-500">
+              {language === 'es' ? 'Desarrollado por' : 'Developed by'}{' '}
+              <a
+                href="https://galo-naranjo.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-400 hover:text-brand-300 font-semibold transition"
+              >
+                Galo Naranjo
+              </a>
+            </span>
             <div className="flex items-center gap-4">
               <Link to="/disclaimer" className="hover:text-slate-300 transition">
                 {language === 'es' ? 'Aviso Médico' : 'Medical Disclaimer'}

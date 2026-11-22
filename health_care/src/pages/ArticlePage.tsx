@@ -338,7 +338,7 @@ export function ArticlePage() {
                 <CheckCircle2 className="w-6 h-6 text-brand-600 dark:text-brand-400" />
                 <h2>{t('whatToDoTitle')}</h2>
               </div>
-              <span className="text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/70 px-2.5 py-1 rounded-full border border-brand-200/50 dark:border-brand-800/50">
+              <span className="text-xs font-bold text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/40 px-2.5 py-1 rounded-full border border-brand-200/50 dark:border-brand-800/50">
                 {t('followInOrder')}
               </span>
             </div>

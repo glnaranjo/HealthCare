@@ -21,7 +21,7 @@ export function PrivacyPage() {
 
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-400 border border-brand-200 dark:border-brand-800">
           <Lock className="w-4 h-4 text-brand-600 dark:text-brand-400" />
           <span>{language === 'es' ? 'Cero Rastreo Personal' : 'Zero Personal Tracking'}</span>
         </div>
@@ -38,7 +38,7 @@ export function PrivacyPage() {
       {/* Privacy Principles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-slate-900 dark:text-white text-base">
@@ -52,7 +52,7 @@ export function PrivacyPage() {
         </div>
 
         <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
             <CheckCircle2 className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-slate-900 dark:text-white text-base">
@@ -66,7 +66,7 @@ export function PrivacyPage() {
         </div>
 
         <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
             <Lock className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-slate-900 dark:text-white text-base">
@@ -80,7 +80,7 @@ export function PrivacyPage() {
         </div>
 
         <div className="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/70 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
+          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <h3 className="font-bold text-slate-900 dark:text-white text-base">
